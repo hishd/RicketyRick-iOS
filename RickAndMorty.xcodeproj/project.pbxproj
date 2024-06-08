@@ -14,6 +14,7 @@
 		FD2D76C22C151E6300BBDEF4 /* RickAndMortyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2D76C12C151E6300BBDEF4 /* RickAndMortyTests.swift */; };
 		FD2D76CC2C151E6300BBDEF4 /* RickAndMortyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2D76CB2C151E6300BBDEF4 /* RickAndMortyUITests.swift */; };
 		FD2D76CE2C151E6300BBDEF4 /* RickAndMortyUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2D76CD2C151E6300BBDEF4 /* RickAndMortyUITestsLaunchTests.swift */; };
+		FD2D76E12C15246C00BBDEF4 /* StoryBoarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2D76E02C15246C00BBDEF4 /* StoryBoarding.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +46,7 @@
 		FD2D76C72C151E6300BBDEF4 /* RickAndMortyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RickAndMortyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD2D76CB2C151E6300BBDEF4 /* RickAndMortyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RickAndMortyUITests.swift; sourceTree = "<group>"; };
 		FD2D76CD2C151E6300BBDEF4 /* RickAndMortyUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RickAndMortyUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		FD2D76E02C15246C00BBDEF4 /* StoryBoarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryBoarding.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +130,7 @@
 		FD2D76DA2C151F3300BBDEF4 /* Application */ = {
 			isa = PBXGroup;
 			children = (
+				FD2D76E02C15246C00BBDEF4 /* StoryBoarding.swift */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -299,6 +302,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FD2D76E12C15246C00BBDEF4 /* StoryBoarding.swift in Sources */,
 				FD2D76AB2C151E5E00BBDEF4 /* AppDelegate.swift in Sources */,
 				FD2D76AD2C151E5E00BBDEF4 /* SceneDelegate.swift in Sources */,
 			);
