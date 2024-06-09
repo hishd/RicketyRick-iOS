@@ -8,9 +8,20 @@
 import Foundation
 import UIKit
 
-protocol Coordinator {
+protocol Coordinator: AnyObject {
     var navigationController: UINavigationController {get set}
     var childCoordinators: [Coordinator] {get set}
     
     func start()
+}
+
+extension Coordinator {
+    func childDidFinish(_ child: Coordinator?) {
+        for (index, element) in childCoordinators.enumerated() {
+            if element === child {
+                childCoordinators.remove(at: index)
+                break
+            }
+        }
+    }
 }

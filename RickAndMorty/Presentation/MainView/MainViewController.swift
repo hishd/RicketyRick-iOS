@@ -20,7 +20,7 @@ final class MainViewController: UIViewController {
     }()
     
     private var viewModel: MainViewViewModel!
-    private var coordinator: Coordinator!
+    weak var coordinator: Coordinator?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,9 +33,8 @@ final class MainViewController: UIViewController {
         }
     }
     
-    static func create(with viewModel: MainViewViewModel, coordinator: Coordinator) -> MainViewController {
+    static func create(with viewModel: MainViewViewModel) -> MainViewController {
         let viewController = MainViewController()
-        viewController.coordinator = coordinator
         viewController.viewModel = viewModel
         return viewController
     }
