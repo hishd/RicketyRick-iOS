@@ -24,6 +24,10 @@
 		FDC057932C17D37A00312DB4 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC0578F2C17D37A00312DB4 /* NetworkService.swift */; };
 		FDC057942C17D37A00312DB4 /* NetworkDataTransferService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC057902C17D37A00312DB4 /* NetworkDataTransferService.swift */; };
 		FDC057962C17D52800312DB4 /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC057952C17D52800312DB4 /* View+Extensions.swift */; };
+		FDC0579B2C17D84800312DB4 /* CharacterRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC0579A2C17D84800312DB4 /* CharacterRepository.swift */; };
+		FDC0579D2C17D85B00312DB4 /* LocationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC0579C2C17D85B00312DB4 /* LocationRepository.swift */; };
+		FDC0579F2C17D86A00312DB4 /* EpisodeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC0579E2C17D86A00312DB4 /* EpisodeRepository.swift */; };
+		FDC057A12C17D89700312DB4 /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC057A02C17D89700312DB4 /* Character.swift */; };
 		FDE8CD042C1567DA00481F32 /* OSLog+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE8CD032C1567DA00481F32 /* OSLog+Extensions.swift */; };
 /* End PBXBuildFile section */
 
@@ -66,6 +70,10 @@
 		FDC0578F2C17D37A00312DB4 /* NetworkService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		FDC057902C17D37A00312DB4 /* NetworkDataTransferService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkDataTransferService.swift; sourceTree = "<group>"; };
 		FDC057952C17D52800312DB4 /* View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
+		FDC0579A2C17D84800312DB4 /* CharacterRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterRepository.swift; sourceTree = "<group>"; };
+		FDC0579C2C17D85B00312DB4 /* LocationRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationRepository.swift; sourceTree = "<group>"; };
+		FDC0579E2C17D86A00312DB4 /* EpisodeRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeRepository.swift; sourceTree = "<group>"; };
+		FDC057A02C17D89700312DB4 /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
 		FDE8CD032C1567DA00481F32 /* OSLog+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OSLog+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -166,6 +174,9 @@
 		FD2D76DC2C151F6700BBDEF4 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				FDC057992C17D63D00312DB4 /* UseCases */,
+				FDC057982C17D63800312DB4 /* Entities */,
+				FDC057972C17D62E00312DB4 /* Repositories */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -212,6 +223,31 @@
 				FD2D76EB2C15288800BBDEF4 /* MainViewController.swift */,
 			);
 			path = MainView;
+			sourceTree = "<group>";
+		};
+		FDC057972C17D62E00312DB4 /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				FDC0579A2C17D84800312DB4 /* CharacterRepository.swift */,
+				FDC0579C2C17D85B00312DB4 /* LocationRepository.swift */,
+				FDC0579E2C17D86A00312DB4 /* EpisodeRepository.swift */,
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
+		FDC057982C17D63800312DB4 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				FDC057A02C17D89700312DB4 /* Character.swift */,
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
+		FDC057992C17D63D00312DB4 /* UseCases */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = UseCases;
 			sourceTree = "<group>";
 		};
 		FDE8CD022C1567C600481F32 /* Extensions */ = {
@@ -374,12 +410,16 @@
 				FD2D76E52C15268800BBDEF4 /* Coordinator.swift in Sources */,
 				FDE8CD042C1567DA00481F32 /* OSLog+Extensions.swift in Sources */,
 				FD2D76E12C15246C00BBDEF4 /* StoryBoarding.swift in Sources */,
+				FDC0579D2C17D85B00312DB4 /* LocationRepository.swift in Sources */,
 				FDC057922C17D37A00312DB4 /* Endpoint.swift in Sources */,
 				FD2D76EA2C1527B500BBDEF4 /* MainViewViewModel.swift in Sources */,
 				FD2D76E72C1526F100BBDEF4 /* RootCoordinator.swift in Sources */,
 				FDC057962C17D52800312DB4 /* View+Extensions.swift in Sources */,
+				FDC0579F2C17D86A00312DB4 /* EpisodeRepository.swift in Sources */,
 				FD2D76AB2C151E5E00BBDEF4 /* AppDelegate.swift in Sources */,
+				FDC0579B2C17D84800312DB4 /* CharacterRepository.swift in Sources */,
 				FDC057912C17D37A00312DB4 /* ApiNetworkConfig.swift in Sources */,
+				FDC057A12C17D89700312DB4 /* Character.swift in Sources */,
 				FD2D76AD2C151E5E00BBDEF4 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
