@@ -8,11 +8,23 @@
 import Foundation
 
 enum CharacterEndpoints {
-    static func allCharacters() -> ApiEndpoint<CharacterResponseDTO> {
-        .init(path: "character", method: .get)
+    static func allCharacters(from page: Int?) -> ApiEndpoint<CharacterResponseDTO> {
+        var params: [String: Int] = [:]
+        if let page = page {
+            params["page"] = page
+        }
+        
+        return .init(path: "character", method: .get, queryParameters: params)
     }
     
-    static func searchCharacters(by name: String) -> ApiEndpoint<CharacterResponseDTO> {
-        .init(path: "character", method: .get, queryParameters: ["name": name])
+    static func searchCharacters(by name: String, from page: Int?) -> ApiEndpoint<CharacterResponseDTO> {
+        var params: [String: Any] = [:]
+        params["name"] = name
+        
+        if let page = page {
+            params["page"] = page
+        }
+        
+        return .init(path: "character", method: .get, queryParameters: params)
     }
 }
