@@ -19,11 +19,24 @@
 		FD2D76E72C1526F100BBDEF4 /* RootCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2D76E62C1526F100BBDEF4 /* RootCoordinator.swift */; };
 		FD2D76EA2C1527B500BBDEF4 /* MainViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2D76E92C1527B500BBDEF4 /* MainViewViewModel.swift */; };
 		FD2D76EC2C15288800BBDEF4 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2D76EB2C15288800BBDEF4 /* MainViewController.swift */; };
-		FD2D76EF2C1528C500BBDEF4 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = FD2D76EE2C1528C500BBDEF4 /* SnapKit */; };
 		FDC057912C17D37A00312DB4 /* ApiNetworkConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC0578D2C17D37A00312DB4 /* ApiNetworkConfig.swift */; };
 		FDC057922C17D37A00312DB4 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC0578E2C17D37A00312DB4 /* Endpoint.swift */; };
 		FDC057932C17D37A00312DB4 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC0578F2C17D37A00312DB4 /* NetworkService.swift */; };
 		FDC057942C17D37A00312DB4 /* NetworkDataTransferService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC057902C17D37A00312DB4 /* NetworkDataTransferService.swift */; };
+		FDC057962C17D52800312DB4 /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC057952C17D52800312DB4 /* View+Extensions.swift */; };
+		FDC0579B2C17D84800312DB4 /* CharacterRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC0579A2C17D84800312DB4 /* CharacterRepository.swift */; };
+		FDC0579D2C17D85B00312DB4 /* LocationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC0579C2C17D85B00312DB4 /* LocationRepository.swift */; };
+		FDC0579F2C17D86A00312DB4 /* EpisodeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC0579E2C17D86A00312DB4 /* EpisodeRepository.swift */; };
+		FDC057A12C17D89700312DB4 /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC057A02C17D89700312DB4 /* Character.swift */; };
+		FDC057A32C17DC8600312DB4 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC057A22C17DC8600312DB4 /* Location.swift */; };
+		FDC057A52C17DDEA00312DB4 /* Episode.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC057A42C17DDEA00312DB4 /* Episode.swift */; };
+		FDC057A72C17DF9C00312DB4 /* UseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC057A62C17DF9C00312DB4 /* UseCase.swift */; };
+		FDC057AC2C17E00100312DB4 /* FetchCharactersUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC057AB2C17E00100312DB4 /* FetchCharactersUseCase.swift */; };
+		FDC057AE2C17E15300312DB4 /* SearchCharactersUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC057AD2C17E15300312DB4 /* SearchCharactersUseCase.swift */; };
+		FDC057B02C17E1CE00312DB4 /* FetchLocationUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC057AF2C17E1CE00312DB4 /* FetchLocationUseCase.swift */; };
+		FDC057B22C17E23200312DB4 /* SearchLocationsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC057B12C17E23200312DB4 /* SearchLocationsUseCase.swift */; };
+		FDC057B42C17E28F00312DB4 /* FetchEpisodesUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC057B32C17E28F00312DB4 /* FetchEpisodesUseCase.swift */; };
+		FDC057B62C17E2D200312DB4 /* SearchEpisodesUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC057B52C17E2D200312DB4 /* SearchEpisodesUseCase.swift */; };
 		FDE8CD042C1567DA00481F32 /* OSLog+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE8CD032C1567DA00481F32 /* OSLog+Extensions.swift */; };
 /* End PBXBuildFile section */
 
@@ -65,6 +78,20 @@
 		FDC0578E2C17D37A00312DB4 /* Endpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		FDC0578F2C17D37A00312DB4 /* NetworkService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		FDC057902C17D37A00312DB4 /* NetworkDataTransferService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkDataTransferService.swift; sourceTree = "<group>"; };
+		FDC057952C17D52800312DB4 /* View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
+		FDC0579A2C17D84800312DB4 /* CharacterRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterRepository.swift; sourceTree = "<group>"; };
+		FDC0579C2C17D85B00312DB4 /* LocationRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationRepository.swift; sourceTree = "<group>"; };
+		FDC0579E2C17D86A00312DB4 /* EpisodeRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeRepository.swift; sourceTree = "<group>"; };
+		FDC057A02C17D89700312DB4 /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
+		FDC057A22C17DC8600312DB4 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		FDC057A42C17DDEA00312DB4 /* Episode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Episode.swift; sourceTree = "<group>"; };
+		FDC057A62C17DF9C00312DB4 /* UseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseCase.swift; sourceTree = "<group>"; };
+		FDC057AB2C17E00100312DB4 /* FetchCharactersUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchCharactersUseCase.swift; sourceTree = "<group>"; };
+		FDC057AD2C17E15300312DB4 /* SearchCharactersUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCharactersUseCase.swift; sourceTree = "<group>"; };
+		FDC057AF2C17E1CE00312DB4 /* FetchLocationUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchLocationUseCase.swift; sourceTree = "<group>"; };
+		FDC057B12C17E23200312DB4 /* SearchLocationsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchLocationsUseCase.swift; sourceTree = "<group>"; };
+		FDC057B32C17E28F00312DB4 /* FetchEpisodesUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchEpisodesUseCase.swift; sourceTree = "<group>"; };
+		FDC057B52C17E2D200312DB4 /* SearchEpisodesUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchEpisodesUseCase.swift; sourceTree = "<group>"; };
 		FDE8CD032C1567DA00481F32 /* OSLog+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OSLog+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -73,7 +100,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FD2D76EF2C1528C500BBDEF4 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -166,6 +192,9 @@
 		FD2D76DC2C151F6700BBDEF4 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				FDC057992C17D63D00312DB4 /* UseCases */,
+				FDC057982C17D63800312DB4 /* Entities */,
+				FDC057972C17D62E00312DB4 /* Repositories */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -214,10 +243,69 @@
 			path = MainView;
 			sourceTree = "<group>";
 		};
+		FDC057972C17D62E00312DB4 /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				FDC0579A2C17D84800312DB4 /* CharacterRepository.swift */,
+				FDC0579C2C17D85B00312DB4 /* LocationRepository.swift */,
+				FDC0579E2C17D86A00312DB4 /* EpisodeRepository.swift */,
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
+		FDC057982C17D63800312DB4 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				FDC057A02C17D89700312DB4 /* Character.swift */,
+				FDC057A22C17DC8600312DB4 /* Location.swift */,
+				FDC057A42C17DDEA00312DB4 /* Episode.swift */,
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
+		FDC057992C17D63D00312DB4 /* UseCases */ = {
+			isa = PBXGroup;
+			children = (
+				FDC057AA2C17DFE800312DB4 /* Episode */,
+				FDC057A92C17DFDA00312DB4 /* Location */,
+				FDC057A82C17DFB500312DB4 /* Character */,
+				FDC057A62C17DF9C00312DB4 /* UseCase.swift */,
+			);
+			path = UseCases;
+			sourceTree = "<group>";
+		};
+		FDC057A82C17DFB500312DB4 /* Character */ = {
+			isa = PBXGroup;
+			children = (
+				FDC057AB2C17E00100312DB4 /* FetchCharactersUseCase.swift */,
+				FDC057AD2C17E15300312DB4 /* SearchCharactersUseCase.swift */,
+			);
+			path = Character;
+			sourceTree = "<group>";
+		};
+		FDC057A92C17DFDA00312DB4 /* Location */ = {
+			isa = PBXGroup;
+			children = (
+				FDC057AF2C17E1CE00312DB4 /* FetchLocationUseCase.swift */,
+				FDC057B12C17E23200312DB4 /* SearchLocationsUseCase.swift */,
+			);
+			path = Location;
+			sourceTree = "<group>";
+		};
+		FDC057AA2C17DFE800312DB4 /* Episode */ = {
+			isa = PBXGroup;
+			children = (
+				FDC057B32C17E28F00312DB4 /* FetchEpisodesUseCase.swift */,
+				FDC057B52C17E2D200312DB4 /* SearchEpisodesUseCase.swift */,
+			);
+			path = Episode;
+			sourceTree = "<group>";
+		};
 		FDE8CD022C1567C600481F32 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
 				FDE8CD032C1567DA00481F32 /* OSLog+Extensions.swift */,
+				FDC057952C17D52800312DB4 /* View+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -250,7 +338,6 @@
 			);
 			name = RickAndMorty;
 			packageProductDependencies = (
-				FD2D76EE2C1528C500BBDEF4 /* SnapKit */,
 			);
 			productName = RickAndMorty;
 			productReference = FD2D76A72C151E5E00BBDEF4 /* RickAndMorty.app */;
@@ -325,7 +412,6 @@
 			);
 			mainGroup = FD2D769E2C151E5E00BBDEF4;
 			packageReferences = (
-				FD2D76ED2C1528C500BBDEF4 /* XCRemoteSwiftPackageReference "SnapKit" */,
 			);
 			productRefGroup = FD2D76A82C151E5E00BBDEF4 /* Products */;
 			projectDirPath = "";
@@ -369,17 +455,31 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FDC057B02C17E1CE00312DB4 /* FetchLocationUseCase.swift in Sources */,
+				FDC057B42C17E28F00312DB4 /* FetchEpisodesUseCase.swift in Sources */,
+				FDC057AC2C17E00100312DB4 /* FetchCharactersUseCase.swift in Sources */,
+				FDC057B22C17E23200312DB4 /* SearchLocationsUseCase.swift in Sources */,
 				FDC057932C17D37A00312DB4 /* NetworkService.swift in Sources */,
+				FDC057A52C17DDEA00312DB4 /* Episode.swift in Sources */,
 				FD2D76EC2C15288800BBDEF4 /* MainViewController.swift in Sources */,
+				FDC057B62C17E2D200312DB4 /* SearchEpisodesUseCase.swift in Sources */,
 				FDC057942C17D37A00312DB4 /* NetworkDataTransferService.swift in Sources */,
 				FD2D76E52C15268800BBDEF4 /* Coordinator.swift in Sources */,
+				FDC057A72C17DF9C00312DB4 /* UseCase.swift in Sources */,
+				FDC057A32C17DC8600312DB4 /* Location.swift in Sources */,
 				FDE8CD042C1567DA00481F32 /* OSLog+Extensions.swift in Sources */,
 				FD2D76E12C15246C00BBDEF4 /* StoryBoarding.swift in Sources */,
+				FDC0579D2C17D85B00312DB4 /* LocationRepository.swift in Sources */,
 				FDC057922C17D37A00312DB4 /* Endpoint.swift in Sources */,
 				FD2D76EA2C1527B500BBDEF4 /* MainViewViewModel.swift in Sources */,
+				FDC057AE2C17E15300312DB4 /* SearchCharactersUseCase.swift in Sources */,
 				FD2D76E72C1526F100BBDEF4 /* RootCoordinator.swift in Sources */,
+				FDC057962C17D52800312DB4 /* View+Extensions.swift in Sources */,
+				FDC0579F2C17D86A00312DB4 /* EpisodeRepository.swift in Sources */,
 				FD2D76AB2C151E5E00BBDEF4 /* AppDelegate.swift in Sources */,
+				FDC0579B2C17D84800312DB4 /* CharacterRepository.swift in Sources */,
 				FDC057912C17D37A00312DB4 /* ApiNetworkConfig.swift in Sources */,
+				FDC057A12C17D89700312DB4 /* Character.swift in Sources */,
 				FD2D76AD2C151E5E00BBDEF4 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -721,25 +821,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		FD2D76ED2C1528C500BBDEF4 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/SnapKit/SnapKit";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.7.1;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		FD2D76EE2C1528C500BBDEF4 /* SnapKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = FD2D76ED2C1528C500BBDEF4 /* XCRemoteSwiftPackageReference "SnapKit" */;
-			productName = SnapKit;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = FD2D769F2C151E5E00BBDEF4 /* Project object */;
 }
