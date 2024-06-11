@@ -8,7 +8,7 @@
 import Foundation
 
 struct EpisodeCharacter {
-    let characterUrl: URL
+    let characterUrl: URL?
 }
 
 struct Episode {
@@ -17,7 +17,7 @@ struct Episode {
     let airDate: String
     let codeName: String
     let characters: [EpisodeCharacter]
-    let createdData: Date
+    let createdData: Date?
 }
 
 struct EpisodePage {

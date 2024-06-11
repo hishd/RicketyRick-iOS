@@ -8,16 +8,16 @@
 import Foundation
 
 struct LocationResident {
-    let characterUrl: URL
+    let characterUrl: URL?
 }
 
 struct Location {
-    let locationId: String
+    let locationId: Int
     let locationName: String
     let locationType: String
     let dimension: String
     let residents: [LocationResident]
-    let createdData: Date
+    let createdData: Date?
 }
 
 struct LocationPage {

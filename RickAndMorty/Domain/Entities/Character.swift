@@ -15,12 +15,12 @@ enum CharacterStatus {
 
 struct CharacterOrigin {
     let originName: String
-    let locationUrl: URL
+    let locationUrl: URL?
 }
 
 struct CharacterLastLocation {
     let locationName: String
-    let locationUrl: String
+    let locationUrl: URL?
 }
 
 struct Character {
@@ -32,9 +32,9 @@ struct Character {
     let gender: String
     let origin: CharacterOrigin
     let lastLocation: CharacterLastLocation
-    let imageUrl: URL
-    let episodes: [URL]
-    let createdData: Date
+    let imageUrl: URL?
+    let episodes: [URL?]
+    let createdData: Date?
 }
 
 struct CharacterPage {
