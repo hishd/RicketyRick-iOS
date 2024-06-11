@@ -53,18 +53,12 @@ extension CharacterResponseDTO {
 
 extension CharacterResponseDTO {
     
-    func mapToStatus(status: String) -> CharacterStatus {
+    static func mapToStatus(status: String) -> CharacterStatus {
         switch status {
         case "Alive": .alive
         case "Dead": .dead
         case "unknown": .unknown
         default: .unknown
-        }
-    }
-    
-    func mapStringsToUrl(urlStrings: [String]) -> [URL?] {
-        return urlStrings.map { item in
-                return .init(string: item)
         }
     }
     
@@ -76,14 +70,14 @@ extension CharacterResponseDTO {
                 return .init(
                     characterId: item.id,
                     characterName: item.name,
-                    status: self.mapToStatus(status: item.status),
+                    status: CharacterResponseDTO.mapToStatus(status: item.status),
                     species: item.species,
                     type: item.type,
                     gender: item.gender,
                     origin: item.origin.mapToDomain(),
                     lastLocation: item.location.mapToDomain(),
                     imageUrl: URL(string: item.image),
-                    episodes: self.mapStringsToUrl(urlStrings: item.episode),
+                    episodes: mapStringsToUrl(urlStrings: item.episode),
                     createdData: ISO8601DateFormatter().date(from: item.created)
                 )
         }

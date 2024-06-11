@@ -38,6 +38,8 @@
 		FDC057B42C17E28F00312DB4 /* FetchEpisodesUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC057B32C17E28F00312DB4 /* FetchEpisodesUseCase.swift */; };
 		FDC057B62C17E2D200312DB4 /* SearchEpisodesUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC057B52C17E2D200312DB4 /* SearchEpisodesUseCase.swift */; };
 		FDC057BA2C17E4C000312DB4 /* CharacterResponseDTO+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC057B92C17E4C000312DB4 /* CharacterResponseDTO+Mapping.swift */; };
+		FDC057BC2C17F1A900312DB4 /* LocationResponseDTO+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC057BB2C17F1A900312DB4 /* LocationResponseDTO+Mapping.swift */; };
+		FDC057BF2C17F34F00312DB4 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC057BE2C17F34F00312DB4 /* Helpers.swift */; };
 		FDE8CD042C1567DA00481F32 /* OSLog+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE8CD032C1567DA00481F32 /* OSLog+Extensions.swift */; };
 /* End PBXBuildFile section */
 
@@ -94,6 +96,8 @@
 		FDC057B32C17E28F00312DB4 /* FetchEpisodesUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchEpisodesUseCase.swift; sourceTree = "<group>"; };
 		FDC057B52C17E2D200312DB4 /* SearchEpisodesUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchEpisodesUseCase.swift; sourceTree = "<group>"; };
 		FDC057B92C17E4C000312DB4 /* CharacterResponseDTO+Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CharacterResponseDTO+Mapping.swift"; sourceTree = "<group>"; };
+		FDC057BB2C17F1A900312DB4 /* LocationResponseDTO+Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LocationResponseDTO+Mapping.swift"; sourceTree = "<group>"; };
+		FDC057BE2C17F34F00312DB4 /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		FDE8CD032C1567DA00481F32 /* OSLog+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OSLog+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -145,6 +149,7 @@
 		FD2D76A92C151E5E00BBDEF4 /* RickAndMorty */ = {
 			isa = PBXGroup;
 			children = (
+				FDC057BD2C17F34000312DB4 /* Common */,
 				FDE8CD022C1567C600481F32 /* Extensions */,
 				FD2D76DF2C151F9A00BBDEF4 /* Resources */,
 				FD2D76DE2C151F8600BBDEF4 /* Presentation */,
@@ -316,8 +321,17 @@
 			isa = PBXGroup;
 			children = (
 				FDC057B92C17E4C000312DB4 /* CharacterResponseDTO+Mapping.swift */,
+				FDC057BB2C17F1A900312DB4 /* LocationResponseDTO+Mapping.swift */,
 			);
 			path = DataMapping;
+			sourceTree = "<group>";
+		};
+		FDC057BD2C17F34000312DB4 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				FDC057BE2C17F34F00312DB4 /* Helpers.swift */,
+			);
+			path = Common;
 			sourceTree = "<group>";
 		};
 		FDE8CD022C1567C600481F32 /* Extensions */ = {
@@ -482,8 +496,10 @@
 				FDC057932C17D37A00312DB4 /* NetworkService.swift in Sources */,
 				FDC057A52C17DDEA00312DB4 /* Episode.swift in Sources */,
 				FD2D76EC2C15288800BBDEF4 /* MainViewController.swift in Sources */,
+				FDC057BF2C17F34F00312DB4 /* Helpers.swift in Sources */,
 				FDC057B62C17E2D200312DB4 /* SearchEpisodesUseCase.swift in Sources */,
 				FDC057942C17D37A00312DB4 /* NetworkDataTransferService.swift in Sources */,
+				FDC057BC2C17F1A900312DB4 /* LocationResponseDTO+Mapping.swift in Sources */,
 				FD2D76E52C15268800BBDEF4 /* Coordinator.swift in Sources */,
 				FDC057A72C17DF9C00312DB4 /* UseCase.swift in Sources */,
 				FDC057A32C17DC8600312DB4 /* Location.swift in Sources */,
