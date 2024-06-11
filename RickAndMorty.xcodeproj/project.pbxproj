@@ -35,6 +35,7 @@
 		FDC057AE2C17E15300312DB4 /* SearchCharactersUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC057AD2C17E15300312DB4 /* SearchCharactersUseCase.swift */; };
 		FDC057B02C17E1CE00312DB4 /* FetchLocationUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC057AF2C17E1CE00312DB4 /* FetchLocationUseCase.swift */; };
 		FDC057B22C17E23200312DB4 /* SearchLocationsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC057B12C17E23200312DB4 /* SearchLocationsUseCase.swift */; };
+		FDC057B42C17E28F00312DB4 /* FetchEpisodesUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC057B32C17E28F00312DB4 /* FetchEpisodesUseCase.swift */; };
 		FDE8CD042C1567DA00481F32 /* OSLog+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE8CD032C1567DA00481F32 /* OSLog+Extensions.swift */; };
 /* End PBXBuildFile section */
 
@@ -88,6 +89,7 @@
 		FDC057AD2C17E15300312DB4 /* SearchCharactersUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCharactersUseCase.swift; sourceTree = "<group>"; };
 		FDC057AF2C17E1CE00312DB4 /* FetchLocationUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchLocationUseCase.swift; sourceTree = "<group>"; };
 		FDC057B12C17E23200312DB4 /* SearchLocationsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchLocationsUseCase.swift; sourceTree = "<group>"; };
+		FDC057B32C17E28F00312DB4 /* FetchEpisodesUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchEpisodesUseCase.swift; sourceTree = "<group>"; };
 		FDE8CD032C1567DA00481F32 /* OSLog+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OSLog+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -291,6 +293,7 @@
 		FDC057AA2C17DFE800312DB4 /* Episode */ = {
 			isa = PBXGroup;
 			children = (
+				FDC057B32C17E28F00312DB4 /* FetchEpisodesUseCase.swift */,
 			);
 			path = Episode;
 			sourceTree = "<group>";
@@ -450,6 +453,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FDC057B02C17E1CE00312DB4 /* FetchLocationUseCase.swift in Sources */,
+				FDC057B42C17E28F00312DB4 /* FetchEpisodesUseCase.swift in Sources */,
 				FDC057AC2C17E00100312DB4 /* FetchCharactersUseCase.swift in Sources */,
 				FDC057B22C17E23200312DB4 /* SearchLocationsUseCase.swift in Sources */,
 				FDC057932C17D37A00312DB4 /* NetworkService.swift in Sources */,
