@@ -36,6 +36,7 @@
 		FDC057B02C17E1CE00312DB4 /* FetchLocationUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC057AF2C17E1CE00312DB4 /* FetchLocationUseCase.swift */; };
 		FDC057B22C17E23200312DB4 /* SearchLocationsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC057B12C17E23200312DB4 /* SearchLocationsUseCase.swift */; };
 		FDC057B42C17E28F00312DB4 /* FetchEpisodesUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC057B32C17E28F00312DB4 /* FetchEpisodesUseCase.swift */; };
+		FDC057B62C17E2D200312DB4 /* SearchEpisodesUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC057B52C17E2D200312DB4 /* SearchEpisodesUseCase.swift */; };
 		FDE8CD042C1567DA00481F32 /* OSLog+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE8CD032C1567DA00481F32 /* OSLog+Extensions.swift */; };
 /* End PBXBuildFile section */
 
@@ -90,6 +91,7 @@
 		FDC057AF2C17E1CE00312DB4 /* FetchLocationUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchLocationUseCase.swift; sourceTree = "<group>"; };
 		FDC057B12C17E23200312DB4 /* SearchLocationsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchLocationsUseCase.swift; sourceTree = "<group>"; };
 		FDC057B32C17E28F00312DB4 /* FetchEpisodesUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchEpisodesUseCase.swift; sourceTree = "<group>"; };
+		FDC057B52C17E2D200312DB4 /* SearchEpisodesUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchEpisodesUseCase.swift; sourceTree = "<group>"; };
 		FDE8CD032C1567DA00481F32 /* OSLog+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OSLog+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -294,6 +296,7 @@
 			isa = PBXGroup;
 			children = (
 				FDC057B32C17E28F00312DB4 /* FetchEpisodesUseCase.swift */,
+				FDC057B52C17E2D200312DB4 /* SearchEpisodesUseCase.swift */,
 			);
 			path = Episode;
 			sourceTree = "<group>";
@@ -459,6 +462,7 @@
 				FDC057932C17D37A00312DB4 /* NetworkService.swift in Sources */,
 				FDC057A52C17DDEA00312DB4 /* Episode.swift in Sources */,
 				FD2D76EC2C15288800BBDEF4 /* MainViewController.swift in Sources */,
+				FDC057B62C17E2D200312DB4 /* SearchEpisodesUseCase.swift in Sources */,
 				FDC057942C17D37A00312DB4 /* NetworkDataTransferService.swift in Sources */,
 				FD2D76E52C15268800BBDEF4 /* Coordinator.swift in Sources */,
 				FDC057A72C17DF9C00312DB4 /* UseCase.swift in Sources */,
