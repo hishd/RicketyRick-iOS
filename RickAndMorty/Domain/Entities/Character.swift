@@ -36,3 +36,9 @@ struct Character {
     let episodes: [URL]
     let createdData: Date
 }
+
+struct CharacterPage {
+    let count: Int
+    let pages: Int
+    let characters: [Character]
+}
