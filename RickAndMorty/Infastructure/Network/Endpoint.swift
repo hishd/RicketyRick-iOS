@@ -73,7 +73,7 @@ public final class ApiEndpoint<T>: RequestableEndpoint {
         headerParameters: [String : String] = [:],
         queryParameters: [String : Any] = [:],
         bodyParameters: [String : Any] = [:],
-        responseDecoder: any ResponseDecoder
+        responseDecoder: any ResponseDecoder = JsonResponseDecoder()
     ) {
         self.path = path
         self.method = method
