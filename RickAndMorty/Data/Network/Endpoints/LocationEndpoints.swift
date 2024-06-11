@@ -8,11 +8,23 @@
 import Foundation
 
 enum LocationEndpoints {
-    static func allLocations() -> ApiEndpoint<LocationResponseDTO> {
-        .init(path: "location", method: .get)
+    static func allLocations(from page: Int?) -> ApiEndpoint<LocationResponseDTO> {
+        var params: [String: Int] = [:]
+        if let page = page {
+            params["page"] = page
+        }
+        
+        return .init(path: "location", method: .get, queryParameters: params)
     }
     
-    static func searchLocations(by name: String) -> ApiEndpoint<LocationResponseDTO> {
-        .init(path: "location", method: .get, queryParameters: ["name": name])
+    static func searchLocations(by name: String, from page: Int?) -> ApiEndpoint<LocationResponseDTO> {
+        var params: [String: Any] = [:]
+        params["name"] = name
+        
+        if let page = page {
+            params["page"] = page
+        }
+        
+        return .init(path: "location", method: .get, queryParameters: params)
     }
 }
