@@ -33,6 +33,7 @@
 		FDC057A72C17DF9C00312DB4 /* UseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC057A62C17DF9C00312DB4 /* UseCase.swift */; };
 		FDC057AC2C17E00100312DB4 /* FetchCharactersUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC057AB2C17E00100312DB4 /* FetchCharactersUseCase.swift */; };
 		FDC057AE2C17E15300312DB4 /* SearchCharactersUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC057AD2C17E15300312DB4 /* SearchCharactersUseCase.swift */; };
+		FDC057B02C17E1CE00312DB4 /* FetchLocationUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC057AF2C17E1CE00312DB4 /* FetchLocationUseCase.swift */; };
 		FDE8CD042C1567DA00481F32 /* OSLog+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE8CD032C1567DA00481F32 /* OSLog+Extensions.swift */; };
 /* End PBXBuildFile section */
 
@@ -84,6 +85,7 @@
 		FDC057A62C17DF9C00312DB4 /* UseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseCase.swift; sourceTree = "<group>"; };
 		FDC057AB2C17E00100312DB4 /* FetchCharactersUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchCharactersUseCase.swift; sourceTree = "<group>"; };
 		FDC057AD2C17E15300312DB4 /* SearchCharactersUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCharactersUseCase.swift; sourceTree = "<group>"; };
+		FDC057AF2C17E1CE00312DB4 /* FetchLocationUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchLocationUseCase.swift; sourceTree = "<group>"; };
 		FDE8CD032C1567DA00481F32 /* OSLog+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OSLog+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -278,6 +280,7 @@
 		FDC057A92C17DFDA00312DB4 /* Location */ = {
 			isa = PBXGroup;
 			children = (
+				FDC057AF2C17E1CE00312DB4 /* FetchLocationUseCase.swift */,
 			);
 			path = Location;
 			sourceTree = "<group>";
@@ -443,6 +446,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FDC057B02C17E1CE00312DB4 /* FetchLocationUseCase.swift in Sources */,
 				FDC057AC2C17E00100312DB4 /* FetchCharactersUseCase.swift in Sources */,
 				FDC057932C17D37A00312DB4 /* NetworkService.swift in Sources */,
 				FDC057A52C17DDEA00312DB4 /* Episode.swift in Sources */,
