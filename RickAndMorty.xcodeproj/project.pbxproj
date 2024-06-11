@@ -28,6 +28,7 @@
 		FDC0579D2C17D85B00312DB4 /* LocationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC0579C2C17D85B00312DB4 /* LocationRepository.swift */; };
 		FDC0579F2C17D86A00312DB4 /* EpisodeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC0579E2C17D86A00312DB4 /* EpisodeRepository.swift */; };
 		FDC057A12C17D89700312DB4 /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC057A02C17D89700312DB4 /* Character.swift */; };
+		FDC057A32C17DC8600312DB4 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC057A22C17DC8600312DB4 /* Location.swift */; };
 		FDE8CD042C1567DA00481F32 /* OSLog+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE8CD032C1567DA00481F32 /* OSLog+Extensions.swift */; };
 /* End PBXBuildFile section */
 
@@ -74,6 +75,7 @@
 		FDC0579C2C17D85B00312DB4 /* LocationRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationRepository.swift; sourceTree = "<group>"; };
 		FDC0579E2C17D86A00312DB4 /* EpisodeRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeRepository.swift; sourceTree = "<group>"; };
 		FDC057A02C17D89700312DB4 /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
+		FDC057A22C17DC8600312DB4 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		FDE8CD032C1567DA00481F32 /* OSLog+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OSLog+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -239,6 +241,7 @@
 			isa = PBXGroup;
 			children = (
 				FDC057A02C17D89700312DB4 /* Character.swift */,
+				FDC057A22C17DC8600312DB4 /* Location.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -408,6 +411,7 @@
 				FD2D76EC2C15288800BBDEF4 /* MainViewController.swift in Sources */,
 				FDC057942C17D37A00312DB4 /* NetworkDataTransferService.swift in Sources */,
 				FD2D76E52C15268800BBDEF4 /* Coordinator.swift in Sources */,
+				FDC057A32C17DC8600312DB4 /* Location.swift in Sources */,
 				FDE8CD042C1567DA00481F32 /* OSLog+Extensions.swift in Sources */,
 				FD2D76E12C15246C00BBDEF4 /* StoryBoarding.swift in Sources */,
 				FDC0579D2C17D85B00312DB4 /* LocationRepository.swift in Sources */,
