@@ -34,6 +34,7 @@
 		FDC057AC2C17E00100312DB4 /* FetchCharactersUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC057AB2C17E00100312DB4 /* FetchCharactersUseCase.swift */; };
 		FDC057AE2C17E15300312DB4 /* SearchCharactersUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC057AD2C17E15300312DB4 /* SearchCharactersUseCase.swift */; };
 		FDC057B02C17E1CE00312DB4 /* FetchLocationUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC057AF2C17E1CE00312DB4 /* FetchLocationUseCase.swift */; };
+		FDC057B22C17E23200312DB4 /* SearchLocationsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC057B12C17E23200312DB4 /* SearchLocationsUseCase.swift */; };
 		FDE8CD042C1567DA00481F32 /* OSLog+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE8CD032C1567DA00481F32 /* OSLog+Extensions.swift */; };
 /* End PBXBuildFile section */
 
@@ -86,6 +87,7 @@
 		FDC057AB2C17E00100312DB4 /* FetchCharactersUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchCharactersUseCase.swift; sourceTree = "<group>"; };
 		FDC057AD2C17E15300312DB4 /* SearchCharactersUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCharactersUseCase.swift; sourceTree = "<group>"; };
 		FDC057AF2C17E1CE00312DB4 /* FetchLocationUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchLocationUseCase.swift; sourceTree = "<group>"; };
+		FDC057B12C17E23200312DB4 /* SearchLocationsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchLocationsUseCase.swift; sourceTree = "<group>"; };
 		FDE8CD032C1567DA00481F32 /* OSLog+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OSLog+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -281,6 +283,7 @@
 			isa = PBXGroup;
 			children = (
 				FDC057AF2C17E1CE00312DB4 /* FetchLocationUseCase.swift */,
+				FDC057B12C17E23200312DB4 /* SearchLocationsUseCase.swift */,
 			);
 			path = Location;
 			sourceTree = "<group>";
@@ -448,6 +451,7 @@
 			files = (
 				FDC057B02C17E1CE00312DB4 /* FetchLocationUseCase.swift in Sources */,
 				FDC057AC2C17E00100312DB4 /* FetchCharactersUseCase.swift in Sources */,
+				FDC057B22C17E23200312DB4 /* SearchLocationsUseCase.swift in Sources */,
 				FDC057932C17D37A00312DB4 /* NetworkService.swift in Sources */,
 				FDC057A52C17DDEA00312DB4 /* Episode.swift in Sources */,
 				FD2D76EC2C15288800BBDEF4 /* MainViewController.swift in Sources */,
