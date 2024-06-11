@@ -40,6 +40,7 @@
 		FDC057BA2C17E4C000312DB4 /* CharacterResponseDTO+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC057B92C17E4C000312DB4 /* CharacterResponseDTO+Mapping.swift */; };
 		FDC057BC2C17F1A900312DB4 /* LocationResponseDTO+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC057BB2C17F1A900312DB4 /* LocationResponseDTO+Mapping.swift */; };
 		FDC057BF2C17F34F00312DB4 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC057BE2C17F34F00312DB4 /* Helpers.swift */; };
+		FDC057C12C17F4F400312DB4 /* EpisodeResponseDTO+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC057C02C17F4F400312DB4 /* EpisodeResponseDTO+Mapping.swift */; };
 		FDE8CD042C1567DA00481F32 /* OSLog+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE8CD032C1567DA00481F32 /* OSLog+Extensions.swift */; };
 /* End PBXBuildFile section */
 
@@ -98,6 +99,7 @@
 		FDC057B92C17E4C000312DB4 /* CharacterResponseDTO+Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CharacterResponseDTO+Mapping.swift"; sourceTree = "<group>"; };
 		FDC057BB2C17F1A900312DB4 /* LocationResponseDTO+Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LocationResponseDTO+Mapping.swift"; sourceTree = "<group>"; };
 		FDC057BE2C17F34F00312DB4 /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
+		FDC057C02C17F4F400312DB4 /* EpisodeResponseDTO+Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EpisodeResponseDTO+Mapping.swift"; sourceTree = "<group>"; };
 		FDE8CD032C1567DA00481F32 /* OSLog+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OSLog+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -322,6 +324,7 @@
 			children = (
 				FDC057B92C17E4C000312DB4 /* CharacterResponseDTO+Mapping.swift */,
 				FDC057BB2C17F1A900312DB4 /* LocationResponseDTO+Mapping.swift */,
+				FDC057C02C17F4F400312DB4 /* EpisodeResponseDTO+Mapping.swift */,
 			);
 			path = DataMapping;
 			sourceTree = "<group>";
@@ -510,6 +513,7 @@
 				FD2D76EA2C1527B500BBDEF4 /* MainViewViewModel.swift in Sources */,
 				FDC057AE2C17E15300312DB4 /* SearchCharactersUseCase.swift in Sources */,
 				FD2D76E72C1526F100BBDEF4 /* RootCoordinator.swift in Sources */,
+				FDC057C12C17F4F400312DB4 /* EpisodeResponseDTO+Mapping.swift in Sources */,
 				FDC057962C17D52800312DB4 /* View+Extensions.swift in Sources */,
 				FDC0579F2C17D86A00312DB4 /* EpisodeRepository.swift in Sources */,
 				FD2D76AB2C151E5E00BBDEF4 /* AppDelegate.swift in Sources */,
