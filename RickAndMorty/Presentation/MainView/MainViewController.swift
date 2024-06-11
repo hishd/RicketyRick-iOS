@@ -7,7 +7,6 @@
 
 import Foundation
 import UIKit
-import SnapKit
 
 final class MainViewController: UIViewController {
     
@@ -28,9 +27,12 @@ final class MainViewController: UIViewController {
         view.backgroundColor = .white
         view.addSubview(textLabel)
         
-        textLabel.snp.makeConstraints { make in
-            make.center.equalToSuperview()
-        }
+        
+        textLabel.center(inView: self.view)
+        
+//        textLabel.snp.makeConstraints { make in
+//            make.center.equalToSuperview()
+//        }
     }
     
     static func create(with viewModel: MainViewViewModel) -> MainViewController {
