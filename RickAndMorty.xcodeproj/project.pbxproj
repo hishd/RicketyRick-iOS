@@ -32,6 +32,7 @@
 		FDC057A52C17DDEA00312DB4 /* Episode.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC057A42C17DDEA00312DB4 /* Episode.swift */; };
 		FDC057A72C17DF9C00312DB4 /* UseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC057A62C17DF9C00312DB4 /* UseCase.swift */; };
 		FDC057AC2C17E00100312DB4 /* FetchCharactersUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC057AB2C17E00100312DB4 /* FetchCharactersUseCase.swift */; };
+		FDC057AE2C17E15300312DB4 /* SearchCharactersUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC057AD2C17E15300312DB4 /* SearchCharactersUseCase.swift */; };
 		FDE8CD042C1567DA00481F32 /* OSLog+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE8CD032C1567DA00481F32 /* OSLog+Extensions.swift */; };
 /* End PBXBuildFile section */
 
@@ -82,6 +83,7 @@
 		FDC057A42C17DDEA00312DB4 /* Episode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Episode.swift; sourceTree = "<group>"; };
 		FDC057A62C17DF9C00312DB4 /* UseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseCase.swift; sourceTree = "<group>"; };
 		FDC057AB2C17E00100312DB4 /* FetchCharactersUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchCharactersUseCase.swift; sourceTree = "<group>"; };
+		FDC057AD2C17E15300312DB4 /* SearchCharactersUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCharactersUseCase.swift; sourceTree = "<group>"; };
 		FDE8CD032C1567DA00481F32 /* OSLog+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OSLog+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -268,6 +270,7 @@
 			isa = PBXGroup;
 			children = (
 				FDC057AB2C17E00100312DB4 /* FetchCharactersUseCase.swift */,
+				FDC057AD2C17E15300312DB4 /* SearchCharactersUseCase.swift */,
 			);
 			path = Character;
 			sourceTree = "<group>";
@@ -453,6 +456,7 @@
 				FDC0579D2C17D85B00312DB4 /* LocationRepository.swift in Sources */,
 				FDC057922C17D37A00312DB4 /* Endpoint.swift in Sources */,
 				FD2D76EA2C1527B500BBDEF4 /* MainViewViewModel.swift in Sources */,
+				FDC057AE2C17E15300312DB4 /* SearchCharactersUseCase.swift in Sources */,
 				FD2D76E72C1526F100BBDEF4 /* RootCoordinator.swift in Sources */,
 				FDC057962C17D52800312DB4 /* View+Extensions.swift in Sources */,
 				FDC0579F2C17D86A00312DB4 /* EpisodeRepository.swift in Sources */,
