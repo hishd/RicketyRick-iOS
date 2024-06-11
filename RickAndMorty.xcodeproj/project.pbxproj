@@ -20,6 +20,11 @@
 		FD2D76EA2C1527B500BBDEF4 /* MainViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2D76E92C1527B500BBDEF4 /* MainViewViewModel.swift */; };
 		FD2D76EC2C15288800BBDEF4 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2D76EB2C15288800BBDEF4 /* MainViewController.swift */; };
 		FD2D76EF2C1528C500BBDEF4 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = FD2D76EE2C1528C500BBDEF4 /* SnapKit */; };
+		FDC057912C17D37A00312DB4 /* ApiNetworkConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC0578D2C17D37A00312DB4 /* ApiNetworkConfig.swift */; };
+		FDC057922C17D37A00312DB4 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC0578E2C17D37A00312DB4 /* Endpoint.swift */; };
+		FDC057932C17D37A00312DB4 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC0578F2C17D37A00312DB4 /* NetworkService.swift */; };
+		FDC057942C17D37A00312DB4 /* NetworkDataTransferService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC057902C17D37A00312DB4 /* NetworkDataTransferService.swift */; };
+		FDE8CD042C1567DA00481F32 /* OSLog+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE8CD032C1567DA00481F32 /* OSLog+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +61,11 @@
 		FD2D76E62C1526F100BBDEF4 /* RootCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootCoordinator.swift; sourceTree = "<group>"; };
 		FD2D76E92C1527B500BBDEF4 /* MainViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewViewModel.swift; sourceTree = "<group>"; };
 		FD2D76EB2C15288800BBDEF4 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		FDC0578D2C17D37A00312DB4 /* ApiNetworkConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiNetworkConfig.swift; sourceTree = "<group>"; };
+		FDC0578E2C17D37A00312DB4 /* Endpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
+		FDC0578F2C17D37A00312DB4 /* NetworkService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		FDC057902C17D37A00312DB4 /* NetworkDataTransferService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkDataTransferService.swift; sourceTree = "<group>"; };
+		FDE8CD032C1567DA00481F32 /* OSLog+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OSLog+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +117,7 @@
 		FD2D76A92C151E5E00BBDEF4 /* RickAndMorty */ = {
 			isa = PBXGroup;
 			children = (
+				FDE8CD022C1567C600481F32 /* Extensions */,
 				FD2D76DF2C151F9A00BBDEF4 /* Resources */,
 				FD2D76DE2C151F8600BBDEF4 /* Presentation */,
 				FD2D76DD2C151F6F00BBDEF4 /* Infastructure */,
@@ -162,6 +173,7 @@
 		FD2D76DD2C151F6F00BBDEF4 /* Infastructure */ = {
 			isa = PBXGroup;
 			children = (
+				FDF267672C1543A500388852 /* Network */,
 			);
 			path = Infastructure;
 			sourceTree = "<group>";
@@ -200,6 +212,25 @@
 				FD2D76EB2C15288800BBDEF4 /* MainViewController.swift */,
 			);
 			path = MainView;
+			sourceTree = "<group>";
+		};
+		FDE8CD022C1567C600481F32 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				FDE8CD032C1567DA00481F32 /* OSLog+Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		FDF267672C1543A500388852 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				FDC0578D2C17D37A00312DB4 /* ApiNetworkConfig.swift */,
+				FDC0578E2C17D37A00312DB4 /* Endpoint.swift */,
+				FDC057902C17D37A00312DB4 /* NetworkDataTransferService.swift */,
+				FDC0578F2C17D37A00312DB4 /* NetworkService.swift */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -338,12 +369,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FDC057932C17D37A00312DB4 /* NetworkService.swift in Sources */,
 				FD2D76EC2C15288800BBDEF4 /* MainViewController.swift in Sources */,
+				FDC057942C17D37A00312DB4 /* NetworkDataTransferService.swift in Sources */,
 				FD2D76E52C15268800BBDEF4 /* Coordinator.swift in Sources */,
+				FDE8CD042C1567DA00481F32 /* OSLog+Extensions.swift in Sources */,
 				FD2D76E12C15246C00BBDEF4 /* StoryBoarding.swift in Sources */,
+				FDC057922C17D37A00312DB4 /* Endpoint.swift in Sources */,
 				FD2D76EA2C1527B500BBDEF4 /* MainViewViewModel.swift in Sources */,
 				FD2D76E72C1526F100BBDEF4 /* RootCoordinator.swift in Sources */,
 				FD2D76AB2C151E5E00BBDEF4 /* AppDelegate.swift in Sources */,
+				FDC057912C17D37A00312DB4 /* ApiNetworkConfig.swift in Sources */,
 				FD2D76AD2C151E5E00BBDEF4 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
