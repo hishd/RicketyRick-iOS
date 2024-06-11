@@ -30,6 +30,8 @@
 		FDC057A12C17D89700312DB4 /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC057A02C17D89700312DB4 /* Character.swift */; };
 		FDC057A32C17DC8600312DB4 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC057A22C17DC8600312DB4 /* Location.swift */; };
 		FDC057A52C17DDEA00312DB4 /* Episode.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC057A42C17DDEA00312DB4 /* Episode.swift */; };
+		FDC057A72C17DF9C00312DB4 /* UseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC057A62C17DF9C00312DB4 /* UseCase.swift */; };
+		FDC057AC2C17E00100312DB4 /* FetchCharactersUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC057AB2C17E00100312DB4 /* FetchCharactersUseCase.swift */; };
 		FDE8CD042C1567DA00481F32 /* OSLog+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE8CD032C1567DA00481F32 /* OSLog+Extensions.swift */; };
 /* End PBXBuildFile section */
 
@@ -78,6 +80,8 @@
 		FDC057A02C17D89700312DB4 /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
 		FDC057A22C17DC8600312DB4 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		FDC057A42C17DDEA00312DB4 /* Episode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Episode.swift; sourceTree = "<group>"; };
+		FDC057A62C17DF9C00312DB4 /* UseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseCase.swift; sourceTree = "<group>"; };
+		FDC057AB2C17E00100312DB4 /* FetchCharactersUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchCharactersUseCase.swift; sourceTree = "<group>"; };
 		FDE8CD032C1567DA00481F32 /* OSLog+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OSLog+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -252,8 +256,34 @@
 		FDC057992C17D63D00312DB4 /* UseCases */ = {
 			isa = PBXGroup;
 			children = (
+				FDC057AA2C17DFE800312DB4 /* Episode */,
+				FDC057A92C17DFDA00312DB4 /* Location */,
+				FDC057A82C17DFB500312DB4 /* Character */,
+				FDC057A62C17DF9C00312DB4 /* UseCase.swift */,
 			);
 			path = UseCases;
+			sourceTree = "<group>";
+		};
+		FDC057A82C17DFB500312DB4 /* Character */ = {
+			isa = PBXGroup;
+			children = (
+				FDC057AB2C17E00100312DB4 /* FetchCharactersUseCase.swift */,
+			);
+			path = Character;
+			sourceTree = "<group>";
+		};
+		FDC057A92C17DFDA00312DB4 /* Location */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Location;
+			sourceTree = "<group>";
+		};
+		FDC057AA2C17DFE800312DB4 /* Episode */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Episode;
 			sourceTree = "<group>";
 		};
 		FDE8CD022C1567C600481F32 /* Extensions */ = {
@@ -410,11 +440,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FDC057AC2C17E00100312DB4 /* FetchCharactersUseCase.swift in Sources */,
 				FDC057932C17D37A00312DB4 /* NetworkService.swift in Sources */,
 				FDC057A52C17DDEA00312DB4 /* Episode.swift in Sources */,
 				FD2D76EC2C15288800BBDEF4 /* MainViewController.swift in Sources */,
 				FDC057942C17D37A00312DB4 /* NetworkDataTransferService.swift in Sources */,
 				FD2D76E52C15268800BBDEF4 /* Coordinator.swift in Sources */,
+				FDC057A72C17DF9C00312DB4 /* UseCase.swift in Sources */,
 				FDC057A32C17DC8600312DB4 /* Location.swift in Sources */,
 				FDE8CD042C1567DA00481F32 /* OSLog+Extensions.swift in Sources */,
 				FD2D76E12C15246C00BBDEF4 /* StoryBoarding.swift in Sources */,
