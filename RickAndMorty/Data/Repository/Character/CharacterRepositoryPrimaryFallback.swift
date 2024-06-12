@@ -25,7 +25,7 @@ class CharacterRepositoryPrimaryFallback: CharacterRepository {
             switch result {
             case .success(let result):
                 completion(.success(result))
-            case .failure(let error):
+            case .failure(_):
                 Logger.viewCycle.info("Executing fallback strategy from \(String(describing: CharacterRepositoryPrimaryFallback.self))")
                 task = self?.fallback.fetchCharacters(from: page, completion: completion)
             }
@@ -41,7 +41,7 @@ class CharacterRepositoryPrimaryFallback: CharacterRepository {
             switch result {
             case .success(let result):
                 completion(.success(result))
-            case .failure(let error):
+            case .failure(_):
                 Logger.viewCycle.info("Executing fallback strategy from \(String(describing: CharacterRepositoryPrimaryFallback.self))")
                 task = self?.fallback.searchCharacters(by: name, from: page, completion: completion)
             }

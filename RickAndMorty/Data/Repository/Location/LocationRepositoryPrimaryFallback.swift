@@ -25,7 +25,7 @@ class LocationRepositoryPrimaryFallback: LocationRepository {
             switch result {
             case .success(let result):
                 completion(.success(result))
-            case .failure(let error):
+            case .failure(_):
                 Logger.viewCycle.info("Executing fallback strategy from \(String(describing: LocationRepositoryPrimaryFallback.self))")
                 task = self?.fallback.fetchLocations(from: page, completion: completion)
             }
@@ -41,7 +41,7 @@ class LocationRepositoryPrimaryFallback: LocationRepository {
             switch result {
             case .success(let result):
                 completion(.success(result))
-            case .failure(let error):
+            case .failure(_):
                 Logger.viewCycle.info("Executing fallback strategy from \(String(describing: CharacterRepositoryPrimaryFallback.self))")
                 task = self?.fallback.searchLocations(by: name, from: page, completion: completion)
             }
