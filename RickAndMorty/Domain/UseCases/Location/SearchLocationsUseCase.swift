@@ -21,7 +21,7 @@ final class SearchLocationsUseCase: UseCase {
         self.completionHandler = completionHandler
     }
     
-    func execute() -> (any CancellableHttpRequest)? {
+    func execute() -> (any Cancellable)? {
         return repository.searchLocations(by: name, from: page, completion: completionHandler)
     }
 }

@@ -9,6 +9,6 @@ import Foundation
 
 protocol CharacterRepository {
     typealias CompletionHandler = (Result<CharacterPage, Error>) -> Void
-    func fetchCharacters(from page: Int?, completion: @escaping CompletionHandler) -> CancellableHttpRequest?
-    func searchCharacters(by name: String, from page: Int?, completion: @escaping CompletionHandler) -> CancellableHttpRequest?
+    func fetchCharacters(from page: Int?, completion: @escaping CompletionHandler) -> Cancellable?
+    func searchCharacters(by name: String, from page: Int?, completion: @escaping CompletionHandler) -> Cancellable?
 }

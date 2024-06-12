@@ -20,7 +20,7 @@ final class SearchEpisodesUseCase: UseCase {
         self.completionHandler = completionHandler
     }
     
-    func execute() -> (any CancellableHttpRequest)? {
+    func execute() -> (any Cancellable)? {
         return repository.searchEpisodes(by: name, from: page, completion: completionHandler)
     }
 }
