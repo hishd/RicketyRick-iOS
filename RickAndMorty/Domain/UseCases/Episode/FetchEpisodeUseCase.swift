@@ -10,9 +10,9 @@ import Foundation
 class FetchEpisodeUseCase: UseCase {
     let repository: EpisodeRepository
     let id: Int
-    let completionHandler: (Result<EpisodePage, Error>) -> (Void)
+    let completionHandler: (Result<Episode, Error>) -> (Void)
     
-    init(repository: EpisodeRepository, id: Int, completionHandler: @escaping (Result<EpisodePage, Error>) -> Void) {
+    init(repository: EpisodeRepository, id: Int, completionHandler: @escaping (Result<Episode, Error>) -> Void) {
         self.repository = repository
         self.id = id
         self.completionHandler = completionHandler

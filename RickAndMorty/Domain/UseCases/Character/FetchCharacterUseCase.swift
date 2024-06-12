@@ -10,9 +10,9 @@ import Foundation
 class FetchCharacterUseCase: UseCase {
     let repository: CharacterRepository
     let id: Int
-    let completionHandler: (Result<CharacterPage, Error>) -> (Void)
+    let completionHandler: (Result<Character, Error>) -> (Void)
     
-    init(repository: CharacterRepository, id: Int, completionHandler: @escaping (Result<CharacterPage, Error>) -> Void) {
+    init(repository: CharacterRepository, id: Int, completionHandler: @escaping (Result<Character, Error>) -> Void) {
         self.repository = repository
         self.id = id
         self.completionHandler = completionHandler

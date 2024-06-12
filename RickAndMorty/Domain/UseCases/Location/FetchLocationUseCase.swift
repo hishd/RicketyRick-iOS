@@ -10,9 +10,9 @@ import Foundation
 final class FetchLocationUseCase: UseCase {
     let repository: LocationRepository
     let id: Int
-    let completionHandler: (Result<LocationPage, Error>) -> (Void)
+    let completionHandler: (Result<Location, Error>) -> (Void)
     
-    init(repository: LocationRepository, id: Int, completionHandler: @escaping (Result<LocationPage, Error>) -> Void) {
+    init(repository: LocationRepository, id: Int, completionHandler: @escaping (Result<Location, Error>) -> Void) {
         self.repository = repository
         self.id = id
         self.completionHandler = completionHandler
