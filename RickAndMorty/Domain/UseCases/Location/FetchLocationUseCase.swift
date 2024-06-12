@@ -18,7 +18,7 @@ final class FetchLocationUseCase: UseCase {
         self.completionHandler = completionHandler
     }
     
-    func execute() -> (any CancellableHttpRequest)? {
+    func execute() -> (any Cancellable)? {
         return repository.fetchLocations(from: page, completion: completionHandler)
     }
 }

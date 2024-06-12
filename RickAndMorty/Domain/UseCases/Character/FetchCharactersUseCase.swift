@@ -19,7 +19,7 @@ final class FetchCharactersUseCase: UseCase {
         self.completionHandler = completionHandler
     }
     
-    func execute() -> (any CancellableHttpRequest)? {
+    func execute() -> (any Cancellable)? {
         return repository.fetchCharacters(from: page, completion: completionHandler)
     }
 }

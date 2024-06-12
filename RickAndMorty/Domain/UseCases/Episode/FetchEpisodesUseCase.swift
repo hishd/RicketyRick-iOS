@@ -18,7 +18,7 @@ final class FetchEpisodesUseCase: UseCase {
         self.completionHandler = completionHandler
     }
     
-    func execute() -> (any CancellableHttpRequest)? {
+    func execute() -> (any Cancellable)? {
         return repository.fetchEpisodes(from: page, completion: completionHandler)
     }
 }
