@@ -8,8 +8,9 @@
 import Foundation
 
 protocol EpisodeRepository {
-    typealias CompletionHandler = (Result<EpisodePage, Error>) -> Void
+    typealias CompletionHandlerPage = (Result<EpisodePage, Error>) -> Void
+    typealias CompletionHandler = (Result<Episode, Error>) -> Void
     func fetchEpisode(by id: Int, completion: @escaping CompletionHandler) -> Cancellable?
-    func fetchEpisodes(from page: Int?, completion: @escaping CompletionHandler) -> Cancellable?
-    func searchEpisodes(by name: String, from page: Int?, completion: @escaping CompletionHandler) -> Cancellable?
+    func fetchEpisodes(from page: Int?, completion: @escaping CompletionHandlerPage) -> Cancellable?
+    func searchEpisodes(by name: String, from page: Int?, completion: @escaping CompletionHandlerPage) -> Cancellable?
 }
