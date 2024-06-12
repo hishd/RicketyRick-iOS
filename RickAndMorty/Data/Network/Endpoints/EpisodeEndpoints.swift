@@ -8,6 +8,10 @@
 import Foundation
 
 enum EpisodeEndpoints {
+    static func getEpisode(by id: Int) -> ApiEndpoint<EpisodeResponseDTO.ResultsDTO> {
+        return .init(path: "episode/\(id)", method: .get)
+    }
+    
     static func allEpisodes(from page: Int?) -> ApiEndpoint<EpisodeResponseDTO> {
         var params: [String: Int] = [:]
         if let page = page {

@@ -8,6 +8,10 @@
 import Foundation
 
 enum CharacterEndpoints {
+    static func getCharacter(by id: Int) -> ApiEndpoint<CharacterResponseDTO.ResultsDTO> {
+        return .init(path: "character/\(id)", method: .get)
+    }
+    
     static func allCharacters(from page: Int?) -> ApiEndpoint<CharacterResponseDTO> {
         var params: [String: Int] = [:]
         if let page = page {
