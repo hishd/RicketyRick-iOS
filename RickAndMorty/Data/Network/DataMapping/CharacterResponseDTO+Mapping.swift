@@ -86,6 +86,24 @@ extension CharacterResponseDTO {
     }
 }
 
+extension CharacterResponseDTO.ResultsDTO {
+    func mapToDomain() -> Character {
+        .init(
+            characterId: self.id,
+            characterName: self.name,
+            status: CharacterResponseDTO.mapToStatus(status: self.status),
+            species: self.species,
+            type: self.type,
+            gender: self.gender,
+            origin: self.origin.mapToDomain(),
+            lastLocation: self.location.mapToDomain(),
+            imageUrl: URL(string: self.image),
+            episodes: mapStringsToUrl(urlStrings: self.episode),
+            createdData: ISO8601DateFormatter().date(from: self.created)
+        )
+    }
+}
+
 extension CharacterResponseDTO.OriginDTO {
     func mapToDomain() -> CharacterOrigin {
         

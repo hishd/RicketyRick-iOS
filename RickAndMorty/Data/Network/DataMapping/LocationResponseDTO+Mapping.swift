@@ -58,3 +58,16 @@ extension LocationResponseDTO {
         return .init(count: count, pages: pages, locations: locations)
     }
 }
+
+extension LocationResponseDTO.ResultsDTO {
+    func mapToDomain() -> Location {
+        .init(
+            locationId: self.id,
+            locationName: self.name,
+            locationType: self.type,
+            dimension: self.dimension,
+            residents: LocationResponseDTO.mapToLocationResidents(from: self.residents),
+            createdData: ISO8601DateFormatter().date(from: self.created)
+        )
+    }
+}

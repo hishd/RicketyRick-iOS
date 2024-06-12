@@ -58,3 +58,16 @@ extension EpisodeResponseDTO {
         return .init(count: count, pages: pages, episodes: episodes)
     }
 }
+
+extension EpisodeResponseDTO.ResultsDTO {
+    func mapToDomain() -> Episode {
+        .init(
+            episodeId: self.id,
+            episodeName: self.name,
+            airDate: self.air_date,
+            codeName: self.episode,
+            characters: EpisodeResponseDTO.mapToCharacters(from: self.characters),
+            createdData: ISO8601DateFormatter().date(from: self.created)
+        )
+    }
+}
