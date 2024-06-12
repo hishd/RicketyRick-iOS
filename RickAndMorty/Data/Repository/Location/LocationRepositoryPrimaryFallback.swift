@@ -42,7 +42,7 @@ class LocationRepositoryPrimaryFallback: LocationRepository {
             case .success(let result):
                 completion(.success(result))
             case .failure(_):
-                Logger.viewCycle.info("Executing fallback strategy from \(String(describing: CharacterRepositoryPrimaryFallback.self))")
+                Logger.viewCycle.info("Executing fallback strategy from \(String(describing: LocationRepositoryPrimaryFallback.self))")
                 task = self?.fallback.searchLocations(by: name, from: page, completion: completion)
             }
         })

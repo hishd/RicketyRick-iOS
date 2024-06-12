@@ -51,6 +51,9 @@
 		FDC057DF2C1930B800312DB4 /* LocationRepositoryPrimaryFallback.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC057DE2C1930B800312DB4 /* LocationRepositoryPrimaryFallback.swift */; };
 		FDC057E12C1931AD00312DB4 /* LocationRepositoryRemote.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC057E02C1931AD00312DB4 /* LocationRepositoryRemote.swift */; };
 		FDC057E32C1931C400312DB4 /* LocationRepositoryLocal.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC057E22C1931C400312DB4 /* LocationRepositoryLocal.swift */; };
+		FDC057E62C1932C600312DB4 /* EpisodeRepositoryPrimaryFallback.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC057E52C1932C600312DB4 /* EpisodeRepositoryPrimaryFallback.swift */; };
+		FDC057E82C19339600312DB4 /* EpisodeRepositoryRemote.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC057E72C19339600312DB4 /* EpisodeRepositoryRemote.swift */; };
+		FDC057EA2C1933B800312DB4 /* EpisodeRepositoryLocal.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC057E92C1933B800312DB4 /* EpisodeRepositoryLocal.swift */; };
 		FDE8CD042C1567DA00481F32 /* OSLog+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE8CD032C1567DA00481F32 /* OSLog+Extensions.swift */; };
 /* End PBXBuildFile section */
 
@@ -120,6 +123,9 @@
 		FDC057DE2C1930B800312DB4 /* LocationRepositoryPrimaryFallback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationRepositoryPrimaryFallback.swift; sourceTree = "<group>"; };
 		FDC057E02C1931AD00312DB4 /* LocationRepositoryRemote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationRepositoryRemote.swift; sourceTree = "<group>"; };
 		FDC057E22C1931C400312DB4 /* LocationRepositoryLocal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationRepositoryLocal.swift; sourceTree = "<group>"; };
+		FDC057E52C1932C600312DB4 /* EpisodeRepositoryPrimaryFallback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeRepositoryPrimaryFallback.swift; sourceTree = "<group>"; };
+		FDC057E72C19339600312DB4 /* EpisodeRepositoryRemote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeRepositoryRemote.swift; sourceTree = "<group>"; };
+		FDC057E92C1933B800312DB4 /* EpisodeRepositoryLocal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeRepositoryLocal.swift; sourceTree = "<group>"; };
 		FDE8CD032C1567DA00481F32 /* OSLog+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OSLog+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -401,6 +407,8 @@
 		FDC057CF2C18AC9200312DB4 /* Episode */ = {
 			isa = PBXGroup;
 			children = (
+				FDC057E42C1932B200312DB4 /* Implementation */,
+				FDC057E52C1932C600312DB4 /* EpisodeRepositoryPrimaryFallback.swift */,
 			);
 			path = Episode;
 			sourceTree = "<group>";
@@ -419,6 +427,15 @@
 			children = (
 				FDC057E02C1931AD00312DB4 /* LocationRepositoryRemote.swift */,
 				FDC057E22C1931C400312DB4 /* LocationRepositoryLocal.swift */,
+			);
+			path = Implementation;
+			sourceTree = "<group>";
+		};
+		FDC057E42C1932B200312DB4 /* Implementation */ = {
+			isa = PBXGroup;
+			children = (
+				FDC057E72C19339600312DB4 /* EpisodeRepositoryRemote.swift */,
+				FDC057E92C1933B800312DB4 /* EpisodeRepositoryLocal.swift */,
 			);
 			path = Implementation;
 			sourceTree = "<group>";
@@ -586,6 +603,7 @@
 				FDC057932C17D37A00312DB4 /* NetworkService.swift in Sources */,
 				FDC057A52C17DDEA00312DB4 /* Episode.swift in Sources */,
 				FD2D76EC2C15288800BBDEF4 /* MainViewController.swift in Sources */,
+				FDC057E82C19339600312DB4 /* EpisodeRepositoryRemote.swift in Sources */,
 				FDC057BF2C17F34F00312DB4 /* Helpers.swift in Sources */,
 				FDC057B62C17E2D200312DB4 /* SearchEpisodesUseCase.swift in Sources */,
 				FDC057DB2C18B72F00312DB4 /* Cancellable.swift in Sources */,
@@ -609,6 +627,8 @@
 				FDC057C12C17F4F400312DB4 /* EpisodeResponseDTO+Mapping.swift in Sources */,
 				FDC057962C17D52800312DB4 /* View+Extensions.swift in Sources */,
 				FDC057C42C17F79300312DB4 /* CharacterEndpoints.swift in Sources */,
+				FDC057E62C1932C600312DB4 /* EpisodeRepositoryPrimaryFallback.swift in Sources */,
+				FDC057EA2C1933B800312DB4 /* EpisodeRepositoryLocal.swift in Sources */,
 				FDC0579F2C17D86A00312DB4 /* EpisodeRepository.swift in Sources */,
 				FD2D76AB2C151E5E00BBDEF4 /* AppDelegate.swift in Sources */,
 				FDC0579B2C17D84800312DB4 /* CharacterRepository.swift in Sources */,
