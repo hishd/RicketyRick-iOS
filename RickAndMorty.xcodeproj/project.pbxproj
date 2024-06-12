@@ -44,6 +44,10 @@
 		FDC057C42C17F79300312DB4 /* CharacterEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC057C32C17F79300312DB4 /* CharacterEndpoints.swift */; };
 		FDC057C62C17F7A000312DB4 /* LocationEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC057C52C17F7A000312DB4 /* LocationEndpoints.swift */; };
 		FDC057C82C17F7AC00312DB4 /* EpisodeEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC057C72C17F7AC00312DB4 /* EpisodeEndpoints.swift */; };
+		FDC057D12C18ACB700312DB4 /* CharacterRepositoryRemote.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC057D02C18ACB700312DB4 /* CharacterRepositoryRemote.swift */; };
+		FDC057D32C18ACCB00312DB4 /* CharacterRepositoryLocal.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC057D22C18ACCB00312DB4 /* CharacterRepositoryLocal.swift */; };
+		FDC057D52C18AD6000312DB4 /* CharacterRepositoryPrimaryFallback.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC057D42C18AD6000312DB4 /* CharacterRepositoryPrimaryFallback.swift */; };
+		FDC057DB2C18B72F00312DB4 /* Cancellable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC057DA2C18B72F00312DB4 /* Cancellable.swift */; };
 		FDE8CD042C1567DA00481F32 /* OSLog+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE8CD032C1567DA00481F32 /* OSLog+Extensions.swift */; };
 /* End PBXBuildFile section */
 
@@ -106,6 +110,10 @@
 		FDC057C32C17F79300312DB4 /* CharacterEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterEndpoints.swift; sourceTree = "<group>"; };
 		FDC057C52C17F7A000312DB4 /* LocationEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationEndpoints.swift; sourceTree = "<group>"; };
 		FDC057C72C17F7AC00312DB4 /* EpisodeEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeEndpoints.swift; sourceTree = "<group>"; };
+		FDC057D02C18ACB700312DB4 /* CharacterRepositoryRemote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterRepositoryRemote.swift; sourceTree = "<group>"; };
+		FDC057D22C18ACCB00312DB4 /* CharacterRepositoryLocal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterRepositoryLocal.swift; sourceTree = "<group>"; };
+		FDC057D42C18AD6000312DB4 /* CharacterRepositoryPrimaryFallback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterRepositoryPrimaryFallback.swift; sourceTree = "<group>"; };
+		FDC057DA2C18B72F00312DB4 /* Cancellable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cancellable.swift; sourceTree = "<group>"; };
 		FDE8CD032C1567DA00481F32 /* OSLog+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OSLog+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -200,6 +208,7 @@
 		FD2D76DB2C151F6200BBDEF4 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				FDC057C92C18AB2200312DB4 /* Repository */,
 				FDC057B72C17E47C00312DB4 /* Network */,
 			);
 			path = Data;
@@ -340,6 +349,7 @@
 			isa = PBXGroup;
 			children = (
 				FDC057BE2C17F34F00312DB4 /* Helpers.swift */,
+				FDC057DA2C18B72F00312DB4 /* Cancellable.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -352,6 +362,48 @@
 				FDC057C72C17F7AC00312DB4 /* EpisodeEndpoints.swift */,
 			);
 			path = Endpoints;
+			sourceTree = "<group>";
+		};
+		FDC057C92C18AB2200312DB4 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				FDC057CF2C18AC9200312DB4 /* Episode */,
+				FDC057CE2C18AC8D00312DB4 /* Location */,
+				FDC057CD2C18AC8600312DB4 /* Character */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		FDC057CD2C18AC8600312DB4 /* Character */ = {
+			isa = PBXGroup;
+			children = (
+				FDC057D72C18AE1200312DB4 /* Implementation */,
+				FDC057D42C18AD6000312DB4 /* CharacterRepositoryPrimaryFallback.swift */,
+			);
+			path = Character;
+			sourceTree = "<group>";
+		};
+		FDC057CE2C18AC8D00312DB4 /* Location */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Location;
+			sourceTree = "<group>";
+		};
+		FDC057CF2C18AC9200312DB4 /* Episode */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Episode;
+			sourceTree = "<group>";
+		};
+		FDC057D72C18AE1200312DB4 /* Implementation */ = {
+			isa = PBXGroup;
+			children = (
+				FDC057D02C18ACB700312DB4 /* CharacterRepositoryRemote.swift */,
+				FDC057D22C18ACCB00312DB4 /* CharacterRepositoryLocal.swift */,
+			);
+			path = Implementation;
 			sourceTree = "<group>";
 		};
 		FDE8CD022C1567C600481F32 /* Extensions */ = {
@@ -518,11 +570,14 @@
 				FD2D76EC2C15288800BBDEF4 /* MainViewController.swift in Sources */,
 				FDC057BF2C17F34F00312DB4 /* Helpers.swift in Sources */,
 				FDC057B62C17E2D200312DB4 /* SearchEpisodesUseCase.swift in Sources */,
+				FDC057DB2C18B72F00312DB4 /* Cancellable.swift in Sources */,
 				FDC057942C17D37A00312DB4 /* NetworkDataTransferService.swift in Sources */,
 				FDC057BC2C17F1A900312DB4 /* LocationResponseDTO+Mapping.swift in Sources */,
 				FD2D76E52C15268800BBDEF4 /* Coordinator.swift in Sources */,
 				FDC057A72C17DF9C00312DB4 /* UseCase.swift in Sources */,
+				FDC057D52C18AD6000312DB4 /* CharacterRepositoryPrimaryFallback.swift in Sources */,
 				FDC057A32C17DC8600312DB4 /* Location.swift in Sources */,
+				FDC057D12C18ACB700312DB4 /* CharacterRepositoryRemote.swift in Sources */,
 				FDE8CD042C1567DA00481F32 /* OSLog+Extensions.swift in Sources */,
 				FD2D76E12C15246C00BBDEF4 /* StoryBoarding.swift in Sources */,
 				FDC0579D2C17D85B00312DB4 /* LocationRepository.swift in Sources */,
@@ -539,6 +594,7 @@
 				FDC0579B2C17D84800312DB4 /* CharacterRepository.swift in Sources */,
 				FDC057912C17D37A00312DB4 /* ApiNetworkConfig.swift in Sources */,
 				FDC057A12C17D89700312DB4 /* Character.swift in Sources */,
+				FDC057D32C18ACCB00312DB4 /* CharacterRepositoryLocal.swift in Sources */,
 				FD2D76AD2C151E5E00BBDEF4 /* SceneDelegate.swift in Sources */,
 				FDC057C62C17F7A000312DB4 /* LocationEndpoints.swift in Sources */,
 			);
