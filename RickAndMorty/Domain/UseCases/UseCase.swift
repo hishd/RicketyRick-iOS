@@ -8,5 +8,5 @@
 import Foundation
 
 protocol UseCase {
-    func execute() -> CancellableHttpRequest?
+    func execute() -> Cancellable?
 }
