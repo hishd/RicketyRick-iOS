@@ -48,6 +48,7 @@
 		FDC057D32C18ACCB00312DB4 /* CharacterRepositoryLocal.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC057D22C18ACCB00312DB4 /* CharacterRepositoryLocal.swift */; };
 		FDC057D52C18AD6000312DB4 /* CharacterRepositoryPrimaryFallback.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC057D42C18AD6000312DB4 /* CharacterRepositoryPrimaryFallback.swift */; };
 		FDC057DB2C18B72F00312DB4 /* Cancellable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC057DA2C18B72F00312DB4 /* Cancellable.swift */; };
+		FDC057DF2C1930B800312DB4 /* LocationRepositoryPrimaryFallback.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC057DE2C1930B800312DB4 /* LocationRepositoryPrimaryFallback.swift */; };
 		FDE8CD042C1567DA00481F32 /* OSLog+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE8CD032C1567DA00481F32 /* OSLog+Extensions.swift */; };
 /* End PBXBuildFile section */
 
@@ -114,6 +115,7 @@
 		FDC057D22C18ACCB00312DB4 /* CharacterRepositoryLocal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterRepositoryLocal.swift; sourceTree = "<group>"; };
 		FDC057D42C18AD6000312DB4 /* CharacterRepositoryPrimaryFallback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterRepositoryPrimaryFallback.swift; sourceTree = "<group>"; };
 		FDC057DA2C18B72F00312DB4 /* Cancellable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cancellable.swift; sourceTree = "<group>"; };
+		FDC057DE2C1930B800312DB4 /* LocationRepositoryPrimaryFallback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationRepositoryPrimaryFallback.swift; sourceTree = "<group>"; };
 		FDE8CD032C1567DA00481F32 /* OSLog+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OSLog+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -386,6 +388,8 @@
 		FDC057CE2C18AC8D00312DB4 /* Location */ = {
 			isa = PBXGroup;
 			children = (
+				FDC057DD2C19309C00312DB4 /* Implementation */,
+				FDC057DE2C1930B800312DB4 /* LocationRepositoryPrimaryFallback.swift */,
 			);
 			path = Location;
 			sourceTree = "<group>";
@@ -402,6 +406,13 @@
 			children = (
 				FDC057D02C18ACB700312DB4 /* CharacterRepositoryRemote.swift */,
 				FDC057D22C18ACCB00312DB4 /* CharacterRepositoryLocal.swift */,
+			);
+			path = Implementation;
+			sourceTree = "<group>";
+		};
+		FDC057DD2C19309C00312DB4 /* Implementation */ = {
+			isa = PBXGroup;
+			children = (
 			);
 			path = Implementation;
 			sourceTree = "<group>";
@@ -561,6 +572,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FDC057B02C17E1CE00312DB4 /* FetchLocationUseCase.swift in Sources */,
+				FDC057DF2C1930B800312DB4 /* LocationRepositoryPrimaryFallback.swift in Sources */,
 				FDC057B42C17E28F00312DB4 /* FetchEpisodesUseCase.swift in Sources */,
 				FDC057AC2C17E00100312DB4 /* FetchCharactersUseCase.swift in Sources */,
 				FDC057B22C17E23200312DB4 /* SearchLocationsUseCase.swift in Sources */,
