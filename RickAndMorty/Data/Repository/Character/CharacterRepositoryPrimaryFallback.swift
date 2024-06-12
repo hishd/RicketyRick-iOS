@@ -18,7 +18,23 @@ class CharacterRepositoryPrimaryFallback: CharacterRepository {
         self.fallback = fallback
     }
     
-    func fetchCharacters(from page: Int?, completion: @escaping CompletionHandler) -> (any Cancellable)? {
+    func fetchCharacter(by id: Int, completion: @escaping CompletionHandler) -> (any Cancellable)? {
+        var task: Cancellable?
+        
+        task = primary.fetchCharacter(by: id, completion: { [weak self] result in
+            switch result {
+            case .success(let result):
+                completion(.success(result))
+            case .failure(_):
+                Logger.viewCycle.info("Executing fallback strategy from \(String(describing: CharacterRepositoryPrimaryFallback.self))")
+                task = self?.fallback.fetchCharacter(by: id, completion: completion)
+            }
+        })
+        
+        return task
+    }
+    
+    func fetchCharacters(from page: Int?, completion: @escaping CompletionHandlerPage) -> (any Cancellable)? {
         var task: Cancellable?
         
         task = primary.fetchCharacters(from: page, completion: { [weak self] result in
@@ -34,7 +50,7 @@ class CharacterRepositoryPrimaryFallback: CharacterRepository {
         return task
     }
     
-    func searchCharacters(by name: String, from page: Int?, completion: @escaping CompletionHandler) -> (any Cancellable)? {
+    func searchCharacters(by name: String, from page: Int?, completion: @escaping CompletionHandlerPage) -> (any Cancellable)? {
         var task: Cancellable?
         
         task = primary.searchCharacters(by: name, from: page, completion: { [weak self] result in

@@ -9,7 +9,7 @@ import Foundation
 import OSLog
 
 class LocationRepositoryPrimaryFallback: LocationRepository {
-    
+        
     private let primary: LocationRepository
     private let fallback: LocationRepository
     
@@ -18,7 +18,23 @@ class LocationRepositoryPrimaryFallback: LocationRepository {
         self.fallback = fallback
     }
     
-    func fetchLocations(from page: Int?, completion: @escaping CompletionHandler) -> (any Cancellable)? {
+    func fetchLocation(by id: Int, completion: @escaping CompletionHandler) -> (any Cancellable)? {
+        var task: Cancellable?
+        
+        task = primary.fetchLocation(by: id, completion: { [weak self] result in
+            switch result {
+            case .success(let result):
+                completion(.success(result))
+            case .failure(_):
+                Logger.viewCycle.info("Executing fallback strategy from \(String(describing: LocationRepositoryPrimaryFallback.self))")
+                task = self?.fallback.fetchLocation(by: id, completion: completion)
+            }
+        })
+        
+        return task
+    }
+    
+    func fetchLocations(from page: Int?, completion: @escaping CompletionHandlerPage) -> (any Cancellable)? {
         var task: Cancellable?
         
         task = primary.fetchLocations(from: page, completion: { [weak self] result in
@@ -34,7 +50,7 @@ class LocationRepositoryPrimaryFallback: LocationRepository {
         return task
     }
     
-    func searchLocations(by name: String, from page: Int?, completion: @escaping CompletionHandler) -> (any Cancellable)? {
+    func searchLocations(by name: String, from page: Int?, completion: @escaping CompletionHandlerPage) -> (any Cancellable)? {
         var task: Cancellable?
         
         task = primary.searchLocations(by: name, from: page, completion: { [weak self] result in
