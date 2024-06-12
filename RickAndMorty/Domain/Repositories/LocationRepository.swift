@@ -8,7 +8,9 @@
 import Foundation
 
 protocol LocationRepository {
-    typealias CompletionHandler = (Result<LocationPage, Error>) -> Void
-    func fetchLocations(from page: Int?, completion: @escaping CompletionHandler) -> Cancellable?
-    func searchLocations(by name: String, from page: Int?, completion: @escaping CompletionHandler) -> Cancellable?
+    typealias CompletionHandlerPage = (Result<LocationPage, Error>) -> Void
+    typealias CompletionHandler = (Result<Location, Error>) -> Void
+    func fetchLocation(by id: Int, completion: @escaping CompletionHandler) -> Cancellable?
+    func fetchLocations(from page: Int?, completion: @escaping CompletionHandlerPage) -> Cancellable?
+    func searchLocations(by name: String, from page: Int?, completion: @escaping CompletionHandlerPage) -> Cancellable?
 }

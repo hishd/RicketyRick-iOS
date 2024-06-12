@@ -15,24 +15,53 @@ class EpisodeRepositoryRemote: EpisodeRepository {
         self.networkDataTransferService = networkDataTransferService
     }
     
-    func fetchEpisodes(from page: Int?, completion: @escaping CompletionHandler) -> (any Cancellable)? {
+    func fetchEpisode(by id: Int, completion: @escaping CompletionHandler) -> (any Cancellable)? {
+        let endpoint = EpisodeEndpoints.getEpisode(by: id)
+        
+        return buildRequest(with: endpoint, completion: completion)
+    }
+    
+    func fetchEpisodes(from page: Int?, completion: @escaping CompletionHandlerPage) -> (any Cancellable)? {
         let endpoint = EpisodeEndpoints.allEpisodes(from: page)
         
         return buildRequest(with: endpoint, completion: completion)
     }
     
-    func searchEpisodes(by name: String, from page: Int?, completion: @escaping CompletionHandler) -> (any Cancellable)? {
+    func searchEpisodes(by name: String, from page: Int?, completion: @escaping CompletionHandlerPage) -> (any Cancellable)? {
         let endpoint = EpisodeEndpoints.searchEpisodes(by: name, from: page)
         
         return buildRequest(with: endpoint, completion: completion)
     }
     
-    private func buildRequest(with endpoint: ApiEndpoint<EpisodeResponseDTO>, completion: @escaping CompletionHandler) -> (any Cancellable)? {
+    private func buildRequest(with endpoint: ApiEndpoint<EpisodeResponseDTO>, completion: @escaping CompletionHandlerPage) -> (any Cancellable)? {
         let task = CancellableTask()
         task.isNetworkTask = true
         
         task.networkTask = networkDataTransferService.request(with: endpoint) { result in
             let handler: (Result<EpisodePage, Error>)
+            
+            defer {
+                completion(handler)
+            }
+            
+            switch result {
+            case .success(let result):
+                handler = .success(result.mapToDomain())
+                task.isSuccessful = true
+            case .failure(let error):
+                handler = .failure(error)
+            }
+        }
+        
+        return task
+    }
+    
+    private func buildRequest(with endpoint: ApiEndpoint<EpisodeResponseDTO.ResultsDTO>, completion: @escaping CompletionHandler) -> (any Cancellable)? {
+        let task = CancellableTask()
+        task.isNetworkTask = true
+        
+        task.networkTask = networkDataTransferService.request(with: endpoint) { result in
+            let handler: (Result<Episode, Error>)
             
             defer {
                 completion(handler)

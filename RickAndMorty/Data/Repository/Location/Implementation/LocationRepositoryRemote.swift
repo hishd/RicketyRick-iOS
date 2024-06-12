@@ -15,24 +15,53 @@ class LocationRepositoryRemote: LocationRepository {
         self.networkDataTransferService = networkDataTransferService
     }
     
-    func fetchLocations(from page: Int?, completion: @escaping CompletionHandler) -> (any Cancellable)? {
+    func fetchLocation(by id: Int, completion: @escaping CompletionHandler) -> (any Cancellable)? {
+        let endpoint = LocationEndpoints.getLocation(by: id)
+        
+        return buildRequest(with: endpoint, completion: completion)
+    }
+    
+    func fetchLocations(from page: Int?, completion: @escaping CompletionHandlerPage) -> (any Cancellable)? {
         let endpoint = LocationEndpoints.allLocations(from: page)
         
         return buildRequest(with: endpoint, completion: completion)
     }
     
-    func searchLocations(by name: String, from page: Int?, completion: @escaping CompletionHandler) -> (any Cancellable)? {
+    func searchLocations(by name: String, from page: Int?, completion: @escaping CompletionHandlerPage) -> (any Cancellable)? {
         let endpoint = LocationEndpoints.searchLocations(by: name, from: page)
         
         return buildRequest(with: endpoint, completion: completion)
     }
     
-    private func buildRequest(with endpoint: ApiEndpoint<LocationResponseDTO>, completion: @escaping CompletionHandler) -> (any Cancellable)? {
+    private func buildRequest(with endpoint: ApiEndpoint<LocationResponseDTO>, completion: @escaping CompletionHandlerPage) -> (any Cancellable)? {
         let task = CancellableTask()
         task.isNetworkTask = true
         
         task.networkTask = networkDataTransferService.request(with: endpoint) { result in
             let handler: (Result<LocationPage, Error>)
+            
+            defer {
+                completion(handler)
+            }
+            
+            switch result {
+            case .success(let result):
+                handler = .success(result.mapToDomain())
+                task.isSuccessful = true
+            case .failure(let error):
+                handler = .failure(error)
+            }
+        }
+        
+        return task
+    }
+    
+    private func buildRequest(with endpoint: ApiEndpoint<LocationResponseDTO.ResultsDTO>, completion: @escaping CompletionHandler) -> (any Cancellable)? {
+        let task = CancellableTask()
+        task.isNetworkTask = true
+        
+        task.networkTask = networkDataTransferService.request(with: endpoint) { result in
+            let handler: (Result<Location, Error>)
             
             defer {
                 completion(handler)

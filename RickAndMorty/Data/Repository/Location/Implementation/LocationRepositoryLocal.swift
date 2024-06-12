@@ -8,11 +8,15 @@
 import Foundation
 
 class LocationRepositoryLocal: LocationRepository {
-    func fetchLocations(from page: Int?, completion: @escaping CompletionHandler) -> (any Cancellable)? {
+    func fetchLocation(by id: Int, completion: @escaping CompletionHandler) -> (any Cancellable)? {
         nil
     }
     
-    func searchLocations(by name: String, from page: Int?, completion: @escaping CompletionHandler) -> (any Cancellable)? {
+    func fetchLocations(from page: Int?, completion: @escaping CompletionHandlerPage) -> (any Cancellable)? {
+        nil
+    }
+    
+    func searchLocations(by name: String, from page: Int?, completion: @escaping CompletionHandlerPage) -> (any Cancellable)? {
         nil
     }
 }

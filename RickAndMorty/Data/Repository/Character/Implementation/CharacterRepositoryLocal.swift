@@ -8,11 +8,15 @@
 import Foundation
 
 class CharacterRepositoryLocal: CharacterRepository {
-    func fetchCharacters(from page: Int?, completion: @escaping CompletionHandler) -> (any Cancellable)? {
+    func fetchCharacter(by id: Int, completion: @escaping CompletionHandler) -> (any Cancellable)? {
         return nil
     }
     
-    func searchCharacters(by name: String, from page: Int?, completion: @escaping CompletionHandler) -> (any Cancellable)? {
+    func fetchCharacters(from page: Int?, completion: @escaping CompletionHandlerPage) -> (any Cancellable)? {
+        return nil
+    }
+    
+    func searchCharacters(by name: String, from page: Int?, completion: @escaping CompletionHandlerPage) -> (any Cancellable)? {
         return nil
     }
 }

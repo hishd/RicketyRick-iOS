@@ -2,23 +2,23 @@
 //  FetchLocationUseCase.swift
 //  RickAndMorty
 //
-//  Created by Hishara Dilshan on 2024-06-11.
+//  Created by Hishara Dilshan on 2024-06-12.
 //
 
 import Foundation
 
 final class FetchLocationUseCase: UseCase {
     let repository: LocationRepository
-    let page: Int?
-    let completionHandler: (Result<LocationPage, Error>) -> (Void)
+    let id: Int
+    let completionHandler: (Result<Location, Error>) -> (Void)
     
-    init(repository: LocationRepository, page: Int? = nil, completionHandler: @escaping (Result<LocationPage, Error>) -> Void) {
+    init(repository: LocationRepository, id: Int, completionHandler: @escaping (Result<Location, Error>) -> Void) {
         self.repository = repository
-        self.page = page
+        self.id = id
         self.completionHandler = completionHandler
     }
     
     func execute() -> (any Cancellable)? {
-        return repository.fetchLocations(from: page, completion: completionHandler)
+        return repository.fetchLocation(by: id, completion: completionHandler)
     }
 }
