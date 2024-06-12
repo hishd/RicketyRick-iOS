@@ -8,6 +8,10 @@
 import Foundation
 
 enum LocationEndpoints {
+    static func getLocation(by id: Int) -> ApiEndpoint<LocationResponseDTO.ResultsDTO> {
+        return .init(path: "location/\(id)", method: .get)
+    }
+    
     static func allLocations(from page: Int?) -> ApiEndpoint<LocationResponseDTO> {
         var params: [String: Int] = [:]
         if let page = page {
