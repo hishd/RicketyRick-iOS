@@ -9,7 +9,7 @@ import Foundation
 
 enum CharacterEndpoints {
     static func getCharacter(by id: Int) -> ApiEndpoint<CharacterResponseDTO.ResultsDTO> {
-        return .init(path: "character/\(id)", method: .get)
+        return .init(path: .path("character/\(id)"), method: .get)
     }
     
     static func allCharacters(from page: Int?) -> ApiEndpoint<CharacterResponseDTO> {
@@ -18,7 +18,7 @@ enum CharacterEndpoints {
             params["page"] = page
         }
         
-        return .init(path: "character", method: .get, queryParameters: params)
+        return .init(path: .path("character"), method: .get, queryParameters: params)
     }
     
     static func searchCharacters(by name: String, from page: Int?) -> ApiEndpoint<CharacterResponseDTO> {
@@ -29,6 +29,6 @@ enum CharacterEndpoints {
             params["page"] = page
         }
         
-        return .init(path: "character", method: .get, queryParameters: params)
+        return .init(path: .path("character"), method: .get, queryParameters: params)
     }
 }

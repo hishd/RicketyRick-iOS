@@ -19,6 +19,15 @@
 		FD2D76E72C1526F100BBDEF4 /* RootCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2D76E62C1526F100BBDEF4 /* RootCoordinator.swift */; };
 		FD2D76EA2C1527B500BBDEF4 /* MainViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2D76E92C1527B500BBDEF4 /* MainViewViewModel.swift */; };
 		FD2D76EC2C15288800BBDEF4 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2D76EB2C15288800BBDEF4 /* MainViewController.swift */; };
+<<<<<<< Updated upstream
+=======
+		FD6420032C195DE800582A99 /* MockCharacterRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD6420022C195DE800582A99 /* MockCharacterRepository.swift */; };
+		FD6420062C195FB600582A99 /* characters.json in Resources */ = {isa = PBXBuildFile; fileRef = FD6420052C195FB600582A99 /* characters.json */; };
+		FD64200B2C1965C900582A99 /* TestCharacterUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD64200A2C1965C900582A99 /* TestCharacterUseCase.swift */; };
+		FD64200D2C1A18FD00582A99 /* MockLocationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD64200C2C1A18FD00582A99 /* MockLocationRepository.swift */; };
+		FD64200F2C1A268F00582A99 /* locations.json in Resources */ = {isa = PBXBuildFile; fileRef = FD64200E2C1A268F00582A99 /* locations.json */; };
+		FD6420112C1A2B4700582A99 /* TestLocationUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD6420102C1A2B4700582A99 /* TestLocationUseCase.swift */; };
+>>>>>>> Stashed changes
 		FDC057912C17D37A00312DB4 /* ApiNetworkConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC0578D2C17D37A00312DB4 /* ApiNetworkConfig.swift */; };
 		FDC057922C17D37A00312DB4 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC0578E2C17D37A00312DB4 /* Endpoint.swift */; };
 		FDC057932C17D37A00312DB4 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC0578F2C17D37A00312DB4 /* NetworkService.swift */; };
@@ -94,6 +103,15 @@
 		FD2D76E62C1526F100BBDEF4 /* RootCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootCoordinator.swift; sourceTree = "<group>"; };
 		FD2D76E92C1527B500BBDEF4 /* MainViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewViewModel.swift; sourceTree = "<group>"; };
 		FD2D76EB2C15288800BBDEF4 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+<<<<<<< Updated upstream
+=======
+		FD6420022C195DE800582A99 /* MockCharacterRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockCharacterRepository.swift; sourceTree = "<group>"; };
+		FD6420052C195FB600582A99 /* characters.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = characters.json; sourceTree = "<group>"; };
+		FD64200A2C1965C900582A99 /* TestCharacterUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCharacterUseCase.swift; sourceTree = "<group>"; };
+		FD64200C2C1A18FD00582A99 /* MockLocationRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockLocationRepository.swift; sourceTree = "<group>"; };
+		FD64200E2C1A268F00582A99 /* locations.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = locations.json; sourceTree = "<group>"; };
+		FD6420102C1A2B4700582A99 /* TestLocationUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestLocationUseCase.swift; sourceTree = "<group>"; };
+>>>>>>> Stashed changes
 		FDC0578D2C17D37A00312DB4 /* ApiNetworkConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiNetworkConfig.swift; sourceTree = "<group>"; };
 		FDC0578E2C17D37A00312DB4 /* Endpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		FDC0578F2C17D37A00312DB4 /* NetworkService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
@@ -286,6 +304,27 @@
 			path = MainView;
 			sourceTree = "<group>";
 		};
+<<<<<<< Updated upstream
+=======
+		FD6420012C195DBC00582A99 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				FD6420022C195DE800582A99 /* MockCharacterRepository.swift */,
+				FD64200C2C1A18FD00582A99 /* MockLocationRepository.swift */,
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
+		FD6420042C195F7500582A99 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				FD6420052C195FB600582A99 /* characters.json */,
+				FD64200E2C1A268F00582A99 /* locations.json */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+>>>>>>> Stashed changes
 		FDC057972C17D62E00312DB4 /* Repositories */ = {
 			isa = PBXGroup;
 			children = (
@@ -449,6 +488,27 @@
 			path = Implementation;
 			sourceTree = "<group>";
 		};
+<<<<<<< Updated upstream
+=======
+		FDC057F32C194DD500312DB4 /* Infastructure */ = {
+			isa = PBXGroup;
+			children = (
+				FDC057F52C194E8C00312DB4 /* Network+DataTransferTests.swift */,
+			);
+			path = Infastructure;
+			sourceTree = "<group>";
+		};
+		FDC057F42C194DDE00312DB4 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				FD6420012C195DBC00582A99 /* Mocks */,
+				FD64200A2C1965C900582A99 /* TestCharacterUseCase.swift */,
+				FD6420102C1A2B4700582A99 /* TestLocationUseCase.swift */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+>>>>>>> Stashed changes
 		FDE8CD022C1567C600481F32 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -586,6 +646,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+<<<<<<< Updated upstream
+=======
+				FD64200F2C1A268F00582A99 /* locations.json in Resources */,
+				FD6420062C195FB600582A99 /* characters.json in Resources */,
+>>>>>>> Stashed changes
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -656,7 +721,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+<<<<<<< Updated upstream
 				FD2D76C22C151E6300BBDEF4 /* RickAndMortyTests.swift in Sources */,
+=======
+				FD6420112C1A2B4700582A99 /* TestLocationUseCase.swift in Sources */,
+				FD6420032C195DE800582A99 /* MockCharacterRepository.swift in Sources */,
+				FD2D76C22C151E6300BBDEF4 /* RickAndMortyTests.swift in Sources */,
+				FD64200D2C1A18FD00582A99 /* MockLocationRepository.swift in Sources */,
+				FDC057F62C194E8C00312DB4 /* Network+DataTransferTests.swift in Sources */,
+				FD64200B2C1965C900582A99 /* TestCharacterUseCase.swift in Sources */,
+>>>>>>> Stashed changes
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
