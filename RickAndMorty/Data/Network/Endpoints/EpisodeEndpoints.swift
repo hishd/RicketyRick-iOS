@@ -9,7 +9,7 @@ import Foundation
 
 enum EpisodeEndpoints {
     static func getEpisode(by id: Int) -> ApiEndpoint<EpisodeResponseDTO.ResultsDTO> {
-        return .init(path: .path("episode/\(id)"), method: .get)
+        return .init(path: "episode/\(id)", method: .get)
     }
     
     static func allEpisodes(from page: Int?) -> ApiEndpoint<EpisodeResponseDTO> {
@@ -18,7 +18,7 @@ enum EpisodeEndpoints {
             params["page"] = page
         }
         
-        return .init(path: .path("episode"), method: .get, queryParameters: params)
+        return .init(path: "episode", method: .get, queryParameters: params)
     }
     
     static func searchEpisodes(by name: String, from page: Int?) -> ApiEndpoint<EpisodeResponseDTO> {
@@ -29,6 +29,6 @@ enum EpisodeEndpoints {
             params["page"] = page
         }
         
-        return .init(path: .path("episode"), method: .get, queryParameters: params)
+        return .init(path: "episode", method: .get, queryParameters: params)
     }
 }
