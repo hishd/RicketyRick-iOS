@@ -43,24 +43,29 @@ public final class RawDataResponseDecoder: ResponseDecoder {
     }
 }
 
+public enum PathType {
+    case fullPath(String)
+    case path(String)
+}
+
 public protocol RequestableEndpoint {
     
     associatedtype ResponseType
     
-    var path: String {get}
+    var path: PathType {get}
     var method: HTTPMethodType {get}
     var headerParameters: [String: String] {get}
     var queryParameters: [String: Any] {get}
     var bodyParameters: [String: Any] {get}
     var responseDecoder: any ResponseDecoder {get}
     
-    func urlRequest(with networkConfig: ApiNetworkConfig) throws -> URLRequest
+    func urlRequest(with networkConfig: ApiNetworkConfig?) throws -> URLRequest
 }
 
 public final class ApiEndpoint<T>: RequestableEndpoint {
     public typealias ResponseType = T
     
-    public let path: String
+    public let path: PathType
     public let method: HTTPMethodType
     public let headerParameters: [String : String]
     public let queryParameters: [String : Any]
@@ -68,7 +73,7 @@ public final class ApiEndpoint<T>: RequestableEndpoint {
     public let responseDecoder: any ResponseDecoder
     
     public init(
-        path: String,
+        path: PathType,
         method: HTTPMethodType,
         headerParameters: [String : String] = [:],
         queryParameters: [String : Any] = [:],
@@ -91,9 +96,20 @@ public enum HttpEndpointGenerationError: Error {
 }
 
 public extension RequestableEndpoint {
-    private func url(with networkConfig: ApiNetworkConfig) throws -> URL {
-        let baseUrl = networkConfig.baseUrl.absoluteString.last != "/" ? networkConfig.baseUrl.absoluteString + "/" : networkConfig.baseUrl.absoluteString
-        let endpoint = baseUrl.appending(path)
+    private func url(with networkConfig: ApiNetworkConfig?) throws -> URL {
+        let endpoint: String
+        
+        switch path {
+        case .fullPath(let path):
+            endpoint = path
+        case .path(let path):
+            if let baseUrl = networkConfig?.baseUrl {
+                let url = baseUrl.absoluteString.last != "/" ? baseUrl.absoluteString + "/" : baseUrl.absoluteString
+                endpoint = url.appending(path)
+            } else {
+                throw HttpEndpointGenerationError.urlGenerationError
+            }
+        }
         
         guard var urlComponents = URLComponents(string: endpoint) else {
             throw HttpEndpointGenerationError.componentsError
@@ -105,7 +121,7 @@ public extension RequestableEndpoint {
             queryItems.append(URLQueryItem(name: key, value: "\(value)"))
         }
         
-        networkConfig.queryParameters.forEach { (key, value) in
+        networkConfig?.queryParameters.forEach { (key, value) in
             queryItems.append(URLQueryItem(name: key, value: "\(value)"))
         }
         
@@ -118,10 +134,10 @@ public extension RequestableEndpoint {
         return url
     }
     
-    func urlRequest(with networkConfig: ApiNetworkConfig) throws -> URLRequest {
+    func urlRequest(with networkConfig: ApiNetworkConfig?) throws -> URLRequest {
         let url = try self.url(with: networkConfig)
         var urlRequest = URLRequest(url: url)
-        var allHeaders: [String: String] = networkConfig.headers
+        var allHeaders: [String: String] = networkConfig?.headers ?? .init()
         headerParameters.forEach { (key, value) in
             allHeaders.updateValue(value, forKey: key)
         }
@@ -136,3 +152,4 @@ public extension RequestableEndpoint {
         return urlRequest
     }
 }
+
