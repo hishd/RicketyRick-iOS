@@ -19,6 +19,11 @@
 		FD2D76E72C1526F100BBDEF4 /* RootCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2D76E62C1526F100BBDEF4 /* RootCoordinator.swift */; };
 		FD2D76EA2C1527B500BBDEF4 /* MainViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2D76E92C1527B500BBDEF4 /* MainViewViewModel.swift */; };
 		FD2D76EC2C15288800BBDEF4 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2D76EB2C15288800BBDEF4 /* MainViewController.swift */; };
+		FD81D1122C2E695800098C59 /* MockCharacterDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD81D1112C2E695800098C59 /* MockCharacterDataRepository.swift */; };
+		FD81D1142C2E697F00098C59 /* MockLocationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD81D1132C2E697F00098C59 /* MockLocationRepository.swift */; };
+		FD81D1162C2E69A900098C59 /* TestLocationUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD81D1152C2E69A900098C59 /* TestLocationUseCase.swift */; };
+		FD81D1192C2E69F300098C59 /* Network+DataTransferTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD81D1182C2E69F300098C59 /* Network+DataTransferTests.swift */; };
+		FD81D11C2C2E6A5400098C59 /* locations.json in Resources */ = {isa = PBXBuildFile; fileRef = FD81D11B2C2E6A5400098C59 /* locations.json */; };
 		FDC057912C17D37A00312DB4 /* ApiNetworkConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC0578D2C17D37A00312DB4 /* ApiNetworkConfig.swift */; };
 		FDC057922C17D37A00312DB4 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC0578E2C17D37A00312DB4 /* Endpoint.swift */; };
 		FDC057932C17D37A00312DB4 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC0578F2C17D37A00312DB4 /* NetworkService.swift */; };
@@ -94,6 +99,11 @@
 		FD2D76E62C1526F100BBDEF4 /* RootCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootCoordinator.swift; sourceTree = "<group>"; };
 		FD2D76E92C1527B500BBDEF4 /* MainViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewViewModel.swift; sourceTree = "<group>"; };
 		FD2D76EB2C15288800BBDEF4 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		FD81D1112C2E695800098C59 /* MockCharacterDataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockCharacterDataRepository.swift; sourceTree = "<group>"; };
+		FD81D1132C2E697F00098C59 /* MockLocationRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockLocationRepository.swift; sourceTree = "<group>"; };
+		FD81D1152C2E69A900098C59 /* TestLocationUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestLocationUseCase.swift; sourceTree = "<group>"; };
+		FD81D1182C2E69F300098C59 /* Network+DataTransferTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Network+DataTransferTests.swift"; sourceTree = "<group>"; };
+		FD81D11B2C2E6A5400098C59 /* locations.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = locations.json; sourceTree = "<group>"; };
 		FDC0578D2C17D37A00312DB4 /* ApiNetworkConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiNetworkConfig.swift; sourceTree = "<group>"; };
 		FDC0578E2C17D37A00312DB4 /* Endpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		FDC0578F2C17D37A00312DB4 /* NetworkService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
@@ -201,6 +211,9 @@
 		FD2D76C02C151E6300BBDEF4 /* RickAndMortyTests */ = {
 			isa = PBXGroup;
 			children = (
+				FD81D11A2C2E6A2400098C59 /* Resources */,
+				FD81D1172C2E69E400098C59 /* Infastructure  */,
+				FD81D10F2C2E691900098C59 /* Domain */,
 				FD2D76C12C151E6300BBDEF4 /* RickAndMortyTests.swift */,
 			);
 			path = RickAndMortyTests;
@@ -284,6 +297,40 @@
 				FD2D76EB2C15288800BBDEF4 /* MainViewController.swift */,
 			);
 			path = MainView;
+			sourceTree = "<group>";
+		};
+		FD81D10F2C2E691900098C59 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				FD81D1102C2E692100098C59 /* Mocks */,
+				FD81D1152C2E69A900098C59 /* TestLocationUseCase.swift */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		FD81D1102C2E692100098C59 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				FD81D1112C2E695800098C59 /* MockCharacterDataRepository.swift */,
+				FD81D1132C2E697F00098C59 /* MockLocationRepository.swift */,
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
+		FD81D1172C2E69E400098C59 /* Infastructure  */ = {
+			isa = PBXGroup;
+			children = (
+				FD81D1182C2E69F300098C59 /* Network+DataTransferTests.swift */,
+			);
+			path = "Infastructure ";
+			sourceTree = "<group>";
+		};
+		FD81D11A2C2E6A2400098C59 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				FD81D11B2C2E6A5400098C59 /* locations.json */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		FDC057972C17D62E00312DB4 /* Repositories */ = {
@@ -586,6 +633,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FD81D11C2C2E6A5400098C59 /* locations.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -657,6 +705,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				FD2D76C22C151E6300BBDEF4 /* RickAndMortyTests.swift in Sources */,
+				FD81D1192C2E69F300098C59 /* Network+DataTransferTests.swift in Sources */,
+				FD81D1142C2E697F00098C59 /* MockLocationRepository.swift in Sources */,
+				FD81D1162C2E69A900098C59 /* TestLocationUseCase.swift in Sources */,
+				FD81D1122C2E695800098C59 /* MockCharacterDataRepository.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
