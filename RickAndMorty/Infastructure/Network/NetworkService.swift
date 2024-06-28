@@ -35,18 +35,38 @@ public protocol CancellableHttpRequest {
     func cancel()
 }
 
+public class CancellableHttpRequestCollection {
+    private (set) var requests: [CancellableHttpRequest] = []
+    
+    func add(request: CancellableHttpRequest) {
+        requests.append(request)
+    }
+    
+    func cancelAll() {
+        for request in requests {
+            request.cancel()
+        }
+    }
+}
+
 extension URLSessionDataTask: CancellableHttpRequest{}
 
 public protocol NetworkService {
     typealias CompletionHandler = (Result<Data?, NetworkError>) -> Void
+    typealias TaskType = Task<Data, Error>
     
     func request(endpoint: any RequestableEndpoint, completion: @escaping CompletionHandler) -> CancellableHttpRequest?
+    @available(iOS 16, *)
+    func request(endpoint: any RequestableEndpoint) async -> TaskType
 }
 
 public protocol NetworkSessionManager {
     typealias CompletionHandler = (Data?, URLResponse?, Error?) -> Void
+    typealias TaskType = Task<(Data, URLResponse), Error>
     
     func request(_ request: URLRequest, completion: @escaping CompletionHandler) -> CancellableHttpRequest
+    @available(iOS 16, *)
+    func request(_ request: URLRequest) async throws -> TaskType
 }
 
 public enum NetworkSessionManagerType {
@@ -90,11 +110,11 @@ public extension NetworkLoggerType {
 }
 
 public final class DefaultNetworkService {
-    private let networkConfig: ApiNetworkConfig
+    private let networkConfig: ApiNetworkConfig?
     private let sessionManagerType: NetworkSessionManagerType
     private let loggerType: NetworkLoggerType
     
-    public init(networkConfig: ApiNetworkConfig, sessionManagerType: NetworkSessionManagerType, loggerType: NetworkLoggerType) {
+    public init(networkConfig: ApiNetworkConfig?, sessionManagerType: NetworkSessionManagerType, loggerType: NetworkLoggerType) {
         self.networkConfig = networkConfig
         self.sessionManagerType = sessionManagerType
         self.loggerType = loggerType
@@ -130,6 +150,29 @@ public final class DefaultNetworkService {
         return dataTask
     }
     
+    @available(iOS 16, *)
+    private func request(request: URLRequest) async throws -> TaskType {
+        let task = TaskType {
+            do {
+                let (data, response) = try await sessionManagerType.sessionManager.request(request).value
+    
+                if let response = response as? HTTPURLResponse, !(200...300).contains(response.statusCode) {
+                    let error: NetworkError = .error(statusCode: response.statusCode, data: data)
+                    self.loggerType.logger.log(error: error)
+                    throw error
+                }
+    
+                self.loggerType.logger.log(responseData: data, response: response)
+                return data
+            } catch {
+                self.loggerType.logger.log(error: error)
+                throw self.resolve(error: error)
+            }
+        }
+        
+        return task
+    }
+    
     private func resolve(error: Error) -> NetworkError {
         let code = URLError.Code(rawValue: (error as NSError).code)
         switch code {
@@ -144,6 +187,22 @@ public final class DefaultNetworkService {
 }
 
 extension DefaultNetworkService: NetworkService {
+    @available(iOS 16, *)
+    public func request(endpoint: any RequestableEndpoint) async -> TaskType {
+        let task = TaskType {
+            do {
+                let request = try endpoint.urlRequest(with: networkConfig)
+                return try await self.request(request: request).value
+            } catch let error as NetworkError {
+                throw error
+            } catch {
+                throw NetworkError.urlGeneration
+            }
+        }
+        
+        return task
+    }
+    
     public func request(endpoint: any RequestableEndpoint, completion: @escaping CompletionHandler) -> (any CancellableHttpRequest)? {
         do {
             let request = try endpoint.urlRequest(with: networkConfig)
@@ -160,6 +219,16 @@ extension DefaultNetworkService: NetworkService {
 
 public final class DefaultNetworkSessionManager: NetworkSessionManager {
     public init(){}
+    
+    @available(iOS 16, *)
+    public func request(_ request: URLRequest) async throws -> TaskType {
+        let task = TaskType {
+            return try await URLSession.shared.data(for: request)
+        }
+        
+        return task
+    }
+    
     public func request(_ request: URLRequest, completion: @escaping CompletionHandler) -> any CancellableHttpRequest {
         let task = URLSession.shared.dataTask(with: request, completionHandler: completion)
         task.resume()
