@@ -18,7 +18,7 @@ final class MainViewController: UIViewController, Presentable {
     }()
     
     var viewModel: (any ViewModel)?
-    weak var coordinator: Coordinator?
+    weak var coordinator: MainCoordinator?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,7 +38,7 @@ final class MainViewController: UIViewController, Presentable {
 //        }
     }
     
-    static func create(with viewModel: (any ViewModel)?) -> any Presentable {
+    static func create(with viewModel: (any ViewModel)?) -> MainViewController {
         let viewController = MainViewController()
         viewController.viewModel = viewModel
         return viewController

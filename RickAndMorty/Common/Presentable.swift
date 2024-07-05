@@ -8,11 +8,14 @@
 import Foundation
 import UIKit
 
-protocol Presentable: UIViewController {
+protocol Presentable: UIViewController where AnyCoordinator: Coordinator, AnyViewController: UIViewController {
+    
+    associatedtype AnyCoordinator
+    associatedtype AnyViewController
     
     var viewModel: ViewModel? {get set}
-    var coordinator: Coordinator? {get set}
+    var coordinator: AnyCoordinator? {get set}
     
+    static func create(with viewModel: ViewModel?) -> AnyViewController
     func setConstraints()
-    static func create(with viewModel: ViewModel?) -> Presentable
 }
