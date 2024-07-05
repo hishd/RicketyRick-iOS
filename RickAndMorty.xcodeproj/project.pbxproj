@@ -25,6 +25,8 @@
 		FD81D1192C2E69F300098C59 /* Network+DataTransferTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD81D1182C2E69F300098C59 /* Network+DataTransferTests.swift */; };
 		FD81D11C2C2E6A5400098C59 /* locations.json in Resources */ = {isa = PBXBuildFile; fileRef = FD81D11B2C2E6A5400098C59 /* locations.json */; };
 		FD81D11F2C369B4E00098C59 /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD81D11E2C369B4E00098C59 /* LaunchViewController.swift */; };
+		FD81D1212C37BDFE00098C59 /* Presentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD81D1202C37BDFE00098C59 /* Presentable.swift */; };
+		FD81D1232C37BEB100098C59 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD81D1222C37BEB100098C59 /* ViewModel.swift */; };
 		FDC057912C17D37A00312DB4 /* ApiNetworkConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC0578D2C17D37A00312DB4 /* ApiNetworkConfig.swift */; };
 		FDC057922C17D37A00312DB4 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC0578E2C17D37A00312DB4 /* Endpoint.swift */; };
 		FDC057932C17D37A00312DB4 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC0578F2C17D37A00312DB4 /* NetworkService.swift */; };
@@ -106,6 +108,8 @@
 		FD81D1182C2E69F300098C59 /* Network+DataTransferTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Network+DataTransferTests.swift"; sourceTree = "<group>"; };
 		FD81D11B2C2E6A5400098C59 /* locations.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = locations.json; sourceTree = "<group>"; };
 		FD81D11E2C369B4E00098C59 /* LaunchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchViewController.swift; sourceTree = "<group>"; };
+		FD81D1202C37BDFE00098C59 /* Presentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Presentable.swift; sourceTree = "<group>"; };
+		FD81D1222C37BEB100098C59 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		FDC0578D2C17D37A00312DB4 /* ApiNetworkConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiNetworkConfig.swift; sourceTree = "<group>"; };
 		FDC0578E2C17D37A00312DB4 /* Endpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		FDC0578F2C17D37A00312DB4 /* NetworkService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
@@ -429,6 +433,8 @@
 			children = (
 				FDC057BE2C17F34F00312DB4 /* Helpers.swift */,
 				FDC057DA2C18B72F00312DB4 /* Cancellable.swift */,
+				FD81D1202C37BDFE00098C59 /* Presentable.swift */,
+				FD81D1222C37BEB100098C59 /* ViewModel.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -668,6 +674,7 @@
 				FDC057AC2C17E00100312DB4 /* FetchCharactersUseCase.swift in Sources */,
 				FDC057B22C17E23200312DB4 /* SearchLocationsUseCase.swift in Sources */,
 				FDC057BA2C17E4C000312DB4 /* CharacterResponseDTO+Mapping.swift in Sources */,
+				FD81D1232C37BEB100098C59 /* ViewModel.swift in Sources */,
 				FDC057932C17D37A00312DB4 /* NetworkService.swift in Sources */,
 				FDC057A52C17DDEA00312DB4 /* Episode.swift in Sources */,
 				FD2D76EC2C15288800BBDEF4 /* MainViewController.swift in Sources */,
@@ -679,6 +686,7 @@
 				FDC057BC2C17F1A900312DB4 /* LocationResponseDTO+Mapping.swift in Sources */,
 				FD2D76E52C15268800BBDEF4 /* Coordinator.swift in Sources */,
 				FDC057A72C17DF9C00312DB4 /* UseCase.swift in Sources */,
+				FD81D1212C37BDFE00098C59 /* Presentable.swift in Sources */,
 				FDC057EE2C1941D500312DB4 /* FetchLocationUseCase.swift in Sources */,
 				FDC057D52C18AD6000312DB4 /* CharacterRepositoryPrimaryFallback.swift in Sources */,
 				FDC057A32C17DC8600312DB4 /* Location.swift in Sources */,

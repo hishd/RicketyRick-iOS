@@ -8,8 +8,7 @@
 import Foundation
 import UIKit
 
-final class MainViewController: UIViewController {
-    
+final class MainViewController: UIViewController, Presentable {
     lazy var textLabel: UILabel = {
         let label = UILabel()
         label.text = "Hello World"
@@ -18,12 +17,16 @@ final class MainViewController: UIViewController {
         return label
     }()
     
-    private var viewModel: MainViewViewModel!
+    var viewModel: (any ViewModel)?
     weak var coordinator: Coordinator?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setConstraints()
+    }
+    
+    func setConstraints() {
         view.backgroundColor = .white
         view.addSubview(textLabel)
         
@@ -35,7 +38,7 @@ final class MainViewController: UIViewController {
 //        }
     }
     
-    static func create(with viewModel: MainViewViewModel) -> MainViewController {
+    static func create(with viewModel: (any ViewModel)?) -> any Presentable {
         let viewController = MainViewController()
         viewController.viewModel = viewModel
         return viewController
