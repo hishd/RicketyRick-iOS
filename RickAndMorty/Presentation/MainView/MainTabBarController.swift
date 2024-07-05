@@ -21,15 +21,6 @@ final class MainTabBarController: UITabBarController {
         episodesCoordinator.start()
         locationsCoordinator.start()
         
-//        let viewController = UIViewController()
-//        
-//        let tabTitle = "Locations"
-//        let defaultImage = UIImage(systemName: "globe.europe.africa")
-//        let tabBarItem = UITabBarItem(title: tabTitle, image: defaultImage, tag: 0)
-//        
-//        viewController.title = tabTitle
-//        viewController.tabBarItem = tabBarItem
-        
         self.viewControllers = [
             charactersCoordinator.navigationController,
             episodesCoordinator.navigationController,
