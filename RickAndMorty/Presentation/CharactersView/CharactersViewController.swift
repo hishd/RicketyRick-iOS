@@ -15,14 +15,6 @@ class CharactersViewController: UIViewController, Presentable {
     static func create(with viewModel: (any ViewModel)?) -> CharactersViewController {
         let viewController = CharactersViewController()
         viewController.viewModel = viewModel
-        
-        let tabTitle = "Characters"
-        let defaultImage = UIImage(named: "person.text.rectangle")
-        let tabBarItem = UITabBarItem(title: tabTitle, image: defaultImage, tag: 0)
-        
-        viewController.title = tabTitle
-        viewController.tabBarItem = tabBarItem
-        
         return viewController
     }
     
