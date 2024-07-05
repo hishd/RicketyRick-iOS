@@ -1,14 +1,14 @@
 //
-//  RootCoordinator.swift
+//  MainViewCoordinator.swift
 //  RickAndMorty
 //
-//  Created by Hishara Dilshan on 2024-06-09.
+//  Created by Hishara Dilshan on 2024-07-05.
 //
 
 import Foundation
 import UIKit
 
-class RootCoordinator: NSObject, Coordinator {
+class MainCoordinator: NSObject, Coordinator {
     var navigationController: UINavigationController
     var childCoordinators: [any Coordinator] = []
     
@@ -17,19 +17,15 @@ class RootCoordinator: NSObject, Coordinator {
     }
     
     func start() {
-        navigationController.delegate = self
-        let viewController = LaunchViewController.create(with: nil)
+        self.navigationController.viewControllers.removeFirst()
+        let viewModel = MainViewViewModel()
+        let viewController = MainViewController.create(with: viewModel)
         viewController.coordinator = self
-        navigationController.pushViewController(viewController, animated: false)
-    }
-    
-    func navigateToMainView() {
-        let coordinator = MainCoordinator(navigationController: self.navigationController)
-        coordinator.start()
+        self.navigationController.pushViewController(viewController, animated: false)
     }
 }
 
-extension RootCoordinator: UINavigationControllerDelegate {
+extension MainCoordinator: UINavigationControllerDelegate {
     func navigationController(_ navigationController: UINavigationController, didShow viewController: UIViewController, animated: Bool) {
         guard let sourceViewController = navigationController.transitionCoordinator?.viewController(forKey: .from) else {
             return
@@ -39,12 +35,8 @@ extension RootCoordinator: UINavigationControllerDelegate {
             return
         }
         
-        if let viewController = sourceViewController as? LaunchViewController {
+        if let viewController = sourceViewController as? MainViewController {
             childDidFinish(viewController.coordinator)
         }
-        
-//        if let viewController = sourceViewController as? SecondViewControllerType {
-//            childDidFinish(viewController.coordinator)
-//        }
     }
 }
