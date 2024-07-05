@@ -1,5 +1,5 @@
 //
-//  MainViewCoordinator.swift
+//  CharactersCoordinator.swift
 //  RickAndMorty
 //
 //  Created by Hishara Dilshan on 2024-07-05.
@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class MainCoordinator: NSObject, Coordinator {
+class CharactersCoordinator: NSObject, Coordinator {
     var navigationController: UINavigationController
     var childCoordinators: [any Coordinator] = []
     
@@ -17,25 +17,25 @@ class MainCoordinator: NSObject, Coordinator {
     }
     
     func start() {
-        self.navigationController.viewControllers.removeFirst()
-        let viewModel = MainViewViewModel()
-        let viewController = MainViewController.create(with: viewModel)
+        let viewModel = CharactersViewModel()
+        let viewController = CharactersViewController.create(with: viewModel)
         viewController.coordinator = self
+        self.navigationController.delegate = self
         self.navigationController.pushViewController(viewController, animated: false)
     }
 }
 
-extension MainCoordinator: UINavigationControllerDelegate {
+extension CharactersCoordinator: UINavigationControllerDelegate {
     func navigationController(_ navigationController: UINavigationController, didShow viewController: UIViewController, animated: Bool) {
         guard let sourceViewController = navigationController.transitionCoordinator?.viewController(forKey: .from) else {
             return
         }
-        
+
         if navigationController.viewControllers.contains(sourceViewController) {
             return
         }
-        
-        if let viewController = sourceViewController as? MainViewController {
+
+        if let viewController = sourceViewController as? CharactersViewController {
             childDidFinish(viewController.coordinator)
         }
     }

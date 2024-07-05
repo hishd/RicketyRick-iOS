@@ -11,10 +11,9 @@ import SwiftUI
 import AVFoundation
 import OSLog
 
-class LaunchViewController: UIViewController, Presentable {
-    var viewModel: (any ViewModel)?
-    weak var coordinator: RootCoordinator?
+class LaunchViewController: UIViewController {
     private var soundEffect: AVAudioPlayer?
+    var onComplete: ((UIViewController) -> Void)?
     
     lazy var titleImage: UIImageView = {
         let imageView = UIImageView(image: .imgTitle)
@@ -49,12 +48,6 @@ class LaunchViewController: UIViewController, Presentable {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         animateViews()
-    }
-    
-    static func create(with viewModel: (any ViewModel)?) -> LaunchViewController {
-        let viewController = LaunchViewController()
-        viewController.viewModel = viewModel
-        return viewController
     }
     
     func setConstraints() {
@@ -173,8 +166,16 @@ extension LaunchViewController {
             guard let strongSelf = self else { return }
             strongSelf.titleImage.center.y = strongSelf.titleImage.center.y - (strongSelf.view.bounds.height/2)
         } completion: { [weak self] _ in
-            self?.coordinator?.navigateToMainView()
+            self?.launchNext()
         }
+    }
+    
+    func launchNext() {
+        guard let onComplete = onComplete else {
+            return
+        }
+        
+        onComplete(self)
     }
 }
 
