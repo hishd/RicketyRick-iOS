@@ -10,6 +10,8 @@ import Foundation
 class CharactersViewModel: ViewModel {
     
     private var dispatchWorkItem: DispatchWorkItem?
+    var onSuccess: (() -> Void)?
+    var onError: ((_ errorString: String) -> Void)?
     
     var characters: [Character] = {
         Array(0...10).map { number in
@@ -30,11 +32,23 @@ class CharactersViewModel: ViewModel {
     }()
     
     func fetchData() {
+        guard let onError = self.onError, let onSuccess = onSuccess else {
+            fatalError("onSuccess and onError not implemented in view controller")
+        }
         
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            onError("Failed to load characters")
+        }
     }
     
     private func performSearch(for text: String) {
+        guard let onError = self.onError, let onSuccess = onSuccess else {
+            fatalError("onSuccess and onError not implemented in view controller")
+        }
         
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            onError("Failed to load characters")
+        }
     }
     
     func searchData(searchText: String) {

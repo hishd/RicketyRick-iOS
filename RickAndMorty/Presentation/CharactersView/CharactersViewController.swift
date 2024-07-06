@@ -45,6 +45,12 @@ final class CharactersViewController: UIViewController, Presentable {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
         setConstraints()
+        bindViewModel()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        loadCharacterData()
     }
     
     static func create(with viewModel: CharactersViewModel?) -> CharactersViewController {
@@ -82,13 +88,6 @@ final class CharactersViewController: UIViewController, Presentable {
         view.addSubview(progressIndicator)
         progressIndicator.attachedView = tableView
         progressIndicator.center(inView: tableView)
-        
-        #warning("Remove after testing")
-        progressIndicator.startAnimating()
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            self.progressIndicator.stopAnimating()
-        }
     }
 }
 
@@ -96,7 +95,40 @@ extension CharactersViewController {
     @objc func refreshData(_ sender: Any) {
         self.searchBar.text = ""
         viewModel?.fetchData()
-        refreshControl.endRefreshing()
+    }
+    
+    func loadCharacterData() {
+        #warning("Remove after testing")
+        progressIndicator.startAnimating()
+        viewModel?.fetchData()
+    }
+    
+    func searchCharacterData(text: String) {
+        if text.isEmpty {
+            progressIndicator.stopAnimating()
+        } else {
+            progressIndicator.startAnimating()
+        }
+        
+        viewModel?.searchData(searchText: text)
+    }
+    
+    func bindViewModel() {
+        viewModel?.onSuccess = {
+            DispatchQueue.main.async { [weak self] in
+                self?.refreshControl.endRefreshing()
+                self?.progressIndicator.stopAnimating()
+                self?.tableView.reloadData()
+            }
+        }
+        
+        viewModel?.onError = { [weak self] errorString in
+            self?.progressIndicator.stopAnimating()
+            self?.refreshControl.endRefreshing()
+            let errorAlert = UIAlertController(title: "Operation Error", message: errorString, preferredStyle: .alert)
+            errorAlert.addAction(.init(title: "Ok", style: .cancel))
+            self?.present(errorAlert, animated: true)
+        }
     }
 }
 
@@ -106,11 +138,17 @@ extension CharactersViewController: UISearchBarDelegate {
             return
         }
         
-        viewModel?.searchData(searchText: text)
+        self.searchCharacterData(text: text)
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
+        
+        guard let text = searchBar.text else {
+            return
+        }
+        
+        self.searchCharacterData(text: text)
     }
 }
 
