@@ -129,12 +129,14 @@ extension CharactersViewController {
             }
         }
         
-        viewModel?.onError = { [weak self] errorString in
-            self?.progressIndicator.stopAnimating()
-            self?.refreshControl.endRefreshing()
-            let errorAlert = UIAlertController(title: "Operation Error", message: errorString, preferredStyle: .alert)
-            errorAlert.addAction(.init(title: "Ok", style: .cancel))
-            self?.present(errorAlert, animated: true)
+        viewModel?.onError = { errorString in
+            DispatchQueue.main.async { [weak self] in
+                self?.progressIndicator.stopAnimating()
+                self?.refreshControl.endRefreshing()
+                let errorAlert = UIAlertController(title: "Operation Error", message: errorString, preferredStyle: .alert)
+                errorAlert.addAction(.init(title: "Ok", style: .cancel))
+                self?.present(errorAlert, animated: true)
+            }
         }
     }
 }
