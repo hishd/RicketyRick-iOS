@@ -25,4 +25,8 @@ class CharactersViewModel: ViewModel {
             )
         }
     }()
+    
+    func fetchCharacters() {
+        
+    }
 }

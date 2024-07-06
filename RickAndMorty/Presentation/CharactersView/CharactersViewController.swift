@@ -34,6 +34,12 @@ final class CharactersViewController: UIViewController, Presentable {
     
     private lazy var progressIndicator: ProgressView = ProgressView()
     
+    private lazy var refreshControl: UIRefreshControl = {
+        let control = UIRefreshControl()
+        control.addTarget(self, action: #selector(refreshData(_:)), for: .valueChanged)
+        return control
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
@@ -70,14 +76,26 @@ final class CharactersViewController: UIViewController, Presentable {
             paddingRight: 10
         )
         
+        tableView.addSubview(refreshControl)
+        
         view.addSubview(progressIndicator)
         progressIndicator.attachedView = tableView
         progressIndicator.center(inView: tableView)
+        
+        #warning("Remove after testing")
         progressIndicator.startAnimating()
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             self.progressIndicator.stopAnimating()
         }
+    }
+}
+
+extension CharactersViewController {
+    @objc func refreshData(_ sender: Any) {
+        self.searchBar.text = ""
+        viewModel?.fetchCharacters()
+        refreshControl.endRefreshing()
     }
 }
 
