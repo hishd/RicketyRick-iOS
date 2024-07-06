@@ -18,6 +18,7 @@ final class CharactersViewController: UIViewController, Presentable {
         searchBar.placeholder = "Search Character"
         searchBar.searchBarStyle = .minimal
         searchBar.returnKeyType = .done
+        searchBar.enablesReturnKeyAutomatically = false
         searchBar.delegate = self
         return searchBar
     }()
@@ -94,17 +95,18 @@ final class CharactersViewController: UIViewController, Presentable {
 extension CharactersViewController {
     @objc func refreshData(_ sender: Any) {
         self.searchBar.text = ""
-        viewModel?.fetchCharacters()
+        viewModel?.fetchData()
         refreshControl.endRefreshing()
     }
 }
 
 extension CharactersViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        guard let text = searchBar.text, !text.isEmpty else {
+        guard let text = searchBar.text else {
             return
         }
-        print(text)
+        
+        viewModel?.searchData(searchText: text)
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {

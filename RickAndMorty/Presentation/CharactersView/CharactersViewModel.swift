@@ -8,6 +8,9 @@
 import Foundation
 
 class CharactersViewModel: ViewModel {
+    
+    private var dispatchWorkItem: DispatchWorkItem?
+    
     var characters: [Character] = {
         Array(0...10).map { number in
             return Character.init(
@@ -26,7 +29,30 @@ class CharactersViewModel: ViewModel {
         }
     }()
     
-    func fetchCharacters() {
+    func fetchData() {
+        
+    }
+    
+    private func performSearch(for text: String) {
+        
+    }
+    
+    func searchData(searchText: String) {
+        dispatchWorkItem?.cancel()
+        
+        guard !searchText.isEmpty else {
+            return
+        }
+        
+        dispatchWorkItem = DispatchWorkItem { [weak self] in
+            print("Fetching data for text \(searchText)")
+            self?.performSearch(for: searchText)
+        }
+        
+        DispatchQueue.global().asyncAfter(deadline: .now() + 0.75, execute: dispatchWorkItem!)
+    }
+    
+    func cancelAllOperations() {
         
     }
 }
