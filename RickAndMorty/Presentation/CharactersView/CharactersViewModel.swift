@@ -8,7 +8,7 @@
 import Foundation
 
 final class CharactersViewModel: ViewModel {
-    
+    let paginationThreshold: Int = 5
     private let characterRepository: CharacterRepository
     private var fetchCharactersUseCase: FetchCharactersUseCase?
     private var dispatchWorkItem: DispatchWorkItem?
@@ -34,7 +34,36 @@ final class CharactersViewModel: ViewModel {
             completionHandler: { [weak self] result in
                 switch result {
                 case .success(let page):
+                    self?.currentPage = 1
                     self?.characters.removeAll()
+                    self?.characters.append(contentsOf: page.characters)
+                    self?.totalPages = page.pages
+                    onSuccess()
+                case .failure(let error):
+                    onError(error.localizedDescription)
+                }
+            }
+        )
+        
+        self.cancellableRequest = fetchCharactersUseCase?.execute()
+    }
+    
+    func loadMoreCharacters() {
+        guard currentPage < totalPages else {
+            return
+        }
+        
+        guard let onError = self.onError, let onSuccess = onSuccess else {
+            fatalError("onSuccess and onError not implemented in view controller")
+        }
+        
+        self.fetchCharactersUseCase = .init(
+            repository: self.characterRepository,
+            page: currentPage + 1,
+            completionHandler: { [weak self] result in
+                switch result {
+                case .success(let page):
+                    self?.currentPage+=1
                     self?.characters.append(contentsOf: page.characters)
                     self?.totalPages = page.pages
                     onSuccess()

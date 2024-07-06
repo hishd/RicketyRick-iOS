@@ -172,11 +172,19 @@ extension CharactersViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        let cell = cell as! CharacterCell
-        cell.view.center.x = cell.view.center.x - cell.contentView.bounds.width / 2
-                
-        UIView.animate(withDuration: 0.75, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0) {
-            cell.view.center.x = cell.view.center.x + cell.contentView.bounds.width / 2
+//        let cell = cell as! CharacterCell
+//        cell.view.center.x = cell.view.center.x - cell.contentView.bounds.width / 2
+//                
+//        UIView.animate(withDuration: 0.75, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0) {
+//            cell.view.center.x = cell.view.center.x + cell.contentView.bounds.width / 2
+//        }
+        
+        guard let viewModel = viewModel else {
+            return
+        }
+        
+        if indexPath.row == viewModel.characters.count - viewModel.paginationThreshold {
+            viewModel.loadMoreCharacters()
         }
     }
     
