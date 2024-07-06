@@ -43,21 +43,21 @@ final class CharacterCell: UITableViewCell {
     private lazy var speciesContainer: DetailsContainerView = {
         let container = DetailsContainerView()
         container.icon.image = UIImage(systemName: "accessibility.fill")
-        container.text.text = "Species"
+        container.textLabel.text = "Species"
         return container
     }()
     
     private lazy var locationContainer: DetailsContainerView = {
         let container = DetailsContainerView()
         container.icon.image = UIImage(systemName: "mappin.circle.fill")
-        container.text.text = "Location"
+        container.textLabel.text = "Location"
         return container
     }()
     
     private lazy var episodesContainer: DetailsContainerView = {
         let container = DetailsContainerView()
         container.icon.image = UIImage(systemName: "tv.circle.fill")
-        container.text.text = "Episodes"
+        container.textLabel.text = "Episodes"
         return container
     }()
     
@@ -106,7 +106,8 @@ final class CharacterCell: UITableViewCell {
             left: characterImageView.rightAnchor,
             right: view.rightAnchor,
             paddingTop: 10,
-            paddingLeft: 20
+            paddingLeft: 10,
+            paddingRight: 5
         )
         
         view.addSubview(speciesContainer)
@@ -115,7 +116,8 @@ final class CharacterCell: UITableViewCell {
             left: characterImageView.rightAnchor,
             right: view.rightAnchor,
             paddingTop: 10,
-            paddingLeft: 20
+            paddingLeft: 10,
+            paddingRight: 5
         )
         
         view.addSubview(locationContainer)
@@ -124,7 +126,8 @@ final class CharacterCell: UITableViewCell {
             left: characterImageView.rightAnchor,
             right: view.rightAnchor,
             paddingTop: 8,
-            paddingLeft: 20
+            paddingLeft: 10,
+            paddingRight: 5
         )
         
         view.addSubview(episodesContainer)
@@ -133,13 +136,15 @@ final class CharacterCell: UITableViewCell {
             left: characterImageView.rightAnchor,
             right: view.rightAnchor,
             paddingTop: 8,
-            paddingLeft: 20
+            paddingLeft: 10,
+            paddingRight: 5
         )
         
         view.addSubview(lifeStatusContainer)
-        lifeStatusContainer.centerYAnchor.constraint(equalTo: episodesContainer.centerYAnchor).isActive = true
         lifeStatusContainer.anchor(
+            bottom: view.bottomAnchor,
             right: view.rightAnchor,
+            paddingBottom: 10,
             paddingRight: 10
         )
     }
@@ -149,11 +154,48 @@ final class CharacterCell: UITableViewCell {
         
         view.layer.shadowPath = UIBezierPath(roundedRect: view.bounds, cornerRadius: 10).cgPath
     }
+    
+    private func updateTitleToMultiLine() {
+        self.characterTitle.numberOfLines = 2
+        self.characterTitle.font = .systemFont(ofSize: 18, weight: .semibold)
+    }
+    
+    func setData(character: Character?) {
+        guard let character = character else {
+            return
+        }
+        
+        self.characterTitle.text = character.characterName
+        self.speciesContainer.textLabel.text = character.species
+        self.locationContainer.textLabel.text = character.lastLocation.locationName
+        self.lifeStatusContainer.characterStatus = character.status
+        
+        let episodeCount = character.episodes.count
+        self.episodesContainer.textLabel.text = "\(episodeCount) \(episodeCount > 1 ? "Episodes" : "Episode")"
+        
+        if character.characterName.count > 15 {
+            updateTitleToMultiLine()
+        }
+    }
 }
 
 final class LifeStatusContainer: UIView {
     
-    private let characterStatus: CharacterStatus
+    var characterStatus: CharacterStatus {
+        didSet {
+            switch characterStatus {
+            case .alive:
+                backgroundColor = .alive
+                statusTitle.text = "Alive"
+            case .dead:
+                backgroundColor = .red
+                statusTitle.text = "Dead"
+            case .unknown:
+                backgroundColor = .gray
+                statusTitle.text = "Unknown"
+            }
+        }
+    }
     
     lazy var statusTitle: UILabel = {
         let text = UILabel()
@@ -176,18 +218,6 @@ final class LifeStatusContainer: UIView {
         setDimensions(height: 26, width: 68)
         layer.cornerRadius = 10
         
-        switch characterStatus {
-        case .alive:
-            backgroundColor = .green
-            statusTitle.text = "Alive"
-        case .dead:
-            backgroundColor = .red
-            statusTitle.text = "Dead"
-        case .unknown:
-            backgroundColor = .gray
-            statusTitle.text = "Unknown"
-        }
-        
         self.addSubview(statusTitle)
         statusTitle.center(inView: self)
     }
@@ -203,10 +233,11 @@ final class DetailsContainerView: UIView {
         return imageView
     }()
     
-    lazy var text: UILabel = {
+    lazy var textLabel: UILabel = {
         let text = UILabel()
         text.text = "Placeholder"
-        text.font = .systemFont(ofSize: 16, weight: .regular)
+        text.font = .systemFont(ofSize: 14, weight: .regular)
+        text.numberOfLines = 2
         text.textColor = .black
         return text
     }()
@@ -222,19 +253,16 @@ final class DetailsContainerView: UIView {
     
     private func setupView() {
         addSubview(icon)
-        addSubview(text)
+        addSubview(textLabel)
         
-        icon.anchor(
-            top: self.topAnchor,
-            left: self.leftAnchor,
-            bottom: self.bottomAnchor,
-            width: 18
-        )
+        icon.setDimensions(height: 22, width: 22)
+        icon.centerY(inView: self, leftAnchor: self.leftAnchor)
         
-        text.anchor(
+        textLabel.anchor(
             top: self.topAnchor,
             left: icon.rightAnchor,
             bottom: self.bottomAnchor,
+            right: self.rightAnchor,
             paddingLeft: 8
         )
     }

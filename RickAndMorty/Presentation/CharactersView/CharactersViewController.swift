@@ -46,10 +46,6 @@ final class CharactersViewController: UIViewController, Presentable {
         view.backgroundColor = .systemBackground
         setConstraints()
         bindViewModel()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
         loadCharacterData()
     }
     
@@ -98,7 +94,6 @@ extension CharactersViewController {
     }
     
     func loadCharacterData() {
-        #warning("Remove after testing")
         progressIndicator.startAnimating()
         viewModel?.fetchData()
     }
@@ -159,6 +154,7 @@ extension CharactersViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: CharacterCell.reuseIdentifier, for: indexPath) as! CharacterCell
+        cell.setData(character: viewModel?.characters[indexPath.row])
         return cell
     }
     
@@ -172,7 +168,7 @@ extension CharactersViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 150
+        return 160
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

@@ -7,17 +7,20 @@
 
 import Foundation
 import UIKit
+import DependencyInjector
 
 class CharactersCoordinator: NSObject, Coordinator {
     var navigationController: UINavigationController
     var childCoordinators: [any Coordinator] = []
+    
+    @Injectable(\.characterRepository) var characterRepository: CharacterRepository
     
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
     }
     
     func start() {
-        let viewModel = CharactersViewModel()
+        let viewModel = CharactersViewModel(characterRepository: self.characterRepository)
         let viewController = CharactersViewController.create(with: viewModel)
         
         let tabTitle = "Characters"

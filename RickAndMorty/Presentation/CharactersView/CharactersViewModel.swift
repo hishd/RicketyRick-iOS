@@ -9,36 +9,42 @@ import Foundation
 
 class CharactersViewModel: ViewModel {
     
+    let characterRepository: CharacterRepository
+    var fetchCharactersUseCase: FetchCharactersUseCase?
     private var dispatchWorkItem: DispatchWorkItem?
     var onSuccess: (() -> Void)?
     var onError: ((_ errorString: String) -> Void)?
     
-    var characters: [Character] = {
-        Array(0...10).map { number in
-            return Character.init(
-                characterId: number,
-                characterName: "Character \(number)",
-                status: number.isMultiple(of: 2) ? CharacterStatus.alive : .dead,
-                species: "Species \(number)",
-                type: "Type \(number)",
-                gender: number.isMultiple(of: 2) ? "Male" : "Female",
-                origin: .init(originName: "Origin \(number)", locationUrl: nil),
-                lastLocation: .init(locationName: "Origin \(number)", locationUrl: nil),
-                imageUrl: nil,
-                episodes: .init(),
-                createdData: nil
-            )
-        }
-    }()
+    var characters: [Character] = .init()
+    var totalPages: Int = 0
+    var currentPage: Int = 0
+    var cancellableRequest: Cancellable?
+    
+    init(characterRepository: CharacterRepository) {
+        self.characterRepository = characterRepository
+    }
     
     func fetchData() {
         guard let onError = self.onError, let onSuccess = onSuccess else {
             fatalError("onSuccess and onError not implemented in view controller")
         }
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            onError("Failed to load characters")
-        }
+        self.fetchCharactersUseCase = .init(
+            repository: self.characterRepository,
+            completionHandler: { [weak self] result in
+                switch result {
+                case .success(let page):
+                    self?.characters.removeAll()
+                    self?.characters.append(contentsOf: page.characters)
+                    self?.totalPages = page.pages
+                    onSuccess()
+                case .failure(let error):
+                    onError(error.localizedDescription)
+                }
+            }
+        )
+        
+        self.cancellableRequest = fetchCharactersUseCase?.execute()
     }
     
     private func performSearch(for text: String) {

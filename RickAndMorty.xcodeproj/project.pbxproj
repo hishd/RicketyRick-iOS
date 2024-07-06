@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 60;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -72,6 +72,9 @@
 		FDC057EC2C19414000312DB4 /* FetchCharacterUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC057EB2C19414000312DB4 /* FetchCharacterUseCase.swift */; };
 		FDC057EE2C1941D500312DB4 /* FetchLocationUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC057ED2C1941D500312DB4 /* FetchLocationUseCase.swift */; };
 		FDC057F02C19423400312DB4 /* FetchEpisodeUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC057EF2C19423400312DB4 /* FetchEpisodeUseCase.swift */; };
+		FDD87CDD2C3961F20072E2A8 /* DependencyInjector in Frameworks */ = {isa = PBXBuildFile; productRef = FDD87CDC2C3961F20072E2A8 /* DependencyInjector */; };
+		FDD87CE02C3962DA0072E2A8 /* DependencyInjector.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD87CDF2C3962DA0072E2A8 /* DependencyInjector.swift */; };
+		FDD87CE32C3965EB0072E2A8 /* ApplicationConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD87CE22C3965EB0072E2A8 /* ApplicationConstants.swift */; };
 		FDE8CD042C1567DA00481F32 /* OSLog+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE8CD032C1567DA00481F32 /* OSLog+Extensions.swift */; };
 /* End PBXBuildFile section */
 
@@ -162,6 +165,8 @@
 		FDC057EB2C19414000312DB4 /* FetchCharacterUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchCharacterUseCase.swift; sourceTree = "<group>"; };
 		FDC057ED2C1941D500312DB4 /* FetchLocationUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchLocationUseCase.swift; sourceTree = "<group>"; };
 		FDC057EF2C19423400312DB4 /* FetchEpisodeUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchEpisodeUseCase.swift; sourceTree = "<group>"; };
+		FDD87CDF2C3962DA0072E2A8 /* DependencyInjector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyInjector.swift; sourceTree = "<group>"; };
+		FDD87CE22C3965EB0072E2A8 /* ApplicationConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationConstants.swift; sourceTree = "<group>"; };
 		FDE8CD032C1567DA00481F32 /* OSLog+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OSLog+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -170,6 +175,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FDD87CDD2C3961F20072E2A8 /* DependencyInjector in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -251,6 +257,8 @@
 		FD2D76DA2C151F3300BBDEF4 /* Application */ = {
 			isa = PBXGroup;
 			children = (
+				FDD87CE12C3965C70072E2A8 /* Constants */,
+				FDD87CDE2C3962C80072E2A8 /* DIContainer */,
 				FD2D76E22C15267300BBDEF4 /* Coordinator */,
 			);
 			path = Application;
@@ -558,6 +566,22 @@
 			path = Implementation;
 			sourceTree = "<group>";
 		};
+		FDD87CDE2C3962C80072E2A8 /* DIContainer */ = {
+			isa = PBXGroup;
+			children = (
+				FDD87CDF2C3962DA0072E2A8 /* DependencyInjector.swift */,
+			);
+			path = DIContainer;
+			sourceTree = "<group>";
+		};
+		FDD87CE12C3965C70072E2A8 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				FDD87CE22C3965EB0072E2A8 /* ApplicationConstants.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
 		FDE8CD022C1567C600481F32 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -595,6 +619,7 @@
 			);
 			name = RickAndMorty;
 			packageProductDependencies = (
+				FDD87CDC2C3961F20072E2A8 /* DependencyInjector */,
 			);
 			productName = RickAndMorty;
 			productReference = FD2D76A72C151E5E00BBDEF4 /* RickAndMorty.app */;
@@ -669,6 +694,7 @@
 			);
 			mainGroup = FD2D769E2C151E5E00BBDEF4;
 			packageReferences = (
+				FDD87CDB2C3961F20072E2A8 /* XCLocalSwiftPackageReference "../../Swift Packages/DependencyInjector" */,
 			);
 			productRefGroup = FD2D76A82C151E5E00BBDEF4 /* Products */;
 			projectDirPath = "";
@@ -728,8 +754,10 @@
 				FDC057E82C19339600312DB4 /* EpisodeRepositoryRemote.swift in Sources */,
 				FDC057BF2C17F34F00312DB4 /* Helpers.swift in Sources */,
 				FD81D1292C3814A700098C59 /* CharactersCoordinator.swift in Sources */,
+				FDD87CE02C3962DA0072E2A8 /* DependencyInjector.swift in Sources */,
 				FDC057B62C17E2D200312DB4 /* SearchEpisodesUseCase.swift in Sources */,
 				FDC057DB2C18B72F00312DB4 /* Cancellable.swift in Sources */,
+				FDD87CE32C3965EB0072E2A8 /* ApplicationConstants.swift in Sources */,
 				FDC057942C17D37A00312DB4 /* NetworkDataTransferService.swift in Sources */,
 				FDC057BC2C17F1A900312DB4 /* LocationResponseDTO+Mapping.swift in Sources */,
 				FD2D76E52C15268800BBDEF4 /* Coordinator.swift in Sources */,
@@ -1111,6 +1139,20 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		FDD87CDB2C3961F20072E2A8 /* XCLocalSwiftPackageReference "../../Swift Packages/DependencyInjector" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = "../../Swift Packages/DependencyInjector";
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		FDD87CDC2C3961F20072E2A8 /* DependencyInjector */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = DependencyInjector;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = FD2D769F2C151E5E00BBDEF4 /* Project object */;
 }
