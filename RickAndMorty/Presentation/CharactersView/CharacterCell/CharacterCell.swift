@@ -78,6 +78,21 @@ final class CharacterCell: UITableViewCell {
         super.init(coder: coder)
     }
     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        view.layer.shadowPath = UIBezierPath(roundedRect: view.bounds, cornerRadius: 10).cgPath
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        self.characterImageView.image = nil
+        self.characterImageView.cancelLoading()
+    }
+}
+
+extension CharacterCell {
     private func setupView() {
         self.selectionStyle = .none
         self.contentView.addSubview(view)
@@ -148,19 +163,6 @@ final class CharacterCell: UITableViewCell {
             paddingBottom: 10,
             paddingRight: 10
         )
-    }
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        
-        view.layer.shadowPath = UIBezierPath(roundedRect: view.bounds, cornerRadius: 10).cgPath
-    }
-    
-    override func prepareForReuse() {
-        super.prepareForReuse()
-        
-        self.characterImageView.image = nil
-        self.characterImageView.cancelLoading()
     }
     
     private func updateTitleToMultiLine() {
