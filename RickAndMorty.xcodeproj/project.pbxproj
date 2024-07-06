@@ -75,6 +75,7 @@
 		FDD87CDD2C3961F20072E2A8 /* DependencyInjector in Frameworks */ = {isa = PBXBuildFile; productRef = FDD87CDC2C3961F20072E2A8 /* DependencyInjector */; };
 		FDD87CE02C3962DA0072E2A8 /* DependencyInjector.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD87CDF2C3962DA0072E2A8 /* DependencyInjector.swift */; };
 		FDD87CE32C3965EB0072E2A8 /* ApplicationConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD87CE22C3965EB0072E2A8 /* ApplicationConstants.swift */; };
+		FDD87CE62C3981060072E2A8 /* ImageLoader in Frameworks */ = {isa = PBXBuildFile; productRef = FDD87CE52C3981060072E2A8 /* ImageLoader */; };
 		FDE8CD042C1567DA00481F32 /* OSLog+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE8CD032C1567DA00481F32 /* OSLog+Extensions.swift */; };
 /* End PBXBuildFile section */
 
@@ -176,6 +177,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FDD87CDD2C3961F20072E2A8 /* DependencyInjector in Frameworks */,
+				FDD87CE62C3981060072E2A8 /* ImageLoader in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -620,6 +622,7 @@
 			name = RickAndMorty;
 			packageProductDependencies = (
 				FDD87CDC2C3961F20072E2A8 /* DependencyInjector */,
+				FDD87CE52C3981060072E2A8 /* ImageLoader */,
 			);
 			productName = RickAndMorty;
 			productReference = FD2D76A72C151E5E00BBDEF4 /* RickAndMorty.app */;
@@ -695,6 +698,7 @@
 			mainGroup = FD2D769E2C151E5E00BBDEF4;
 			packageReferences = (
 				FDD87CDB2C3961F20072E2A8 /* XCLocalSwiftPackageReference "../../Swift Packages/DependencyInjector" */,
+				FDD87CE42C3981060072E2A8 /* XCLocalSwiftPackageReference "../../Swift Packages/ImageLoader" */,
 			);
 			productRefGroup = FD2D76A82C151E5E00BBDEF4 /* Products */;
 			projectDirPath = "";
@@ -1145,12 +1149,20 @@
 			isa = XCLocalSwiftPackageReference;
 			relativePath = "../../Swift Packages/DependencyInjector";
 		};
+		FDD87CE42C3981060072E2A8 /* XCLocalSwiftPackageReference "../../Swift Packages/ImageLoader" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = "../../Swift Packages/ImageLoader";
+		};
 /* End XCLocalSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
 		FDD87CDC2C3961F20072E2A8 /* DependencyInjector */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = DependencyInjector;
+		};
+		FDD87CE52C3981060072E2A8 /* ImageLoader */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = ImageLoader;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

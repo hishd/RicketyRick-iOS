@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import ImageLoader
 
 final class CharacterCell: UITableViewCell {
     
@@ -155,6 +156,13 @@ final class CharacterCell: UITableViewCell {
         view.layer.shadowPath = UIBezierPath(roundedRect: view.bounds, cornerRadius: 10).cgPath
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        self.characterImageView.image = nil
+        self.characterImageView.cancelLoading()
+    }
+    
     private func updateTitleToMultiLine() {
         self.characterTitle.numberOfLines = 2
         self.characterTitle.font = .systemFont(ofSize: 18, weight: .semibold)
@@ -175,6 +183,10 @@ final class CharacterCell: UITableViewCell {
         
         if character.characterName.count > 15 {
             updateTitleToMultiLine()
+        }
+        
+        if let url = character.imageUrl {
+            try? self.characterImageView.loadImage(from: url as NSURL, errorPlaceholderImage: .imgTitle)
         }
     }
 }
