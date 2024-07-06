@@ -94,6 +94,15 @@ extension CharactersViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let cell = cell as! CharacterCell
+        cell.view.center.x = cell.view.center.x - cell.contentView.bounds.width / 2
+                
+        UIView.animate(withDuration: 0.75, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0) {
+            cell.view.center.x = cell.view.center.x + cell.contentView.bounds.width / 2
+        }
+    }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 150
     }
