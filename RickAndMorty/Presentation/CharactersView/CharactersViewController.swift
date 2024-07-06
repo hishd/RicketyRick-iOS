@@ -9,11 +9,11 @@ import Foundation
 import UIKit
 import SwiftUI
 
-class CharactersViewController: UIViewController, Presentable {
+final class CharactersViewController: UIViewController, Presentable {
     var viewModel: CharactersViewModel?
     var coordinator: CharactersCoordinator?
     
-    lazy var searchBar: UISearchBar = {
+    private lazy var searchBar: UISearchBar = {
         let searchBar = UISearchBar()
         searchBar.placeholder = "Search Character"
         searchBar.searchBarStyle = .minimal
@@ -22,7 +22,7 @@ class CharactersViewController: UIViewController, Presentable {
         return searchBar
     }()
     
-    lazy var tableView: UITableView = {
+    private lazy var tableView: UITableView = {
         let tableView = UITableView()
         tableView.register(CharacterCell.self, forCellReuseIdentifier: CharacterCell.reuseIdentifier)
         tableView.separatorStyle = .none
@@ -31,6 +31,8 @@ class CharactersViewController: UIViewController, Presentable {
         tableView.showsVerticalScrollIndicator = false
         return tableView
     }()
+    
+    private lazy var progressIndicator: ProgressView = ProgressView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -68,6 +70,14 @@ class CharactersViewController: UIViewController, Presentable {
             paddingRight: 10
         )
         
+        view.addSubview(progressIndicator)
+        progressIndicator.attachedView = tableView
+        progressIndicator.center(inView: tableView)
+        progressIndicator.startAnimating()
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            self.progressIndicator.stopAnimating()
+        }
     }
 }
 

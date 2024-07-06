@@ -33,6 +33,7 @@
 		FD81D1302C3819E300098C59 /* EpisodesCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD81D12F2C3819E300098C59 /* EpisodesCoordinator.swift */; };
 		FD81D1322C3819F200098C59 /* LocationsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD81D1312C3819F200098C59 /* LocationsCoordinator.swift */; };
 		FD81D1352C385A0100098C59 /* CharacterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD81D1342C385A0100098C59 /* CharacterCell.swift */; };
+		FD81D1382C38C61800098C59 /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD81D1372C38C61800098C59 /* ProgressView.swift */; };
 		FDC057912C17D37A00312DB4 /* ApiNetworkConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC0578D2C17D37A00312DB4 /* ApiNetworkConfig.swift */; };
 		FDC057922C17D37A00312DB4 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC0578E2C17D37A00312DB4 /* Endpoint.swift */; };
 		FDC057932C17D37A00312DB4 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC0578F2C17D37A00312DB4 /* NetworkService.swift */; };
@@ -122,6 +123,7 @@
 		FD81D12F2C3819E300098C59 /* EpisodesCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodesCoordinator.swift; sourceTree = "<group>"; };
 		FD81D1312C3819F200098C59 /* LocationsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationsCoordinator.swift; sourceTree = "<group>"; };
 		FD81D1342C385A0100098C59 /* CharacterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCell.swift; sourceTree = "<group>"; };
+		FD81D1372C38C61800098C59 /* ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
 		FDC0578D2C17D37A00312DB4 /* ApiNetworkConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiNetworkConfig.swift; sourceTree = "<group>"; };
 		FDC0578E2C17D37A00312DB4 /* Endpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		FDC0578F2C17D37A00312DB4 /* NetworkService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
@@ -284,6 +286,7 @@
 		FD2D76DE2C151F8600BBDEF4 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				FD81D1362C38C60600098C59 /* Util */,
 				FD81D12A2C38154B00098C59 /* CharactersView */,
 				FD81D11D2C369B3E00098C59 /* Launch Screen */,
 				FD2D76E82C15279000BBDEF4 /* MainView */,
@@ -380,6 +383,14 @@
 				FD81D1342C385A0100098C59 /* CharacterCell.swift */,
 			);
 			path = CharacterCell;
+			sourceTree = "<group>";
+		};
+		FD81D1362C38C60600098C59 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				FD81D1372C38C61800098C59 /* ProgressView.swift */,
+			);
+			path = Util;
 			sourceTree = "<group>";
 		};
 		FDC057972C17D62E00312DB4 /* Repositories */ = {
@@ -735,6 +746,7 @@
 				FD2D76E12C15246C00BBDEF4 /* StoryBoarding.swift in Sources */,
 				FDC0579D2C17D85B00312DB4 /* LocationRepository.swift in Sources */,
 				FDC057922C17D37A00312DB4 /* Endpoint.swift in Sources */,
+				FD81D1382C38C61800098C59 /* ProgressView.swift in Sources */,
 				FDC057AE2C17E15300312DB4 /* SearchCharactersUseCase.swift in Sources */,
 				FD81D1322C3819F200098C59 /* LocationsCoordinator.swift in Sources */,
 				FD2D76E72C1526F100BBDEF4 /* RootCoordinator.swift in Sources */,

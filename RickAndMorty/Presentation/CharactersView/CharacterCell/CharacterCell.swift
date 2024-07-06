@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class CharacterCell: UITableViewCell {
+final class CharacterCell: UITableViewCell {
     
     lazy var view: UIView = {
         let view = UIView()
@@ -22,7 +22,7 @@ class CharacterCell: UITableViewCell {
         return view
     }()
     
-    lazy var characterImageView: UIImageView = {
+    private lazy var characterImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = .imgPlaceholder
         imageView.contentMode = .scaleAspectFill
@@ -32,7 +32,7 @@ class CharacterCell: UITableViewCell {
         return imageView
     }()
     
-    lazy var characterTitle: UILabel = {
+    private lazy var characterTitle: UILabel = {
         let text = UILabel()
         text.text = "Placeholder"
         text.font = .systemFont(ofSize: 22, weight: .semibold)
@@ -40,28 +40,28 @@ class CharacterCell: UITableViewCell {
         return text
     }()
     
-    lazy var speciesContainer: DetailsContainerView = {
+    private lazy var speciesContainer: DetailsContainerView = {
         let container = DetailsContainerView()
         container.icon.image = UIImage(systemName: "accessibility.fill")
         container.text.text = "Species"
         return container
     }()
     
-    lazy var locationContainer: DetailsContainerView = {
+    private lazy var locationContainer: DetailsContainerView = {
         let container = DetailsContainerView()
         container.icon.image = UIImage(systemName: "mappin.circle.fill")
         container.text.text = "Location"
         return container
     }()
     
-    lazy var episodesContainer: DetailsContainerView = {
+    private lazy var episodesContainer: DetailsContainerView = {
         let container = DetailsContainerView()
         container.icon.image = UIImage(systemName: "tv.circle.fill")
         container.text.text = "Episodes"
         return container
     }()
     
-    lazy var lifeStatusContainer: LifeStatusContainer = {
+    private lazy var lifeStatusContainer: LifeStatusContainer = {
         let container = LifeStatusContainer(characterStatus: .unknown)
         return container
     }()
@@ -77,7 +77,7 @@ class CharacterCell: UITableViewCell {
         super.init(coder: coder)
     }
     
-    func setupView() {
+    private func setupView() {
         self.selectionStyle = .none
         self.contentView.addSubview(view)
         
@@ -151,9 +151,9 @@ class CharacterCell: UITableViewCell {
     }
 }
 
-class LifeStatusContainer: UIView {
+final class LifeStatusContainer: UIView {
     
-    let characterStatus: CharacterStatus
+    private let characterStatus: CharacterStatus
     
     lazy var statusTitle: UILabel = {
         let text = UILabel()
@@ -172,7 +172,7 @@ class LifeStatusContainer: UIView {
         fatalError("Not implemented")
     }
     
-    func setupView() {
+    private func setupView() {
         setDimensions(height: 26, width: 68)
         layer.cornerRadius = 10
         
@@ -193,7 +193,7 @@ class LifeStatusContainer: UIView {
     }
 }
 
-class DetailsContainerView: UIView {
+final class DetailsContainerView: UIView {
     
     lazy var icon: UIImageView = {
         let imageView = UIImageView()
@@ -220,7 +220,7 @@ class DetailsContainerView: UIView {
         super.init(coder: coder)
     }
     
-    func setupView() {
+    private func setupView() {
         addSubview(icon)
         addSubview(text)
         
