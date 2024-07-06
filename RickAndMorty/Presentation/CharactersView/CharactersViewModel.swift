@@ -19,6 +19,8 @@ final class CharactersViewModel: ViewModel {
     private var currentPage: Int = 0
     private var cancellableRequest: Cancellable?
     
+    var searchText: String = .init()
+    
     init(characterRepository: CharacterRepository) {
         self.characterRepository = characterRepository
     }
@@ -27,6 +29,8 @@ final class CharactersViewModel: ViewModel {
         guard let onError = self.onError, let onSuccess = onSuccess else {
             fatalError("onSuccess and onError not implemented in view controller")
         }
+        
+        self.searchText = ""
         
         let fetchCharactersUseCase: FetchCharactersUseCase = .init(
             repository: self.characterRepository,
@@ -39,7 +43,9 @@ final class CharactersViewModel: ViewModel {
                     self?.totalPages = page.pages
                     onSuccess()
                 case .failure(let error):
-                    onError(error.localizedDescription)
+                    onError(
+                        self?.decodeError(error: error) ?? error.localizedDescription
+                    )
                 }
             }
         )
@@ -47,7 +53,7 @@ final class CharactersViewModel: ViewModel {
         self.cancellableRequest = fetchCharactersUseCase.execute()
     }
     
-    func searchData(searchText: String) {
+    func searchData() {
         dispatchWorkItem?.cancel()
         
         guard !searchText.isEmpty else {
@@ -56,6 +62,9 @@ final class CharactersViewModel: ViewModel {
         }
         
         dispatchWorkItem = DispatchWorkItem { [weak self] in
+            guard let searchText = self?.searchText else {
+                return
+            }
             print("Fetching data for text \(searchText)")
             self?.performSearch(for: searchText)
         }
@@ -67,10 +76,19 @@ final class CharactersViewModel: ViewModel {
         guard currentPage < totalPages else {
             return
         }
-                
-        self.cancellableRequest = buildFetchCharacterUseCaseWithPage(
-            page: self.currentPage + 1
-        ).execute()
+        
+        //If the search text is empty, then execute the normal flow with pagination
+        //Else execute the search flow with pagination
+        if searchText.isEmpty {
+            self.cancellableRequest = buildFetchCharacterUseCaseWithPage(
+                page: self.currentPage + 1
+            ).execute()
+        } else {
+            self.cancellableRequest = buildSearchCharacterUseCaseWithPage(
+                name: searchText,
+                page: self.currentPage + 1
+            ).execute()
+        }
     }
     
     private func performSearch(for text: String) {
@@ -80,6 +98,26 @@ final class CharactersViewModel: ViewModel {
         
         self.currentPage = 1
         
+        let searchCharactersUseCase: SearchCharactersUseCase = .init(
+            repository: self.characterRepository,
+            name: text,
+            completionHandler: {
+                [weak self] result in
+                switch result {
+                case .success(let page):
+                    self?.characters.removeAll()
+                    self?.characters.append(contentsOf: page.characters)
+                    self?.totalPages = page.pages
+                    onSuccess()
+                case .failure(let error):
+                    onError(
+                        self?.decodeError(error: error) ?? error.localizedDescription
+                    )
+                }
+            }
+        )
+        
+        self.cancellableRequest = searchCharactersUseCase.execute()
     }
     
     private func buildFetchCharacterUseCaseWithPage(page: Int) -> FetchCharactersUseCase {
@@ -98,7 +136,9 @@ final class CharactersViewModel: ViewModel {
                     self?.totalPages = page.pages
                     onSuccess()
                 case .failure(let error):
-                    onError(error.localizedDescription)
+                    onError(
+                        self?.decodeError(error: error) ?? error.localizedDescription
+                    )
                 }
             }
         )
@@ -122,7 +162,9 @@ final class CharactersViewModel: ViewModel {
                     self?.totalPages = page.pages
                     onSuccess()
                 case .failure(let error):
-                    onError(error.localizedDescription)
+                    onError(
+                        self?.decodeError(error: error) ?? error.localizedDescription
+                    )
                 }
             }
         )
@@ -131,4 +173,40 @@ final class CharactersViewModel: ViewModel {
     func cancelAllOperations() {
         cancellableRequest?.cancel()
     }
+    
+    private func decodeError(error: Error) -> String {
+        print(error)
+        
+        guard let dataTransferError = error as? NetworkDataTransferError else {
+            return "Unknown error occurred"
+        }
+        
+        return switch dataTransferError {
+        case .noResponse:
+            "No results found. Please try again later."
+        case .parsing(let error):
+            "Could not display results. Please try again later."
+        case .networkFailure(let networkError):
+            decodeNetworkError(error: networkError)
+        case .resolvedNetworkFailure(let error):
+            "Network error occurred. Please try again later."
+        }
+        
+        func decodeNetworkError(error: NetworkError) -> String {
+            return switch error {
+            case .error(let statusCode, let data):
+                error.isNotFoundError ? "Could not find the character" : "Unknown error occurred. Please try again later."
+            case .notConnected:
+                "Connection error. Please try again later."
+            case .cancelled:
+                "Operation is cancelled."
+            case .generic(let error):
+                "Unknown error occurred. Please try again later."
+            case .urlGeneration:
+                "Invalid request url found."
+            }
+        }
+    }
 }
+
+//extension

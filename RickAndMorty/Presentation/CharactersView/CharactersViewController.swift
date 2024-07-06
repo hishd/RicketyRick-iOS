@@ -112,12 +112,13 @@ extension CharactersViewController {
     }
     
     func searchCharacterData(text: String) {
+        self.viewModel?.searchText = text
         if text.isEmpty {
             progressIndicator.stopAnimating()
         } else {
             progressIndicator.startAnimating()
-            viewModel?.searchData(searchText: text)
         }
+        viewModel?.searchData()
     }
     
     func bindViewModel() {
@@ -143,21 +144,11 @@ extension CharactersViewController {
 
 extension CharactersViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        guard let text = searchBar.text else {
-            return
-        }
-        
-        self.searchCharacterData(text: text)
+        self.searchCharacterData(text: searchText)
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
-        
-        guard let text = searchBar.text else {
-            return
-        }
-        
-        self.searchCharacterData(text: text)
     }
 }
 
