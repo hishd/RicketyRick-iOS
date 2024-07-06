@@ -240,17 +240,21 @@ public final class DefaultNetworkDataLogger: NetworkLogger {
     public init(){}
     #if os(iOS)
     private func printData(request: URLRequest) {
+        #if DEBUG
         Logger.viewCycle.error("----NETWORK REQUEST----")
         Logger.viewCycle.error("Request: \(request.url!)")
         Logger.viewCycle.error("Headers: \(request.allHTTPHeaderFields!)")
         Logger.viewCycle.error("Method: \(request.httpMethod!)")
+        #endif
     }
     #elseif os(macOS)
     private func printData(request: URLRequest) {
+        #if DEBUG
         print("----NETWORK REQUEST----")
         print("Request: \(request.url!)")
         print("Headers: \(request.allHTTPHeaderFields!)")
         print("Method: \(request.httpMethod!)")
+        #endif
     }
     #endif
     

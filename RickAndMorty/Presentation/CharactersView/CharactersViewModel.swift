@@ -7,18 +7,18 @@
 
 import Foundation
 
-class CharactersViewModel: ViewModel {
+final class CharactersViewModel: ViewModel {
     
-    let characterRepository: CharacterRepository
-    var fetchCharactersUseCase: FetchCharactersUseCase?
+    private let characterRepository: CharacterRepository
+    private var fetchCharactersUseCase: FetchCharactersUseCase?
     private var dispatchWorkItem: DispatchWorkItem?
     var onSuccess: (() -> Void)?
     var onError: ((_ errorString: String) -> Void)?
     
     var characters: [Character] = .init()
-    var totalPages: Int = 0
-    var currentPage: Int = 0
-    var cancellableRequest: Cancellable?
+    private var totalPages: Int = 0
+    private var currentPage: Int = 0
+    private var cancellableRequest: Cancellable?
     
     init(characterRepository: CharacterRepository) {
         self.characterRepository = characterRepository
@@ -73,6 +73,6 @@ class CharactersViewModel: ViewModel {
     }
     
     func cancelAllOperations() {
-        
+        cancellableRequest?.cancel()
     }
 }

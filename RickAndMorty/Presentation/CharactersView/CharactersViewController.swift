@@ -49,6 +49,19 @@ final class CharactersViewController: UIViewController, Presentable {
         loadCharacterData()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        if let viewModel = self.viewModel, viewModel.characters.isEmpty {
+            loadCharacterData()
+        }
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        viewModel?.cancelAllOperations()
+    }
+    
     static func create(with viewModel: CharactersViewModel?) -> CharactersViewController {
         let viewController = CharactersViewController()
         viewController.viewModel = viewModel
