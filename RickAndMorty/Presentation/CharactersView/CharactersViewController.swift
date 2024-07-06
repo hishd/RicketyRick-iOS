@@ -67,7 +67,9 @@ final class CharactersViewController: UIViewController, Presentable {
         viewController.viewModel = viewModel
         return viewController
     }
-    
+}
+
+extension CharactersViewController {
     func setConstraints() {
         view.addSubview(searchBar)
         searchBar.anchor(
@@ -98,9 +100,7 @@ final class CharactersViewController: UIViewController, Presentable {
         progressIndicator.attachedView = tableView
         progressIndicator.center(inView: tableView)
     }
-}
-
-extension CharactersViewController {
+    
     @objc func refreshData(_ sender: Any) {
         self.searchBar.text = ""
         viewModel?.fetchData()
@@ -116,9 +116,8 @@ extension CharactersViewController {
             progressIndicator.stopAnimating()
         } else {
             progressIndicator.startAnimating()
+            viewModel?.searchData(searchText: text)
         }
-        
-        viewModel?.searchData(searchText: text)
     }
     
     func bindViewModel() {
