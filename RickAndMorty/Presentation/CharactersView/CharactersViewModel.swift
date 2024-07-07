@@ -13,6 +13,7 @@ final class CharactersViewModel: ViewModel {
     private var dispatchWorkItem: DispatchWorkItem?
     var onSuccess: (() -> Void)?
     var onError: ((_ errorString: String) -> Void)?
+    var onRefresh: (([IndexPath]) -> Void)?
     
     private var totalPages: Int = 0
     private var currentPage: Int = 0
@@ -96,6 +97,10 @@ final class CharactersViewModel: ViewModel {
         }
     }
     
+    func cancelAllOperations() {
+        cancellableRequest?.cancel()
+    }
+    
     private func performSearch(for text: String) {
         guard let onError = self.onError, let onSuccess = onSuccess else {
             fatalError("onSuccess and onError not implemented in view controller")
@@ -126,57 +131,71 @@ final class CharactersViewModel: ViewModel {
     }
     
     private func buildFetchCharacterUseCaseWithPage(page: Int) -> FetchCharactersUseCase {
-        guard let onError = self.onError, let onSuccess = onSuccess else {
-            fatalError("onSuccess and onError not implemented in view controller")
+        guard let onError = self.onError, let onRefresh = onRefresh else {
+            fatalError("onSuccess and onRefresh not implemented in view controller")
         }
         
         return .init(
             repository: self.characterRepository,
             page: page,
             completionHandler: { [weak self] result in
+                guard let self = self else { return }
                 switch result {
                 case .success(let page):
-                    self?.currentPage+=1
-                    self?.wrappedCharacters.append(contentsOf: page.characters)
-                    self?.totalPages = page.pages
-                    onSuccess()
+                    self.currentPage+=1
+                    self.wrappedCharacters.append(contentsOf: page.characters)
+                    self.totalPages = page.pages
+                    
+                    onRefresh(
+                        self.buildIndexPaths(upTo: page.characters.count)
+                    )
+                    
                 case .failure(let error):
                     onError(
-                        self?.decodeError(error: error) ?? error.localizedDescription
+                        self.decodeError(error: error)
                     )
                 }
             }
         )
     }
     
+    private func buildIndexPaths(upTo newCount: Int) -> [IndexPath] {
+        let from = self.wrappedCharacters.content.count - newCount
+        let to = self.wrappedCharacters.content.count - 1
+        let indexPaths: [IndexPath] = (from...to).map { index in
+            return .init(row: index, section: 0)
+        }
+        
+        return indexPaths
+    }
+    
     private func buildSearchCharacterUseCaseWithPage(name: String, page: Int) -> SearchCharactersUseCase {
-        guard let onError = self.onError, let onSuccess = onSuccess else {
-            fatalError("onSuccess and onError not implemented in view controller")
+        guard let onError = self.onError, let onRefresh = onRefresh else {
+            fatalError("onSuccess and onRefresh not implemented in view controller")
         }
         
         return .init(
             repository: self.characterRepository,
             page: page,
             name: name,
-            completionHandler: {
-                [weak self] result in
+            completionHandler: { [weak self] result in
+                guard let self = self else { return }
                 switch result {
                 case .success(let page):
-                    self?.currentPage+=1
-                    self?.wrappedCharacters.append(contentsOf: page.characters)
-                    self?.totalPages = page.pages
-                    onSuccess()
+                    self.currentPage+=1
+                    self.wrappedCharacters.append(contentsOf: page.characters)
+                    self.totalPages = page.pages
+                    
+                    onRefresh(
+                        self.buildIndexPaths(upTo: page.characters.count)
+                    )
                 case .failure(let error):
                     onError(
-                        self?.decodeError(error: error) ?? error.localizedDescription
+                        self.decodeError(error: error)
                     )
                 }
             }
         )
-    }
-    
-    func cancelAllOperations() {
-        cancellableRequest?.cancel()
     }
     
     private func decodeError(error: Error) -> String {

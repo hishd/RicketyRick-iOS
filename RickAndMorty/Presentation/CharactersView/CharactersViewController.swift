@@ -106,9 +106,18 @@ extension CharactersViewController {
                 self?.present(errorAlert, animated: true)
             }
         }
+        
+        viewModel?.onRefresh = { indexPaths in
+            DispatchQueue.main.async { [weak self] in
+                self?.mainView.tableView.beginUpdates()
+                self?.mainView.tableView.insertRows(at: indexPaths, with: .fade)
+                self?.mainView.tableView.endUpdates()
+            }
+        }
     }
 }
 
+//MARK: Search bar delegates
 extension CharactersViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         self.searchCharacterData(text: searchText)
@@ -119,6 +128,7 @@ extension CharactersViewController: UISearchBarDelegate {
     }
 }
 
+//MARK:
 fileprivate final class CharacterViewTableViewHandler: NSObject, UITableViewDelegate, UITableViewDataSource {
     
     let items: ArrayWrapper<Character>
@@ -132,12 +142,10 @@ fileprivate final class CharacterViewTableViewHandler: NSObject, UITableViewDele
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("Item Count: \(items.content.count)")
         return self.items.content.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        print("Cell....!!")
         let cell = tableView.dequeueReusableCell(withIdentifier: CharacterCell.reuseIdentifier, for: indexPath) as! CharacterCell
         let character = self.items[indexPath.row] 
         cell.setData(character: character)
@@ -145,12 +153,12 @@ fileprivate final class CharacterViewTableViewHandler: NSObject, UITableViewDele
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-//        let cell = cell as! CharacterCell
-//        cell.view.center.x = cell.view.center.x - cell.contentView.bounds.width / 2
-//
-//        UIView.animate(withDuration: 0.75, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0) {
-//            cell.view.center.x = cell.view.center.x + cell.contentView.bounds.width / 2
-//        }
+        let cell = cell as! CharacterCell
+        cell.view.center.x = cell.view.center.x - cell.contentView.bounds.width / 2
+
+        UIView.animate(withDuration: 0.15, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0) {
+            cell.view.center.x = cell.view.center.x + cell.contentView.bounds.width / 2
+        }
         
         if indexPath.row == self.items.content.count - self.paginationThreshold {
             self.onLoadMore()
