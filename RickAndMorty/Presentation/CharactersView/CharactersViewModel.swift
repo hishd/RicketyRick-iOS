@@ -14,10 +14,11 @@ final class CharactersViewModel: ViewModel {
     var onSuccess: (() -> Void)?
     var onError: ((_ errorString: String) -> Void)?
     
-    var characters: [Character] = .init()
     private var totalPages: Int = 0
     private var currentPage: Int = 0
     private var cancellableRequest: Cancellable?
+    
+    let wrappedCharacters: ArrayWrapper<Character> = .init(wrappedArray: .init())
     
     var searchText: String = .init()
     
@@ -38,8 +39,8 @@ final class CharactersViewModel: ViewModel {
                 switch result {
                 case .success(let page):
                     self?.currentPage = 1
-                    self?.characters.removeAll()
-                    self?.characters.append(contentsOf: page.characters)
+                    self?.wrappedCharacters.removeAll()
+                    self?.wrappedCharacters.append(contentsOf: page.characters)
                     self?.totalPages = page.pages
                     onSuccess()
                 case .failure(let error):
@@ -73,21 +74,25 @@ final class CharactersViewModel: ViewModel {
     }
     
     func loadMoreCharacters() {
-        guard currentPage < totalPages else {
-            return
-        }
-        
-        //If the search text is empty, then execute the normal flow with pagination
-        //Else execute the search flow with pagination
-        if searchText.isEmpty {
-            self.cancellableRequest = buildFetchCharacterUseCaseWithPage(
-                page: self.currentPage + 1
-            ).execute()
-        } else {
-            self.cancellableRequest = buildSearchCharacterUseCaseWithPage(
-                name: searchText,
-                page: self.currentPage + 1
-            ).execute()
+        DispatchQueue.global().async { [weak self] in
+            guard let self = self else { return }
+            
+            guard currentPage < totalPages else {
+                return
+            }
+            
+            //If the search text is empty, then execute the normal flow with pagination
+            //Else execute the search flow with pagination
+            if searchText.isEmpty {
+                self.cancellableRequest = buildFetchCharacterUseCaseWithPage(
+                    page: self.currentPage + 1
+                ).execute()
+            } else {
+                self.cancellableRequest = buildSearchCharacterUseCaseWithPage(
+                    name: searchText,
+                    page: self.currentPage + 1
+                ).execute()
+            }
         }
     }
     
@@ -105,8 +110,8 @@ final class CharactersViewModel: ViewModel {
                 [weak self] result in
                 switch result {
                 case .success(let page):
-                    self?.characters.removeAll()
-                    self?.characters.append(contentsOf: page.characters)
+                    self?.wrappedCharacters.removeAll()
+                    self?.wrappedCharacters.append(contentsOf: page.characters)
                     self?.totalPages = page.pages
                     onSuccess()
                 case .failure(let error):
@@ -132,7 +137,7 @@ final class CharactersViewModel: ViewModel {
                 switch result {
                 case .success(let page):
                     self?.currentPage+=1
-                    self?.characters.append(contentsOf: page.characters)
+                    self?.wrappedCharacters.append(contentsOf: page.characters)
                     self?.totalPages = page.pages
                     onSuccess()
                 case .failure(let error):
@@ -158,7 +163,7 @@ final class CharactersViewModel: ViewModel {
                 switch result {
                 case .success(let page):
                     self?.currentPage+=1
-                    self?.characters.append(contentsOf: page.characters)
+                    self?.wrappedCharacters.append(contentsOf: page.characters)
                     self?.totalPages = page.pages
                     onSuccess()
                 case .failure(let error):
@@ -184,23 +189,23 @@ final class CharactersViewModel: ViewModel {
         return switch dataTransferError {
         case .noResponse:
             "No results found. Please try again later."
-        case .parsing(let error):
+        case .parsing(_):
             "Could not display results. Please try again later."
         case .networkFailure(let networkError):
             decodeNetworkError(error: networkError)
-        case .resolvedNetworkFailure(let error):
+        case .resolvedNetworkFailure(_):
             "Network error occurred. Please try again later."
         }
         
         func decodeNetworkError(error: NetworkError) -> String {
             return switch error {
-            case .error(let statusCode, let data):
+            case .error(_, _):
                 error.isNotFoundError ? "Could not find the character" : "Unknown error occurred. Please try again later."
             case .notConnected:
                 "Connection error. Please try again later."
             case .cancelled:
                 "Operation is cancelled."
-            case .generic(let error):
+            case .generic(_):
                 "Unknown error occurred. Please try again later."
             case .urlGeneration:
                 "Invalid request url found."

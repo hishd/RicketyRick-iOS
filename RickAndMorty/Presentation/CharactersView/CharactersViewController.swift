@@ -12,34 +12,13 @@ import SwiftUI
 final class CharactersViewController: UIViewController, Presentable {
     var viewModel: CharactersViewModel?
     var coordinator: CharactersCoordinator?
+    private var tableViewHandler: CharacterViewTableViewHandler?
     
-    private lazy var searchBar: UISearchBar = {
-        let searchBar = UISearchBar()
-        searchBar.placeholder = "Search Character"
-        searchBar.searchBarStyle = .minimal
-        searchBar.returnKeyType = .done
-        searchBar.enablesReturnKeyAutomatically = false
-        searchBar.delegate = self
-        return searchBar
-    }()
+    let mainView: CharactersView = .init()
     
-    private lazy var tableView: UITableView = {
-        let tableView = UITableView()
-        tableView.register(CharacterCell.self, forCellReuseIdentifier: CharacterCell.reuseIdentifier)
-        tableView.separatorStyle = .none
-        tableView.dataSource = self
-        tableView.delegate = self
-        tableView.showsVerticalScrollIndicator = false
-        return tableView
-    }()
-    
-    private lazy var progressIndicator: ProgressView = ProgressView()
-    
-    private lazy var refreshControl: UIRefreshControl = {
-        let control = UIRefreshControl()
-        control.addTarget(self, action: #selector(refreshData(_:)), for: .valueChanged)
-        return control
-    }()
+    override func loadView() {
+        self.view = mainView
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,7 +31,7 @@ final class CharactersViewController: UIViewController, Presentable {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        if let viewModel = self.viewModel, viewModel.characters.isEmpty {
+        if let viewModel = self.viewModel, viewModel.wrappedCharacters.isEmpty {
             loadCharacterData()
         }
     }
@@ -71,52 +50,40 @@ final class CharactersViewController: UIViewController, Presentable {
 
 extension CharactersViewController {
     func setConstraints() {
-        view.addSubview(searchBar)
-        searchBar.anchor(
-            top: view.safeAreaLayoutGuide.topAnchor,
-            left: view.safeAreaLayoutGuide.leftAnchor,
-            right: view.safeAreaLayoutGuide.rightAnchor,
-            paddingTop: 10,
-            paddingLeft: 10,
-            paddingRight: 10,
-            height: 40
+        guard let viewModel = self.viewModel else {
+            fatalError("ViewModel is not instantiated")
+        }
+        
+        mainView.setConstraints()
+        self.tableViewHandler = CharacterViewTableViewHandler(
+            items: viewModel.wrappedCharacters,
+            paginationThreshold: viewModel.paginationThreshold,
+            onLoadMore: viewModel.loadMoreCharacters
         )
         
-        view.addSubview(tableView)
-        tableView.anchor(
-            top: searchBar.bottomAnchor,
-            left: view.safeAreaLayoutGuide.leftAnchor,
-            bottom: view.safeAreaLayoutGuide.bottomAnchor,
-            right: view.safeAreaLayoutGuide.rightAnchor,
-            paddingTop: 10,
-            paddingLeft: 10,
-            paddingBottom: 10,
-            paddingRight: 10
-        )
+        mainView.tableView.dataSource = tableViewHandler
+        mainView.tableView.delegate = tableViewHandler
         
-        tableView.addSubview(refreshControl)
-        
-        view.addSubview(progressIndicator)
-        progressIndicator.attachedView = tableView
-        progressIndicator.center(inView: tableView)
+        mainView.searchBar.delegate = self
+        mainView.refreshControl.addTarget(self, action: #selector(refreshData(_:)), for: .valueChanged)
     }
     
     @objc func refreshData(_ sender: Any) {
-        self.searchBar.text = ""
+        mainView.searchBar.text = ""
         viewModel?.fetchData()
     }
     
     func loadCharacterData() {
-        progressIndicator.startAnimating()
+        mainView.progressIndicator.startAnimating()
         viewModel?.fetchData()
     }
     
     func searchCharacterData(text: String) {
         self.viewModel?.searchText = text
         if text.isEmpty {
-            progressIndicator.stopAnimating()
+            mainView.progressIndicator.stopAnimating()
         } else {
-            progressIndicator.startAnimating()
+            mainView.progressIndicator.startAnimating()
         }
         viewModel?.searchData()
     }
@@ -124,16 +91,16 @@ extension CharactersViewController {
     func bindViewModel() {
         viewModel?.onSuccess = {
             DispatchQueue.main.async { [weak self] in
-                self?.refreshControl.endRefreshing()
-                self?.progressIndicator.stopAnimating()
-                self?.tableView.reloadData()
+                self?.mainView.refreshControl.endRefreshing()
+                self?.mainView.progressIndicator.stopAnimating()
+                self?.mainView.tableView.reloadData()
             }
         }
         
         viewModel?.onError = { errorString in
             DispatchQueue.main.async { [weak self] in
-                self?.progressIndicator.stopAnimating()
-                self?.refreshControl.endRefreshing()
+                self?.mainView.progressIndicator.stopAnimating()
+                self?.mainView.refreshControl.endRefreshing()
                 let errorAlert = UIAlertController(title: "Operation Error", message: errorString, preferredStyle: .alert)
                 errorAlert.addAction(.init(title: "Ok", style: .cancel))
                 self?.present(errorAlert, animated: true)
@@ -152,31 +119,41 @@ extension CharactersViewController: UISearchBarDelegate {
     }
 }
 
-extension CharactersViewController: UITableViewDelegate, UITableViewDataSource {
+fileprivate final class CharacterViewTableViewHandler: NSObject, UITableViewDelegate, UITableViewDataSource {
+    
+    let items: ArrayWrapper<Character>
+    let paginationThreshold: Int
+    let onLoadMore: (() -> Void)
+    
+    init(items: ArrayWrapper<Character>, paginationThreshold: Int, onLoadMore: @escaping () -> Void) {
+        self.items = items
+        self.paginationThreshold = paginationThreshold
+        self.onLoadMore = onLoadMore
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.viewModel?.characters.count ?? 0
+        print("Item Count: \(items.content.count)")
+        return self.items.content.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        print("Cell....!!")
         let cell = tableView.dequeueReusableCell(withIdentifier: CharacterCell.reuseIdentifier, for: indexPath) as! CharacterCell
-        cell.setData(character: viewModel?.characters[indexPath.row])
+        let character = self.items[indexPath.row] 
+        cell.setData(character: character)
         return cell
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
 //        let cell = cell as! CharacterCell
 //        cell.view.center.x = cell.view.center.x - cell.contentView.bounds.width / 2
-//                
+//
 //        UIView.animate(withDuration: 0.75, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0) {
 //            cell.view.center.x = cell.view.center.x + cell.contentView.bounds.width / 2
 //        }
         
-        guard let viewModel = viewModel else {
-            return
-        }
-        
-        if indexPath.row == viewModel.characters.count - viewModel.paginationThreshold {
-            viewModel.loadMoreCharacters()
+        if indexPath.row == self.items.content.count - self.paginationThreshold {
+            self.onLoadMore()
         }
     }
     
