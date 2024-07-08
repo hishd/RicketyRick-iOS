@@ -84,6 +84,7 @@
 		FDD87CF42C3B79F30072E2A8 /* EpisodesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD87CF32C3B79F30072E2A8 /* EpisodesViewController.swift */; };
 		FDD87CF62C3BEA1D0072E2A8 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD87CF52C3BEA1D0072E2A8 /* String+Extensions.swift */; };
 		FDD87CF92C3BFEDE0072E2A8 /* LocationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD87CF82C3BFEDE0072E2A8 /* LocationsView.swift */; };
+		FDD87CFC2C3BFF4E0072E2A8 /* LocationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD87CFB2C3BFF4E0072E2A8 /* LocationCell.swift */; };
 		FDE8CD042C1567DA00481F32 /* OSLog+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE8CD032C1567DA00481F32 /* OSLog+Extensions.swift */; };
 /* End PBXBuildFile section */
 
@@ -184,6 +185,7 @@
 		FDD87CF32C3B79F30072E2A8 /* EpisodesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodesViewController.swift; sourceTree = "<group>"; };
 		FDD87CF52C3BEA1D0072E2A8 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		FDD87CF82C3BFEDE0072E2A8 /* LocationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationsView.swift; sourceTree = "<group>"; };
+		FDD87CFB2C3BFF4E0072E2A8 /* LocationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationCell.swift; sourceTree = "<group>"; };
 		FDE8CD032C1567DA00481F32 /* OSLog+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OSLog+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -626,9 +628,18 @@
 		FDD87CF72C3BFEC50072E2A8 /* LocationsView */ = {
 			isa = PBXGroup;
 			children = (
+				FDD87CFA2C3BFF430072E2A8 /* LocationCell */,
 				FDD87CF82C3BFEDE0072E2A8 /* LocationsView.swift */,
 			);
 			path = LocationsView;
+			sourceTree = "<group>";
+		};
+		FDD87CFA2C3BFF430072E2A8 /* LocationCell */ = {
+			isa = PBXGroup;
+			children = (
+				FDD87CFB2C3BFF4E0072E2A8 /* LocationCell.swift */,
+			);
+			path = LocationCell;
 			sourceTree = "<group>";
 		};
 		FDE8CD022C1567C600481F32 /* Extensions */ = {
@@ -798,6 +809,7 @@
 				FDC057DF2C1930B800312DB4 /* LocationRepositoryPrimaryFallback.swift in Sources */,
 				FDC057B42C17E28F00312DB4 /* FetchEpisodesUseCase.swift in Sources */,
 				FDD87CF62C3BEA1D0072E2A8 /* String+Extensions.swift in Sources */,
+				FDD87CFC2C3BFF4E0072E2A8 /* LocationCell.swift in Sources */,
 				FDC057AC2C17E00100312DB4 /* FetchCharactersUseCase.swift in Sources */,
 				FDC057B22C17E23200312DB4 /* SearchLocationsUseCase.swift in Sources */,
 				FDC057BA2C17E4C000312DB4 /* CharacterResponseDTO+Mapping.swift in Sources */,
