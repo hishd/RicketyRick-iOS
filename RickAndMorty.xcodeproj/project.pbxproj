@@ -82,6 +82,7 @@
 		FDD87CF02C3B750C0072E2A8 /* EpisodeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD87CEF2C3B750C0072E2A8 /* EpisodeCell.swift */; };
 		FDD87CF22C3B78360072E2A8 /* EpisodeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD87CF12C3B78360072E2A8 /* EpisodeViewModel.swift */; };
 		FDD87CF42C3B79F30072E2A8 /* EpisodesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD87CF32C3B79F30072E2A8 /* EpisodesViewController.swift */; };
+		FDD87CF62C3BEA1D0072E2A8 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD87CF52C3BEA1D0072E2A8 /* String+Extensions.swift */; };
 		FDE8CD042C1567DA00481F32 /* OSLog+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE8CD032C1567DA00481F32 /* OSLog+Extensions.swift */; };
 /* End PBXBuildFile section */
 
@@ -180,6 +181,7 @@
 		FDD87CEF2C3B750C0072E2A8 /* EpisodeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeCell.swift; sourceTree = "<group>"; };
 		FDD87CF12C3B78360072E2A8 /* EpisodeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeViewModel.swift; sourceTree = "<group>"; };
 		FDD87CF32C3B79F30072E2A8 /* EpisodesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodesViewController.swift; sourceTree = "<group>"; };
+		FDD87CF52C3BEA1D0072E2A8 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		FDE8CD032C1567DA00481F32 /* OSLog+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OSLog+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -623,6 +625,7 @@
 			children = (
 				FDE8CD032C1567DA00481F32 /* OSLog+Extensions.swift */,
 				FDC057952C17D52800312DB4 /* View+Extensions.swift */,
+				FDD87CF52C3BEA1D0072E2A8 /* String+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -782,6 +785,7 @@
 				FDC057B02C17E1CE00312DB4 /* FetchLocationsUseCase.swift in Sources */,
 				FDC057DF2C1930B800312DB4 /* LocationRepositoryPrimaryFallback.swift in Sources */,
 				FDC057B42C17E28F00312DB4 /* FetchEpisodesUseCase.swift in Sources */,
+				FDD87CF62C3BEA1D0072E2A8 /* String+Extensions.swift in Sources */,
 				FDC057AC2C17E00100312DB4 /* FetchCharactersUseCase.swift in Sources */,
 				FDC057B22C17E23200312DB4 /* SearchLocationsUseCase.swift in Sources */,
 				FDC057BA2C17E4C000312DB4 /* CharacterResponseDTO+Mapping.swift in Sources */,

@@ -140,7 +140,7 @@ extension EpisodeCell {
         }
         
         self.episodeTitle.text = episode.episodeName
-        self.idContainer.textLabel.text = episode.codeName
+        self.idContainer.textLabel.text = episode.fullCodeName
         self.dateContainer.textLabel.text = episode.airDate
         
         let characterCount = episode.characters.count
