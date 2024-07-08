@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class LocationViewModel: ViewModel {
+final class LocationsViewModel: ViewModel {
     let paginationThreshold: Int = 5
     private let locationRepository: LocationRepository
     private var dispatchWorkItem: DispatchWorkItem?

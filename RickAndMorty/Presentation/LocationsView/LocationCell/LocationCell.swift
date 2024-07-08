@@ -134,18 +134,18 @@ extension LocationCell {
         }
     }
     
-    func setData(episode: Episode?) {
-        guard let episode = episode else {
+    func setData(location: Location?) {
+        guard let location = location else {
             return
         }
         
-        self.locationTitle.text = episode.episodeName
-        self.typeContainer.textLabel.text = episode.fullCodeName
-        self.dimensionContainer.textLabel.text = episode.airDate
+        self.locationTitle.text = location.locationName
+        self.typeContainer.textLabel.text = location.locationType
+        self.dimensionContainer.textLabel.text = location.dimension
         
-        let characterCount = episode.characters.count
+        let characterCount = location.residents.count
         self.characterContainer.textLabel.text = "\(characterCount) \(characterCount > 1 ? "Characters" : "Character")"
         
-        updateTitleMultiLine(isMultiline: episode.episodeName.count > 30 )
+        updateTitleMultiLine(isMultiline: location.locationName.count > 30 )
     }
 }
