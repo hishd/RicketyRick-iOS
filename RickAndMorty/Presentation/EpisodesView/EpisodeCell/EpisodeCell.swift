@@ -125,9 +125,14 @@ extension EpisodeCell {
         )
     }
     
-    private func updateTitleToMultiLine() {
-        self.episodeTitle.numberOfLines = 2
-        self.episodeTitle.font = .systemFont(ofSize: 18, weight: .semibold)
+    private func updateTitleMultiLine(isMultiline: Bool) {
+        if isMultiline {
+            self.episodeTitle.numberOfLines = 2
+            self.episodeTitle.font = .systemFont(ofSize: 18, weight: .semibold)
+        } else {
+            self.episodeTitle.numberOfLines = 2
+            self.episodeTitle.font = .systemFont(ofSize: 22, weight: .semibold)
+        }
     }
     
     func setData(episode: Episode?) {
@@ -142,8 +147,6 @@ extension EpisodeCell {
         let characterCount = episode.characters.count
         self.characterContainer.textLabel.text = "\(characterCount) \(characterCount > 1 ? "Characters" : "Character")"
         
-        if episode.episodeName.count > 15 {
-            updateTitleToMultiLine()
-        }
+        updateTitleMultiLine(isMultiline: episode.episodeName.count > 30 )
     }
 }

@@ -166,7 +166,7 @@ fileprivate final class EpisodesViewTableViewHandler: NSObject, UITableViewDeleg
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 160
+        return 140
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
