@@ -154,10 +154,10 @@ fileprivate final class LocationsViewTableViewHandler: NSObject, UITableViewDele
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         let cell = cell as! LocationCell
-        cell.view.center.x = cell.view.center.x - cell.contentView.bounds.width / 2
+        cell.view.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
 
-        UIView.animate(withDuration: 0.15, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0) {
-            cell.view.center.x = cell.view.center.x + cell.contentView.bounds.width / 2
+        UIView.animate(withDuration: 0.15, delay: 0) {
+            cell.view.transform = CGAffineTransform(scaleX: 1, y: 1)
         }
         
         if indexPath.row == self.items.content.count - self.paginationThreshold {

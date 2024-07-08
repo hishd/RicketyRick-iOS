@@ -38,7 +38,7 @@ final class LocationCell: UITableViewCell {
     
     private lazy var dimensionContainer: DetailsContainerView = {
         let container = DetailsContainerView()
-        container.icon.image = UIImage(systemName: "globe.desk.fill")
+        container.icon.image = UIImage(systemName: "moon.stars.circle.fill")
         container.textLabel.text = "Dimension"
         return container
     }()
