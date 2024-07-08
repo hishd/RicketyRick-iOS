@@ -31,22 +31,22 @@ final class LocationCell: UITableViewCell {
     
     private lazy var typeContainer: DetailsContainerView = {
         let container = DetailsContainerView()
-        container.icon.image = UIImage(systemName: "star.circle.fill")
-        container.textLabel.text = "Location Type"
+        container.setIconImage(with: UIImage(systemName: "star.circle.fill"))
+        container.setText(with: "Location Type")
         return container
     }()
     
     private lazy var dimensionContainer: DetailsContainerView = {
         let container = DetailsContainerView()
-        container.icon.image = UIImage(systemName: "moon.stars.circle.fill")
-        container.textLabel.text = "Dimension"
+        container.setIconImage(with: UIImage(systemName: "moon.stars.circle.fill"))
+        container.setText(with: "Dimension")
         return container
     }()
     
     private lazy var characterContainer: DetailsContainerView = {
         let container = DetailsContainerView()
-        container.icon.image = UIImage(systemName: "figure.2.circle.fill")
-        container.textLabel.text = "Characters"
+        container.setIconImage(with: UIImage(systemName: "figure.2.circle.fill"))
+        container.setText(with: "Characters")
         return container
     }()
     
@@ -140,11 +140,12 @@ extension LocationCell {
         }
         
         self.locationTitle.text = location.locationName
-        self.typeContainer.textLabel.text = location.locationType
-        self.dimensionContainer.textLabel.text = location.dimension
+        self.typeContainer.setText(with: location.locationType)
+        self.dimensionContainer.setText(with: location.dimension)
         
         let characterCount = location.residents.count
-        self.characterContainer.textLabel.text = "\(characterCount) \(characterCount > 1 ? "Characters" : "Character")"
+        let characterText = "\(characterCount) \(characterCount > 1 ? "Characters" : "Character")"
+        self.characterContainer.setText(with: characterText)
         
         updateTitleMultiLine(isMultiline: location.locationName.count > 30 )
     }

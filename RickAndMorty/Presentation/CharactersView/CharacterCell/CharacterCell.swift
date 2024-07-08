@@ -43,27 +43,27 @@ final class CharacterCell: UITableViewCell {
     
     private lazy var speciesContainer: DetailsContainerView = {
         let container = DetailsContainerView()
-        container.icon.image = UIImage(systemName: "accessibility.fill")
-        container.textLabel.text = "Species"
+        container.setIconImage(with: UIImage(systemName: "accessibility.fill"))
+        container.setText(with: "Species")
         return container
     }()
     
     private lazy var locationContainer: DetailsContainerView = {
         let container = DetailsContainerView()
-        container.icon.image = UIImage(systemName: "mappin.circle.fill")
-        container.textLabel.text = "Location"
+        container.setIconImage(with: UIImage(systemName: "mappin.circle.fill"))
+        container.setText(with: "Location")
         return container
     }()
     
     private lazy var episodesContainer: DetailsContainerView = {
         let container = DetailsContainerView()
-        container.icon.image = UIImage(systemName: "tv.circle.fill")
-        container.textLabel.text = "Episodes"
+        container.setIconImage(with: UIImage(systemName: "tv.circle.fill"))
+        container.setText(with: "Episodes")
         return container
     }()
     
-    private lazy var lifeStatusContainer: LifeStatusContainer = {
-        let container = LifeStatusContainer(characterStatus: .unknown)
+    private lazy var lifeStatusContainer: LifeStatusContainerView = {
+        let container = LifeStatusContainerView(characterStatus: .unknown)
         return container
     }()
     
@@ -176,12 +176,13 @@ extension CharacterCell {
         }
         
         self.characterTitle.text = character.characterName
-        self.speciesContainer.textLabel.text = character.species
-        self.locationContainer.textLabel.text = character.lastLocation.locationName
+        self.speciesContainer.setText(with: character.species)
+        self.locationContainer.setText(with: character.lastLocation.locationName)
         self.lifeStatusContainer.characterStatus = character.status
         
         let episodeCount = character.episodes.count
-        self.episodesContainer.textLabel.text = "\(episodeCount) \(episodeCount > 1 ? "Episodes" : "Episode")"
+        let episodeText = "\(episodeCount) \(episodeCount > 1 ? "Episodes" : "Episode")"
+        self.episodesContainer.setText(with: episodeText)
         
         if character.characterName.count > 15 {
             updateTitleToMultiLine()
@@ -190,94 +191,5 @@ extension CharacterCell {
         if let url = character.imageUrl {
             try? self.characterImageView.loadImage(from: url as NSURL, errorPlaceholderImage: .imgTitle)
         }
-    }
-}
-
-final class LifeStatusContainer: UIView {
-    
-    var characterStatus: CharacterStatus {
-        didSet {
-            switch characterStatus {
-            case .alive:
-                backgroundColor = .alive
-                statusTitle.text = "Alive"
-            case .dead:
-                backgroundColor = .red
-                statusTitle.text = "Dead"
-            case .unknown:
-                backgroundColor = .gray
-                statusTitle.text = "Unknown"
-            }
-        }
-    }
-    
-    lazy var statusTitle: UILabel = {
-        let text = UILabel()
-        text.textColor = .white
-        text.font = .systemFont(ofSize: 10)
-        return text
-    }()
-    
-    init(characterStatus: CharacterStatus) {
-        self.characterStatus = characterStatus
-        super.init(frame: .zero)
-        setupView()
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("Not implemented")
-    }
-    
-    private func setupView() {
-        setDimensions(height: 26, width: 68)
-        layer.cornerRadius = 10
-        
-        self.addSubview(statusTitle)
-        statusTitle.center(inView: self)
-    }
-}
-
-final class DetailsContainerView: UIView {
-    
-    lazy var icon: UIImageView = {
-        let imageView = UIImageView()
-        imageView.image = UIImage(systemName: "info.circle.fill")
-        imageView.tintColor = .lightGray
-        imageView.contentMode = .scaleAspectFill
-        return imageView
-    }()
-    
-    lazy var textLabel: UILabel = {
-        let text = UILabel()
-        text.text = "Placeholder"
-        text.font = .systemFont(ofSize: 14, weight: .regular)
-        text.numberOfLines = 2
-        text.textColor = .black
-        return text
-    }()
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        setupView()
-    }
-    
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-    }
-    
-    private func setupView() {
-        addSubview(icon)
-        addSubview(textLabel)
-        
-        icon.setDimensions(height: 22, width: 22)
-        icon.centerY(inView: self, leftAnchor: self.leftAnchor)
-        
-        textLabel.anchor(
-            top: self.topAnchor,
-            left: icon.rightAnchor,
-            bottom: self.bottomAnchor,
-            right: self.rightAnchor,
-            paddingLeft: 8
-        )
     }
 }

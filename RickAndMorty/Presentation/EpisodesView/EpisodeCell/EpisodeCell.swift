@@ -31,22 +31,22 @@ final class EpisodeCell: UITableViewCell {
     
     private lazy var idContainer: DetailsContainerView = {
         let container = DetailsContainerView()
-        container.icon.image = UIImage(systemName: "tv.circle.fill")
-        container.textLabel.text = "Episode ID"
+        container.setIconImage(with: UIImage(systemName: "tv.circle.fill"))
+        container.setText(with: "Episode ID")
         return container
     }()
     
     private lazy var dateContainer: DetailsContainerView = {
         let container = DetailsContainerView()
-        container.icon.image = UIImage(systemName: "calendar.circle.fill")
-        container.textLabel.text = "Date"
+        container.setIconImage(with: UIImage(systemName: "calendar.circle.fill"))
+        container.setText(with:"Date")
         return container
     }()
     
     private lazy var characterContainer: DetailsContainerView = {
         let container = DetailsContainerView()
-        container.icon.image = UIImage(systemName: "figure.2.circle.fill")
-        container.textLabel.text = "Characters"
+        container.setIconImage(with: UIImage(systemName: "figure.2.circle.fill"))
+        container.setText(with:"Characters")
         return container
     }()
     
@@ -140,11 +140,12 @@ extension EpisodeCell {
         }
         
         self.episodeTitle.text = episode.episodeName
-        self.idContainer.textLabel.text = episode.fullCodeName
-        self.dateContainer.textLabel.text = episode.airDate
+        self.idContainer.setText(with:episode.fullCodeName)
+        self.dateContainer.setText(with:episode.airDate)
         
         let characterCount = episode.characters.count
-        self.characterContainer.textLabel.text = "\(characterCount) \(characterCount > 1 ? "Characters" : "Character")"
+        let characterText = "\(characterCount) \(characterCount > 1 ? "Characters" : "Character")"
+        self.characterContainer.setText(with: characterText)
         
         updateTitleMultiLine(isMultiline: episode.episodeName.count > 30 )
     }
