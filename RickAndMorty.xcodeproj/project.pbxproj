@@ -83,6 +83,7 @@
 		FDD87CF22C3B78360072E2A8 /* EpisodeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD87CF12C3B78360072E2A8 /* EpisodeViewModel.swift */; };
 		FDD87CF42C3B79F30072E2A8 /* EpisodesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD87CF32C3B79F30072E2A8 /* EpisodesViewController.swift */; };
 		FDD87CF62C3BEA1D0072E2A8 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD87CF52C3BEA1D0072E2A8 /* String+Extensions.swift */; };
+		FDD87CF92C3BFEDE0072E2A8 /* LocationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD87CF82C3BFEDE0072E2A8 /* LocationsView.swift */; };
 		FDE8CD042C1567DA00481F32 /* OSLog+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE8CD032C1567DA00481F32 /* OSLog+Extensions.swift */; };
 /* End PBXBuildFile section */
 
@@ -182,6 +183,7 @@
 		FDD87CF12C3B78360072E2A8 /* EpisodeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeViewModel.swift; sourceTree = "<group>"; };
 		FDD87CF32C3B79F30072E2A8 /* EpisodesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodesViewController.swift; sourceTree = "<group>"; };
 		FDD87CF52C3BEA1D0072E2A8 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
+		FDD87CF82C3BFEDE0072E2A8 /* LocationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationsView.swift; sourceTree = "<group>"; };
 		FDE8CD032C1567DA00481F32 /* OSLog+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OSLog+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -310,11 +312,12 @@
 		FD2D76DE2C151F8600BBDEF4 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				FDD87CF72C3BFEC50072E2A8 /* LocationsView */,
 				FDD87CEB2C3B74810072E2A8 /* EpisodesView */,
-				FD81D1362C38C60600098C59 /* Util */,
 				FD81D12A2C38154B00098C59 /* CharactersView */,
-				FD81D11D2C369B3E00098C59 /* Launch Screen */,
 				FD2D76E82C15279000BBDEF4 /* MainView */,
+				FD81D11D2C369B3E00098C59 /* Launch Screen */,
+				FD81D1362C38C60600098C59 /* Util */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -620,6 +623,14 @@
 			path = EpisodeCell;
 			sourceTree = "<group>";
 		};
+		FDD87CF72C3BFEC50072E2A8 /* LocationsView */ = {
+			isa = PBXGroup;
+			children = (
+				FDD87CF82C3BFEDE0072E2A8 /* LocationsView.swift */,
+			);
+			path = LocationsView;
+			sourceTree = "<group>";
+		};
 		FDE8CD022C1567C600481F32 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -783,6 +794,7 @@
 			files = (
 				FDD87CF22C3B78360072E2A8 /* EpisodeViewModel.swift in Sources */,
 				FDC057B02C17E1CE00312DB4 /* FetchLocationsUseCase.swift in Sources */,
+				FDD87CF92C3BFEDE0072E2A8 /* LocationsView.swift in Sources */,
 				FDC057DF2C1930B800312DB4 /* LocationRepositoryPrimaryFallback.swift in Sources */,
 				FDC057B42C17E28F00312DB4 /* FetchEpisodesUseCase.swift in Sources */,
 				FDD87CF62C3BEA1D0072E2A8 /* String+Extensions.swift in Sources */,
