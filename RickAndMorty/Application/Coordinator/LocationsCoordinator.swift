@@ -7,17 +7,20 @@
 
 import Foundation
 import UIKit
+import DependencyInjector
 
 class LocationsCoordinator: NSObject, Coordinator {
     var navigationController: UINavigationController
     var childCoordinators: [any Coordinator] = []
+    @Injectable(\.locationRepository) private var locationRepository: LocationRepository
     
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
     }
     
     func start() {
-        let viewController = UIViewController()
+        let viewModel = LocationsViewModel(locationRepository: locationRepository)
+        let viewController = LocationsViewController.create(with: viewModel)
         
         let tabTitle = "Locations"
         let defaultImage = UIImage(systemName: "globe.europe.africa")
@@ -26,7 +29,7 @@ class LocationsCoordinator: NSObject, Coordinator {
         viewController.title = tabTitle
         viewController.tabBarItem = tabBarItem
         
-//        viewController.coordinator = self
+        viewController.coordinator = self
         navigationController.navigationBar.prefersLargeTitles = true
         self.navigationController.delegate = self
         self.navigationController.pushViewController(viewController, animated: false)

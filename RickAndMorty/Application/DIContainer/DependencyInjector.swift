@@ -30,6 +30,10 @@ fileprivate class EpisodeRepositoryRemoteDependency: InjectableDependency {
     static var dependency: EpisodeRepository = EpisodeRepositoryRemote(networkDataTransferService: dataTransferService)
 }
 
+fileprivate class LocationRepositoryRemoteDependency: InjectableDependency {
+    static var dependency: LocationRepository = LocationRepositoryRemote(networkDataTransferService: dataTransferService)
+}
+
 extension InjectableValues {
     var characterRepository: CharacterRepository {
         get {
@@ -46,6 +50,15 @@ extension InjectableValues {
         }
         set {
             Self[EpisodeRepositoryRemoteDependency.self] = newValue
+        }
+    }
+    
+    var locationRepository: LocationRepository {
+        get {
+            Self[LocationRepositoryRemoteDependency.self]
+        }
+        set {
+            Self[LocationRepositoryRemoteDependency.self] = newValue
         }
     }
 }
