@@ -153,7 +153,7 @@ fileprivate final class LocationsViewTableViewHandler: NSObject, UITableViewDele
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        let cell = cell as! EpisodeCell
+        let cell = cell as! LocationCell
         cell.view.center.x = cell.view.center.x - cell.contentView.bounds.width / 2
 
         UIView.animate(withDuration: 0.15, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0) {
@@ -181,5 +181,5 @@ fileprivate final class LocationsViewTableViewHandler: NSObject, UITableViewDele
 
 @available(iOS 17.0, *)
 #Preview {
-    EpisodesViewController()
+    LocationsViewController()
 }
