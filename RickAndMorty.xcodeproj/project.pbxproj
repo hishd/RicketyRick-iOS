@@ -88,6 +88,7 @@
 		FDD87CFE2C3C003B0072E2A8 /* LocationsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD87CFD2C3C003B0072E2A8 /* LocationsViewModel.swift */; };
 		FDD87D002C3C01560072E2A8 /* LocationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD87CFF2C3C01560072E2A8 /* LocationsViewController.swift */; };
 		FDD87D032C3C08F50072E2A8 /* LifeStatusContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD87D022C3C08F50072E2A8 /* LifeStatusContainerView.swift */; };
+		FDD87D052C3C09930072E2A8 /* DetailsContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD87D042C3C09930072E2A8 /* DetailsContainerView.swift */; };
 		FDE8CD042C1567DA00481F32 /* OSLog+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE8CD032C1567DA00481F32 /* OSLog+Extensions.swift */; };
 /* End PBXBuildFile section */
 
@@ -192,6 +193,7 @@
 		FDD87CFD2C3C003B0072E2A8 /* LocationsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationsViewModel.swift; sourceTree = "<group>"; };
 		FDD87CFF2C3C01560072E2A8 /* LocationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationsViewController.swift; sourceTree = "<group>"; };
 		FDD87D022C3C08F50072E2A8 /* LifeStatusContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifeStatusContainerView.swift; sourceTree = "<group>"; };
+		FDD87D042C3C09930072E2A8 /* DetailsContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsContainerView.swift; sourceTree = "<group>"; };
 		FDE8CD032C1567DA00481F32 /* OSLog+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OSLog+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -655,6 +657,7 @@
 			isa = PBXGroup;
 			children = (
 				FDD87D022C3C08F50072E2A8 /* LifeStatusContainerView.swift */,
+				FDD87D042C3C09930072E2A8 /* DetailsContainerView.swift */,
 			);
 			path = Subviews;
 			sourceTree = "<group>";
@@ -823,6 +826,7 @@
 				FDD87CF22C3B78360072E2A8 /* EpisodeViewModel.swift in Sources */,
 				FDC057B02C17E1CE00312DB4 /* FetchLocationsUseCase.swift in Sources */,
 				FDD87CF92C3BFEDE0072E2A8 /* LocationsView.swift in Sources */,
+				FDD87D052C3C09930072E2A8 /* DetailsContainerView.swift in Sources */,
 				FDC057DF2C1930B800312DB4 /* LocationRepositoryPrimaryFallback.swift in Sources */,
 				FDC057B42C17E28F00312DB4 /* FetchEpisodesUseCase.swift in Sources */,
 				FDD87CF62C3BEA1D0072E2A8 /* String+Extensions.swift in Sources */,
