@@ -81,6 +81,7 @@
 		FDD87CED2C3B74A90072E2A8 /* EpisodesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD87CEC2C3B74A90072E2A8 /* EpisodesView.swift */; };
 		FDD87CF02C3B750C0072E2A8 /* EpisodeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD87CEF2C3B750C0072E2A8 /* EpisodeCell.swift */; };
 		FDD87CF22C3B78360072E2A8 /* EpisodeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD87CF12C3B78360072E2A8 /* EpisodeViewModel.swift */; };
+		FDD87CF42C3B79F30072E2A8 /* EpisodesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD87CF32C3B79F30072E2A8 /* EpisodesViewController.swift */; };
 		FDE8CD042C1567DA00481F32 /* OSLog+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE8CD032C1567DA00481F32 /* OSLog+Extensions.swift */; };
 /* End PBXBuildFile section */
 
@@ -178,6 +179,7 @@
 		FDD87CEC2C3B74A90072E2A8 /* EpisodesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodesView.swift; sourceTree = "<group>"; };
 		FDD87CEF2C3B750C0072E2A8 /* EpisodeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeCell.swift; sourceTree = "<group>"; };
 		FDD87CF12C3B78360072E2A8 /* EpisodeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeViewModel.swift; sourceTree = "<group>"; };
+		FDD87CF32C3B79F30072E2A8 /* EpisodesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodesViewController.swift; sourceTree = "<group>"; };
 		FDE8CD032C1567DA00481F32 /* OSLog+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OSLog+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -603,6 +605,7 @@
 				FDD87CEE2C3B74F90072E2A8 /* EpisodeCell */,
 				FDD87CEC2C3B74A90072E2A8 /* EpisodesView.swift */,
 				FDD87CF12C3B78360072E2A8 /* EpisodeViewModel.swift */,
+				FDD87CF32C3B79F30072E2A8 /* EpisodesViewController.swift */,
 			);
 			path = EpisodesView;
 			sourceTree = "<group>";
@@ -805,6 +808,7 @@
 				FDC057EE2C1941D500312DB4 /* FetchLocationUseCase.swift in Sources */,
 				FDC057D52C18AD6000312DB4 /* CharacterRepositoryPrimaryFallback.swift in Sources */,
 				FDC057A32C17DC8600312DB4 /* Location.swift in Sources */,
+				FDD87CF42C3B79F30072E2A8 /* EpisodesViewController.swift in Sources */,
 				FD81D1352C385A0100098C59 /* CharacterCell.swift in Sources */,
 				FDC057D12C18ACB700312DB4 /* CharacterRepositoryRemote.swift in Sources */,
 				FDC057E12C1931AD00312DB4 /* LocationRepositoryRemote.swift in Sources */,
