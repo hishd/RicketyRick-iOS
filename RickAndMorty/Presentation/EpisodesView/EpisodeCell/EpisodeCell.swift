@@ -64,6 +64,7 @@ final class EpisodeCell: UITableViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
+        contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 5, left: 0, bottom: 5, right: 0))
         view.layer.shadowPath = UIBezierPath(roundedRect: view.bounds, cornerRadius: 10).cgPath
     }
 }
@@ -78,9 +79,7 @@ extension EpisodeCell {
             left: contentView.leftAnchor,
             bottom: contentView.bottomAnchor,
             right: contentView.rightAnchor,
-            paddingTop: 5,
             paddingLeft: 15,
-            paddingBottom: 5,
             paddingRight: 10
         )
         
@@ -128,10 +127,10 @@ extension EpisodeCell {
     private func updateTitleMultiLine(isMultiline: Bool) {
         if isMultiline {
             self.episodeTitle.numberOfLines = 2
-            self.episodeTitle.font = .systemFont(ofSize: 18, weight: .semibold)
+//            self.episodeTitle.font = .systemFont(ofSize: 18, weight: .semibold)
         } else {
             self.episodeTitle.numberOfLines = 2
-            self.episodeTitle.font = .systemFont(ofSize: 22, weight: .semibold)
+//            self.episodeTitle.font = .systemFont(ofSize: 22, weight: .semibold)
         }
     }
     

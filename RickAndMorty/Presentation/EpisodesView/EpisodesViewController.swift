@@ -166,7 +166,9 @@ fileprivate final class EpisodesViewTableViewHandler: NSObject, UITableViewDeleg
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 140
+        let episode = self.items[indexPath.row]
+        let isMultiline = episode.episodeName.count > 30
+        return isMultiline ? 160 : 140
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
