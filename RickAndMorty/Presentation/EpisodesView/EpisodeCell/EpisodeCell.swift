@@ -9,7 +9,6 @@ import Foundation
 import UIKit
 
 final class EpisodeCell: UITableViewCell {
-    
     lazy var view: UIView = {
         let view = UIView()
         view.backgroundColor = UIColor(named: "cell_color")
@@ -32,21 +31,21 @@ final class EpisodeCell: UITableViewCell {
     
     private lazy var idContainer: DetailsContainerView = {
         let container = DetailsContainerView()
-        container.icon.image = UIImage(systemName: "play.tv")
+        container.icon.image = UIImage(systemName: "tv.circle.fill")
         container.textLabel.text = "Episode ID"
         return container
     }()
     
     private lazy var dateContainer: DetailsContainerView = {
         let container = DetailsContainerView()
-        container.icon.image = UIImage(systemName: "calendar")
+        container.icon.image = UIImage(systemName: "calendar.circle.fill")
         container.textLabel.text = "Date"
         return container
     }()
     
     private lazy var characterContainer: DetailsContainerView = {
         let container = DetailsContainerView()
-        container.icon.image = UIImage(systemName: "person.text.rectangle")
+        container.icon.image = UIImage(systemName: "figure.2.circle.fill")
         container.textLabel.text = "Characters"
         return container
     }()
@@ -80,7 +79,7 @@ extension EpisodeCell {
             bottom: contentView.bottomAnchor,
             right: contentView.rightAnchor,
             paddingTop: 5,
-            paddingLeft: 10,
+            paddingLeft: 15,
             paddingBottom: 5,
             paddingRight: 10
         )
@@ -88,40 +87,40 @@ extension EpisodeCell {
         view.addSubview(episodeTitle)
         episodeTitle.anchor(
             top: view.topAnchor,
-            left: view.rightAnchor,
+            left: view.leftAnchor,
             right: view.rightAnchor,
             paddingTop: 10,
-            paddingLeft: 10,
+            paddingLeft: 15,
             paddingRight: 5
         )
         
         view.addSubview(idContainer)
         idContainer.anchor(
             top: episodeTitle.bottomAnchor,
-            left: view.rightAnchor,
+            left: view.leftAnchor,
             right: view.rightAnchor,
             paddingTop: 10,
-            paddingLeft: 10,
+            paddingLeft: 15,
             paddingRight: 5
         )
         
         view.addSubview(dateContainer)
         dateContainer.anchor(
             top: idContainer.bottomAnchor,
-            left: view.rightAnchor,
+            left: view.leftAnchor,
             right: view.rightAnchor,
             paddingTop: 8,
-            paddingLeft: 10,
+            paddingLeft: 15,
             paddingRight: 5
         )
         
         view.addSubview(characterContainer)
         characterContainer.anchor(
             top: dateContainer.bottomAnchor,
-            left: view.rightAnchor,
+            left: view.leftAnchor,
             right: view.rightAnchor,
             paddingTop: 8,
-            paddingLeft: 10,
+            paddingLeft: 15,
             paddingRight: 5
         )
     }
