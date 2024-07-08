@@ -85,6 +85,7 @@
 		FDD87CF62C3BEA1D0072E2A8 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD87CF52C3BEA1D0072E2A8 /* String+Extensions.swift */; };
 		FDD87CF92C3BFEDE0072E2A8 /* LocationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD87CF82C3BFEDE0072E2A8 /* LocationsView.swift */; };
 		FDD87CFC2C3BFF4E0072E2A8 /* LocationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD87CFB2C3BFF4E0072E2A8 /* LocationCell.swift */; };
+		FDD87CFE2C3C003B0072E2A8 /* LocationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD87CFD2C3C003B0072E2A8 /* LocationViewModel.swift */; };
 		FDE8CD042C1567DA00481F32 /* OSLog+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE8CD032C1567DA00481F32 /* OSLog+Extensions.swift */; };
 /* End PBXBuildFile section */
 
@@ -186,6 +187,7 @@
 		FDD87CF52C3BEA1D0072E2A8 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		FDD87CF82C3BFEDE0072E2A8 /* LocationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationsView.swift; sourceTree = "<group>"; };
 		FDD87CFB2C3BFF4E0072E2A8 /* LocationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationCell.swift; sourceTree = "<group>"; };
+		FDD87CFD2C3C003B0072E2A8 /* LocationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewModel.swift; sourceTree = "<group>"; };
 		FDE8CD032C1567DA00481F32 /* OSLog+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OSLog+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -630,6 +632,7 @@
 			children = (
 				FDD87CFA2C3BFF430072E2A8 /* LocationCell */,
 				FDD87CF82C3BFEDE0072E2A8 /* LocationsView.swift */,
+				FDD87CFD2C3C003B0072E2A8 /* LocationViewModel.swift */,
 			);
 			path = LocationsView;
 			sourceTree = "<group>";
@@ -869,6 +872,7 @@
 				FD2D76AD2C151E5E00BBDEF4 /* SceneDelegate.swift in Sources */,
 				FDC057EC2C19414000312DB4 /* FetchCharacterUseCase.swift in Sources */,
 				FDC057C62C17F7A000312DB4 /* LocationEndpoints.swift in Sources */,
+				FDD87CFE2C3C003B0072E2A8 /* LocationViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
