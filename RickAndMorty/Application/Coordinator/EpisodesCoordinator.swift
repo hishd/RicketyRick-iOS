@@ -7,17 +7,21 @@
 
 import Foundation
 import UIKit
+import DependencyInjector
 
 class EpisodesCoordinator: NSObject, Coordinator {
     var navigationController: UINavigationController
     var childCoordinators: [any Coordinator] = []
+    
+    @Injectable(\.episodeRepository) var episodeRepository: EpisodeRepository
     
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
     }
     
     func start() {
-        let viewController = UIViewController()
+        let viewModel = EpisodeViewModel(episodeRepository: episodeRepository)
+        let viewController = EpisodesViewController.create(with: viewModel)
         
         let tabTitle = "Episodes"
         let defaultImage = UIImage(systemName: "tv")
@@ -26,7 +30,7 @@ class EpisodesCoordinator: NSObject, Coordinator {
         viewController.title = tabTitle
         viewController.tabBarItem = tabBarItem
         
-//        viewController.coordinator = self
+        viewController.coordinator = self
         navigationController.navigationBar.prefersLargeTitles = true
         self.navigationController.delegate = self
         self.navigationController.pushViewController(viewController, animated: false)
