@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-final class LifeStatusContainer: UIView {
+final class LifeStatusContainerView: UIView {
     
     var characterStatus: CharacterStatus {
         didSet {

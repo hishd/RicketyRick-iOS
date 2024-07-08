@@ -62,8 +62,8 @@ final class CharacterCell: UITableViewCell {
         return container
     }()
     
-    private lazy var lifeStatusContainer: LifeStatusContainer = {
-        let container = LifeStatusContainer(characterStatus: .unknown)
+    private lazy var lifeStatusContainer: LifeStatusContainerView = {
+        let container = LifeStatusContainerView(characterStatus: .unknown)
         return container
     }()
     

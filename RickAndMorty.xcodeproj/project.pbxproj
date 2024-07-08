@@ -87,7 +87,7 @@
 		FDD87CFC2C3BFF4E0072E2A8 /* LocationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD87CFB2C3BFF4E0072E2A8 /* LocationCell.swift */; };
 		FDD87CFE2C3C003B0072E2A8 /* LocationsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD87CFD2C3C003B0072E2A8 /* LocationsViewModel.swift */; };
 		FDD87D002C3C01560072E2A8 /* LocationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD87CFF2C3C01560072E2A8 /* LocationsViewController.swift */; };
-		FDD87D032C3C08F50072E2A8 /* LifeStatusContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD87D022C3C08F50072E2A8 /* LifeStatusContainer.swift */; };
+		FDD87D032C3C08F50072E2A8 /* LifeStatusContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD87D022C3C08F50072E2A8 /* LifeStatusContainerView.swift */; };
 		FDE8CD042C1567DA00481F32 /* OSLog+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE8CD032C1567DA00481F32 /* OSLog+Extensions.swift */; };
 /* End PBXBuildFile section */
 
@@ -191,7 +191,7 @@
 		FDD87CFB2C3BFF4E0072E2A8 /* LocationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationCell.swift; sourceTree = "<group>"; };
 		FDD87CFD2C3C003B0072E2A8 /* LocationsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationsViewModel.swift; sourceTree = "<group>"; };
 		FDD87CFF2C3C01560072E2A8 /* LocationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationsViewController.swift; sourceTree = "<group>"; };
-		FDD87D022C3C08F50072E2A8 /* LifeStatusContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifeStatusContainer.swift; sourceTree = "<group>"; };
+		FDD87D022C3C08F50072E2A8 /* LifeStatusContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifeStatusContainerView.swift; sourceTree = "<group>"; };
 		FDE8CD032C1567DA00481F32 /* OSLog+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OSLog+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -654,7 +654,7 @@
 		FDD87D012C3C08D40072E2A8 /* Subviews */ = {
 			isa = PBXGroup;
 			children = (
-				FDD87D022C3C08F50072E2A8 /* LifeStatusContainer.swift */,
+				FDD87D022C3C08F50072E2A8 /* LifeStatusContainerView.swift */,
 			);
 			path = Subviews;
 			sourceTree = "<group>";
@@ -855,7 +855,7 @@
 				FDC057D52C18AD6000312DB4 /* CharacterRepositoryPrimaryFallback.swift in Sources */,
 				FDC057A32C17DC8600312DB4 /* Location.swift in Sources */,
 				FDD87CF42C3B79F30072E2A8 /* EpisodesViewController.swift in Sources */,
-				FDD87D032C3C08F50072E2A8 /* LifeStatusContainer.swift in Sources */,
+				FDD87D032C3C08F50072E2A8 /* LifeStatusContainerView.swift in Sources */,
 				FD81D1352C385A0100098C59 /* CharacterCell.swift in Sources */,
 				FDC057D12C18ACB700312DB4 /* CharacterRepositoryRemote.swift in Sources */,
 				FDC057E12C1931AD00312DB4 /* LocationRepositoryRemote.swift in Sources */,
