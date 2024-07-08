@@ -80,6 +80,7 @@
 		FDD87CEA2C3AAD890072E2A8 /* ArrayWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD87CE92C3AAD890072E2A8 /* ArrayWrapper.swift */; };
 		FDD87CED2C3B74A90072E2A8 /* EpisodesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD87CEC2C3B74A90072E2A8 /* EpisodesView.swift */; };
 		FDD87CF02C3B750C0072E2A8 /* EpisodeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD87CEF2C3B750C0072E2A8 /* EpisodeCell.swift */; };
+		FDD87CF22C3B78360072E2A8 /* EpisodeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD87CF12C3B78360072E2A8 /* EpisodeViewModel.swift */; };
 		FDE8CD042C1567DA00481F32 /* OSLog+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE8CD032C1567DA00481F32 /* OSLog+Extensions.swift */; };
 /* End PBXBuildFile section */
 
@@ -176,6 +177,7 @@
 		FDD87CE92C3AAD890072E2A8 /* ArrayWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayWrapper.swift; sourceTree = "<group>"; };
 		FDD87CEC2C3B74A90072E2A8 /* EpisodesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodesView.swift; sourceTree = "<group>"; };
 		FDD87CEF2C3B750C0072E2A8 /* EpisodeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeCell.swift; sourceTree = "<group>"; };
+		FDD87CF12C3B78360072E2A8 /* EpisodeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeViewModel.swift; sourceTree = "<group>"; };
 		FDE8CD032C1567DA00481F32 /* OSLog+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OSLog+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -600,6 +602,7 @@
 			children = (
 				FDD87CEE2C3B74F90072E2A8 /* EpisodeCell */,
 				FDD87CEC2C3B74A90072E2A8 /* EpisodesView.swift */,
+				FDD87CF12C3B78360072E2A8 /* EpisodeViewModel.swift */,
 			);
 			path = EpisodesView;
 			sourceTree = "<group>";
@@ -772,6 +775,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FDD87CF22C3B78360072E2A8 /* EpisodeViewModel.swift in Sources */,
 				FDC057B02C17E1CE00312DB4 /* FetchLocationsUseCase.swift in Sources */,
 				FDC057DF2C1930B800312DB4 /* LocationRepositoryPrimaryFallback.swift in Sources */,
 				FDC057B42C17E28F00312DB4 /* FetchEpisodesUseCase.swift in Sources */,

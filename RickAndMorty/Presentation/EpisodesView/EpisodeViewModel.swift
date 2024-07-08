@@ -1,15 +1,15 @@
 //
-//  CharactersViewModel.swift
+//  EpisodeViewModel.swift
 //  RickAndMorty
 //
-//  Created by Hishara Dilshan on 2024-07-05.
+//  Created by Hishara Dilshan on 2024-07-08.
 //
 
 import Foundation
 
-final class CharactersViewModel: ViewModel {
+final class EpisodeViewModel: ViewModel {
     let paginationThreshold: Int = 5
-    private let characterRepository: CharacterRepository
+    private let episodeRepository: EpisodeRepository
     private var dispatchWorkItem: DispatchWorkItem?
     var onSuccess: (() -> Void)?
     var onError: ((_ errorString: String) -> Void)?
@@ -19,12 +19,12 @@ final class CharactersViewModel: ViewModel {
     private var currentPage: Int = 0
     private var cancellableRequest: Cancellable?
     
-    let wrappedCharacters: ArrayWrapper<Character> = .init(wrappedArray: .init())
+    let wrappedEpisodes: ArrayWrapper<Episode> = .init(wrappedArray: .init())
     
     var searchText: String = .init()
     
-    init(characterRepository: CharacterRepository) {
-        self.characterRepository = characterRepository
+    init(episodeRepository: EpisodeRepository) {
+        self.episodeRepository = episodeRepository
     }
     
     func fetchData() {
@@ -34,14 +34,14 @@ final class CharactersViewModel: ViewModel {
         
         self.searchText = ""
         
-        let fetchCharactersUseCase: FetchCharactersUseCase = .init(
-            repository: self.characterRepository,
+        let fetchEpisodesUseCase: FetchEpisodesUseCase = .init(
+            repository: self.episodeRepository,
             completionHandler: { [weak self] result in
                 switch result {
                 case .success(let page):
                     self?.currentPage = 1
-                    self?.wrappedCharacters.removeAll()
-                    self?.wrappedCharacters.append(contentsOf: page.characters)
+                    self?.wrappedEpisodes.removeAll()
+                    self?.wrappedEpisodes.append(contentsOf: page.episodes)
                     self?.totalPages = page.pages
                     onSuccess()
                 case .failure(let error):
@@ -52,7 +52,7 @@ final class CharactersViewModel: ViewModel {
             }
         )
         
-        self.cancellableRequest = fetchCharactersUseCase.execute()
+        self.cancellableRequest = fetchEpisodesUseCase.execute()
     }
     
     func searchData() {
@@ -74,7 +74,7 @@ final class CharactersViewModel: ViewModel {
         DispatchQueue.global().asyncAfter(deadline: .now() + 0.75, execute: dispatchWorkItem!)
     }
     
-    func loadMoreCharacters() {
+    func loadMoreEpisodes() {
         DispatchQueue.global().async { [weak self] in
             guard let self = self else { return }
             
@@ -85,11 +85,11 @@ final class CharactersViewModel: ViewModel {
             //If the search text is empty, then execute the normal flow with pagination
             //Else execute the search flow with pagination
             if searchText.isEmpty {
-                self.cancellableRequest = buildFetchCharacterUseCaseWithPage(
+                self.cancellableRequest = buildFetchEpisodesUseCaseWithPage(
                     page: self.currentPage + 1
                 ).execute()
             } else {
-                self.cancellableRequest = buildSearchCharacterUseCaseWithPage(
+                self.cancellableRequest = buildSearchEpisodeUseCaseWithPage(
                     name: searchText,
                     page: self.currentPage + 1
                 ).execute()
@@ -108,15 +108,15 @@ final class CharactersViewModel: ViewModel {
         
         self.currentPage = 1
         
-        let searchCharactersUseCase: SearchCharactersUseCase = .init(
-            repository: self.characterRepository,
+        let searchEpisodesUseCase: SearchEpisodesUseCase = .init(
+            repository: self.episodeRepository,
             name: text,
             completionHandler: {
                 [weak self] result in
                 switch result {
                 case .success(let page):
-                    self?.wrappedCharacters.removeAll()
-                    self?.wrappedCharacters.append(contentsOf: page.characters)
+                    self?.wrappedEpisodes.removeAll()
+                    self?.wrappedEpisodes.append(contentsOf: page.episodes)
                     self?.totalPages = page.pages
                     onSuccess()
                 case .failure(let error):
@@ -127,27 +127,27 @@ final class CharactersViewModel: ViewModel {
             }
         )
         
-        self.cancellableRequest = searchCharactersUseCase.execute()
+        self.cancellableRequest = searchEpisodesUseCase.execute()
     }
     
-    private func buildFetchCharacterUseCaseWithPage(page: Int) -> FetchCharactersUseCase {
+    private func buildFetchEpisodesUseCaseWithPage(page: Int) -> FetchEpisodesUseCase {
         guard let onError = self.onError, let onRefresh = onRefresh else {
             fatalError("onSuccess and onRefresh not implemented in view controller")
         }
         
         return .init(
-            repository: self.characterRepository,
+            repository: self.episodeRepository,
             page: page,
             completionHandler: { [weak self] result in
                 guard let self = self else { return }
                 switch result {
                 case .success(let page):
                     self.currentPage+=1
-                    self.wrappedCharacters.append(contentsOf: page.characters)
+                    self.wrappedEpisodes.append(contentsOf: page.episodes)
                     self.totalPages = page.pages
                     
                     onRefresh(
-                        self.buildIndexPaths(upTo: page.characters.count)
+                        self.buildIndexPaths(upTo: page.episodes.count)
                     )
                     
                 case .failure(let error):
@@ -160,8 +160,8 @@ final class CharactersViewModel: ViewModel {
     }
     
     private func buildIndexPaths(upTo newCount: Int) -> [IndexPath] {
-        let from = self.wrappedCharacters.content.count - newCount
-        let to = self.wrappedCharacters.content.count - 1
+        let from = self.wrappedEpisodes.content.count - newCount
+        let to = self.wrappedEpisodes.content.count - 1
         let indexPaths: [IndexPath] = (from...to).map { index in
             return .init(row: index, section: 0)
         }
@@ -169,13 +169,13 @@ final class CharactersViewModel: ViewModel {
         return indexPaths
     }
     
-    private func buildSearchCharacterUseCaseWithPage(name: String, page: Int) -> SearchCharactersUseCase {
+    private func buildSearchEpisodeUseCaseWithPage(name: String, page: Int) -> SearchEpisodesUseCase {
         guard let onError = self.onError, let onRefresh = onRefresh else {
             fatalError("onSuccess and onRefresh not implemented in view controller")
         }
         
         return .init(
-            repository: self.characterRepository,
+            repository: self.episodeRepository,
             page: page,
             name: name,
             completionHandler: { [weak self] result in
@@ -183,11 +183,11 @@ final class CharactersViewModel: ViewModel {
                 switch result {
                 case .success(let page):
                     self.currentPage+=1
-                    self.wrappedCharacters.append(contentsOf: page.characters)
+                    self.wrappedEpisodes.append(contentsOf: page.episodes)
                     self.totalPages = page.pages
                     
                     onRefresh(
-                        self.buildIndexPaths(upTo: page.characters.count)
+                        self.buildIndexPaths(upTo: page.episodes.count)
                     )
                 case .failure(let error):
                     onError(
@@ -219,7 +219,7 @@ final class CharactersViewModel: ViewModel {
         func decodeNetworkError(error: NetworkError) -> String {
             return switch error {
             case .error(_, _):
-                error.isNotFoundError ? "Could not find the character" : "Unknown error occurred. Please try again later."
+                error.isNotFoundError ? "Could not find the Episode" : "Unknown error occurred. Please try again later."
             case .notConnected:
                 "Connection error. Please try again later."
             case .cancelled:
