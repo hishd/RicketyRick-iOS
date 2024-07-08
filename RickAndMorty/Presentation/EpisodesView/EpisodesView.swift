@@ -20,7 +20,7 @@ final class EpisodesView: UIView {
     
     lazy var tableView: UITableView = {
         let tableView = UITableView()
-        tableView.register(EpisodesCell.self, forCellReuseIdentifier: EpisodesCell.reuseIdentifier)
+        tableView.register(EpisodeCell.self, forCellReuseIdentifier: EpisodeCell.reuseIdentifier)
         tableView.separatorStyle = .none
         tableView.showsVerticalScrollIndicator = false
         return tableView
