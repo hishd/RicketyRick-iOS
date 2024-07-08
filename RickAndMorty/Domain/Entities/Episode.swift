@@ -18,6 +18,11 @@ struct Episode {
     let codeName: String
     let characters: [EpisodeCharacter]
     let createdData: Date?
+    var fullCodeName: String {
+        let seasonNumber = codeName.substring(with: 1..<3)
+        let episodeNumber = codeName.substring(from: 4)
+        return "Season \(seasonNumber), Episode \(episodeNumber)"
+    }
 }
 
 struct EpisodePage {
