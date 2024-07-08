@@ -14,10 +14,12 @@ The application uses the [Rick and Morty API](https://rickandmortyapi.com/) API 
 - This iOS appliaction is built using UiKit + Programatic UI
 - Suports minimum target iOS 14
 - Developed using **Clean Architecture** (Data, Domain, Presentation)
+- MVVM is used for presentation layer to enhance readability and flexibility
 - Navigation is handled through **Coordinators**
 - A seperate networking layer is developed to handle RestAPI calls which supports modern concurrrency through Async API
 - Networking layer supports handling multiple API calls using TaskGroup and DispatchGroup
-- A seperate dependency injection library is created to handle dependencies. The approach uses property wrappers and subscripts
+- A seperate dependency injection library is created to decouple dependencies. The approach uses property wrappers and subscripts
+- A seperate image caching library to cache and retrieve images for table views
 - App contains fluid animations and transitions
 
 ### Visual Designs
