@@ -12,6 +12,7 @@ import DependencyInjector
 class EpisodesCoordinator: NSObject, Coordinator {
     var navigationController: UINavigationController
     var childCoordinators: [any Coordinator] = []
+    var viewController: EpisodesViewController?
     
     @Injectable(\.episodeRepository) var episodeRepository: EpisodeRepository
     
@@ -21,7 +22,11 @@ class EpisodesCoordinator: NSObject, Coordinator {
     
     func start() {
         let viewModel = EpisodeViewModel(episodeRepository: episodeRepository)
-        let viewController = EpisodesViewController.create(with: viewModel)
+        self.viewController = EpisodesViewController.create(with: viewModel)
+        
+        guard let viewController = self.viewController else {
+            fatalError("View controller not instantiated")
+        }
         
         let tabTitle = "Episodes"
         let defaultImage = UIImage(systemName: "tv")
@@ -34,6 +39,10 @@ class EpisodesCoordinator: NSObject, Coordinator {
         navigationController.navigationBar.prefersLargeTitles = true
         self.navigationController.delegate = self
         self.navigationController.pushViewController(viewController, animated: false)
+    }
+    
+    func scrollToTopItem() {
+        viewController?.scrollToTopItem()
     }
 }
 

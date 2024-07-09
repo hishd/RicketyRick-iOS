@@ -115,6 +115,10 @@ extension EpisodesViewController {
             }
         }
     }
+    
+    func scrollToTopItem() {
+        
+    }
 }
 
 //MARK: Search bar delegates

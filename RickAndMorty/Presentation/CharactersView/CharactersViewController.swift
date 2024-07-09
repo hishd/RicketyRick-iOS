@@ -115,6 +115,14 @@ extension CharactersViewController {
             }
         }
     }
+    
+    func scrollToTopItem() {
+        guard !(viewModel?.wrappedCharacters.isEmpty ?? true) else {
+            return
+        }
+        
+        mainView.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .bottom, animated: true)
+    }
 }
 
 //MARK: Search bar delegates

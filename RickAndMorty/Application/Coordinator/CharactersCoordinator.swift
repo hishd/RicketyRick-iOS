@@ -12,6 +12,7 @@ import DependencyInjector
 class CharactersCoordinator: NSObject, Coordinator {
     var navigationController: UINavigationController
     var childCoordinators: [any Coordinator] = []
+    var viewController: CharactersViewController?
     
     @Injectable(\.characterRepository) var characterRepository: CharacterRepository
     
@@ -21,7 +22,11 @@ class CharactersCoordinator: NSObject, Coordinator {
     
     func start() {
         let viewModel = CharactersViewModel(characterRepository: self.characterRepository)
-        let viewController = CharactersViewController.create(with: viewModel)
+        self.viewController = CharactersViewController.create(with: viewModel)
+        
+        guard let viewController = self.viewController else {
+            fatalError("View controller not instantiated")
+        }
         
         let tabTitle = "Characters"
         let defaultImage = UIImage(systemName: "person.text.rectangle")
@@ -34,6 +39,10 @@ class CharactersCoordinator: NSObject, Coordinator {
         navigationController.navigationBar.prefersLargeTitles = true
         self.navigationController.delegate = self
         self.navigationController.pushViewController(viewController, animated: false)
+    }
+    
+    func scrollToTopItem() {
+        viewController?.scrollToTopItem()
     }
 }
 
