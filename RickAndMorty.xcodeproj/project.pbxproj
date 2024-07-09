@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 60;
+	objectVersion = 56;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -34,6 +34,8 @@
 		FD81D1322C3819F200098C59 /* LocationsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD81D1312C3819F200098C59 /* LocationsCoordinator.swift */; };
 		FD81D1352C385A0100098C59 /* CharacterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD81D1342C385A0100098C59 /* CharacterCell.swift */; };
 		FD81D1382C38C61800098C59 /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD81D1372C38C61800098C59 /* ProgressView.swift */; };
+		FD8B39CE2C3D390A0055D78D /* ImageLoader in Frameworks */ = {isa = PBXBuildFile; productRef = FD8B39CD2C3D390A0055D78D /* ImageLoader */; };
+		FD8B39D12C3D39320055D78D /* DependencyInjector in Frameworks */ = {isa = PBXBuildFile; productRef = FD8B39D02C3D39320055D78D /* DependencyInjector */; };
 		FDC057912C17D37A00312DB4 /* ApiNetworkConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC0578D2C17D37A00312DB4 /* ApiNetworkConfig.swift */; };
 		FDC057922C17D37A00312DB4 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC0578E2C17D37A00312DB4 /* Endpoint.swift */; };
 		FDC057932C17D37A00312DB4 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC0578F2C17D37A00312DB4 /* NetworkService.swift */; };
@@ -72,10 +74,8 @@
 		FDC057EC2C19414000312DB4 /* FetchCharacterUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC057EB2C19414000312DB4 /* FetchCharacterUseCase.swift */; };
 		FDC057EE2C1941D500312DB4 /* FetchLocationUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC057ED2C1941D500312DB4 /* FetchLocationUseCase.swift */; };
 		FDC057F02C19423400312DB4 /* FetchEpisodeUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC057EF2C19423400312DB4 /* FetchEpisodeUseCase.swift */; };
-		FDD87CDD2C3961F20072E2A8 /* DependencyInjector in Frameworks */ = {isa = PBXBuildFile; productRef = FDD87CDC2C3961F20072E2A8 /* DependencyInjector */; };
 		FDD87CE02C3962DA0072E2A8 /* DependencyInjector.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD87CDF2C3962DA0072E2A8 /* DependencyInjector.swift */; };
 		FDD87CE32C3965EB0072E2A8 /* ApplicationConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD87CE22C3965EB0072E2A8 /* ApplicationConstants.swift */; };
-		FDD87CE62C3981060072E2A8 /* ImageLoader in Frameworks */ = {isa = PBXBuildFile; productRef = FDD87CE52C3981060072E2A8 /* ImageLoader */; };
 		FDD87CE82C3A9BA60072E2A8 /* CharactersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD87CE72C3A9BA60072E2A8 /* CharactersView.swift */; };
 		FDD87CEA2C3AAD890072E2A8 /* ArrayWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD87CE92C3AAD890072E2A8 /* ArrayWrapper.swift */; };
 		FDD87CED2C3B74A90072E2A8 /* EpisodesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD87CEC2C3B74A90072E2A8 /* EpisodesView.swift */; };
@@ -202,8 +202,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FDD87CDD2C3961F20072E2A8 /* DependencyInjector in Frameworks */,
-				FDD87CE62C3981060072E2A8 /* ImageLoader in Frameworks */,
+				FD8B39CE2C3D390A0055D78D /* ImageLoader in Frameworks */,
+				FD8B39D12C3D39320055D78D /* DependencyInjector in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -700,8 +700,8 @@
 			);
 			name = RickAndMorty;
 			packageProductDependencies = (
-				FDD87CDC2C3961F20072E2A8 /* DependencyInjector */,
-				FDD87CE52C3981060072E2A8 /* ImageLoader */,
+				FD8B39CD2C3D390A0055D78D /* ImageLoader */,
+				FD8B39D02C3D39320055D78D /* DependencyInjector */,
 			);
 			productName = RickAndMorty;
 			productReference = FD2D76A72C151E5E00BBDEF4 /* RickAndMorty.app */;
@@ -776,8 +776,8 @@
 			);
 			mainGroup = FD2D769E2C151E5E00BBDEF4;
 			packageReferences = (
-				FDD87CDB2C3961F20072E2A8 /* XCLocalSwiftPackageReference "../../Swift Packages/DependencyInjector" */,
-				FDD87CE42C3981060072E2A8 /* XCLocalSwiftPackageReference "../../Swift Packages/ImageLoader" */,
+				FD8B39CC2C3D390A0055D78D /* XCRemoteSwiftPackageReference "ImageLoader" */,
+				FD8B39CF2C3D39320055D78D /* XCRemoteSwiftPackageReference "DependencyInjector" */,
 			);
 			productRefGroup = FD2D76A82C151E5E00BBDEF4 /* Products */;
 			projectDirPath = "";
@@ -1236,25 +1236,35 @@
 		};
 /* End XCConfigurationList section */
 
-/* Begin XCLocalSwiftPackageReference section */
-		FDD87CDB2C3961F20072E2A8 /* XCLocalSwiftPackageReference "../../Swift Packages/DependencyInjector" */ = {
-			isa = XCLocalSwiftPackageReference;
-			relativePath = "../../Swift Packages/DependencyInjector";
+/* Begin XCRemoteSwiftPackageReference section */
+		FD8B39CC2C3D390A0055D78D /* XCRemoteSwiftPackageReference "ImageLoader" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/hishd/ImageLoader";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
 		};
-		FDD87CE42C3981060072E2A8 /* XCLocalSwiftPackageReference "../../Swift Packages/ImageLoader" */ = {
-			isa = XCLocalSwiftPackageReference;
-			relativePath = "../../Swift Packages/ImageLoader";
+		FD8B39CF2C3D39320055D78D /* XCRemoteSwiftPackageReference "DependencyInjector" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/hishd/DependencyInjector";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
 		};
-/* End XCLocalSwiftPackageReference section */
+/* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		FDD87CDC2C3961F20072E2A8 /* DependencyInjector */ = {
+		FD8B39CD2C3D390A0055D78D /* ImageLoader */ = {
 			isa = XCSwiftPackageProductDependency;
-			productName = DependencyInjector;
-		};
-		FDD87CE52C3981060072E2A8 /* ImageLoader */ = {
-			isa = XCSwiftPackageProductDependency;
+			package = FD8B39CC2C3D390A0055D78D /* XCRemoteSwiftPackageReference "ImageLoader" */;
 			productName = ImageLoader;
+		};
+		FD8B39D02C3D39320055D78D /* DependencyInjector */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FD8B39CF2C3D39320055D78D /* XCRemoteSwiftPackageReference "DependencyInjector" */;
+			productName = DependencyInjector;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

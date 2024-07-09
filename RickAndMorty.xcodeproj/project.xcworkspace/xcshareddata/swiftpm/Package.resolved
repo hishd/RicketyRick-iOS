@@ -1,0 +1,24 @@
+{
+  "originHash" : "45806e1620d75b6870b5fd7f0c103f86d4de30dd46c70f481d880d85dc29af95",
+  "pins" : [
+    {
+      "identity" : "dependencyinjector",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/hishd/DependencyInjector",
+      "state" : {
+        "revision" : "fc409d60cbf3bb76b409bb8cc63453f8df7e852c",
+        "version" : "1.0.0"
+      }
+    },
+    {
+      "identity" : "imageloader",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/hishd/ImageLoader",
+      "state" : {
+        "revision" : "0f42912c4d954fe9304b1894b270d170d6e6707f",
+        "version" : "1.0.0"
+      }
+    }
+  ],
+  "version" : 3
+}
