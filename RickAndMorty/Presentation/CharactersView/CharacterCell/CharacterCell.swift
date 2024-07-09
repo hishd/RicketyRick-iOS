@@ -13,7 +13,7 @@ final class CharacterCell: UITableViewCell {
     
     lazy var view: UIView = {
         let view = UIView()
-        view.backgroundColor = UIColor(named: "cell_color")
+        view.backgroundColor = .cell
         view.layer.cornerRadius = 14
         view.layer.masksToBounds = false
         view.layer.shadowOpacity = 0.15
@@ -37,7 +37,7 @@ final class CharacterCell: UITableViewCell {
         let text = UILabel()
         text.text = "Placeholder"
         text.font = .systemFont(ofSize: 22, weight: .semibold)
-        text.textColor = .black
+        text.textColor = .cellText
         return text
     }()
     

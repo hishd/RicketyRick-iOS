@@ -115,6 +115,14 @@ extension CharactersViewController {
             }
         }
     }
+    
+    func scrollToTopItem() {
+        guard !(viewModel?.wrappedCharacters.isEmpty ?? true) else {
+            return
+        }
+        
+        mainView.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .bottom, animated: true)
+    }
 }
 
 //MARK: Search bar delegates
@@ -154,10 +162,10 @@ fileprivate final class CharacterViewTableViewHandler: NSObject, UITableViewDele
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         let cell = cell as! CharacterCell
-        cell.view.center.x = cell.view.center.x - cell.contentView.bounds.width / 2
+        cell.view.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
 
-        UIView.animate(withDuration: 0.15, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0) {
-            cell.view.center.x = cell.view.center.x + cell.contentView.bounds.width / 2
+        UIView.animate(withDuration: 0.15, delay: 0) {
+            cell.view.transform = CGAffineTransform(scaleX: 1, y: 1)
         }
         
         if indexPath.row == self.items.content.count - self.paginationThreshold {

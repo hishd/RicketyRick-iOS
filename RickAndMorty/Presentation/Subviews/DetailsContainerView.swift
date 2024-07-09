@@ -22,7 +22,7 @@ final class DetailsContainerView: UIView {
         text.text = "Placeholder"
         text.font = .systemFont(ofSize: 14, weight: .regular)
         text.numberOfLines = 2
-        text.textColor = .black
+        text.textColor = .cellText
         return text
     }()
     

@@ -12,6 +12,8 @@ import DependencyInjector
 class LocationsCoordinator: NSObject, Coordinator {
     var navigationController: UINavigationController
     var childCoordinators: [any Coordinator] = []
+    var viewController: LocationsViewController?
+    
     @Injectable(\.locationRepository) private var locationRepository: LocationRepository
     
     init(navigationController: UINavigationController) {
@@ -20,7 +22,11 @@ class LocationsCoordinator: NSObject, Coordinator {
     
     func start() {
         let viewModel = LocationsViewModel(locationRepository: locationRepository)
-        let viewController = LocationsViewController.create(with: viewModel)
+        self.viewController = LocationsViewController.create(with: viewModel)
+        
+        guard let viewController = self.viewController else {
+            fatalError("View controller not instantiated")
+        }
         
         let tabTitle = "Locations"
         let defaultImage = UIImage(systemName: "globe.europe.africa")
@@ -33,6 +39,10 @@ class LocationsCoordinator: NSObject, Coordinator {
         navigationController.navigationBar.prefersLargeTitles = true
         self.navigationController.delegate = self
         self.navigationController.pushViewController(viewController, animated: false)
+    }
+    
+    func scrollToTopItem() {
+        viewController?.scrollToTopItem()
     }
 }
 

@@ -115,6 +115,10 @@ extension LocationsViewController {
             }
         }
     }
+    
+    func scrollToTopItem() {
+        
+    }
 }
 
 //MARK: Search bar delegates
