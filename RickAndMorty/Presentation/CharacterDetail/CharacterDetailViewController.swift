@@ -16,6 +16,7 @@ final class CharacterDetailViewController: UIViewController, Presentable {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setConstraints()
+        self.setCharacterData()
     }
     
     static func create(with viewModel: CharacterDetailViewModel?) -> CharacterDetailViewController {
@@ -25,6 +26,17 @@ final class CharacterDetailViewController: UIViewController, Presentable {
     }
     
     func setConstraints() {
+        view.backgroundColor = .systemBackground
+    }
+    
+    func setCharacterData() {
+        guard let character = viewModel?.character else {
+            let errorAlert = UIAlertController(title: "Operation Error", message: "Could not find character information", preferredStyle: .alert)
+            errorAlert.addAction(.init(title: "Ok", style: .cancel))
+            self.present(errorAlert, animated: true)
+            return
+        }
         
+        self.title = character.characterName
     }
 }

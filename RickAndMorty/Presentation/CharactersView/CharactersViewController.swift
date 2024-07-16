@@ -66,6 +66,8 @@ extension CharactersViewController {
         
         mainView.searchBar.delegate = self
         mainView.refreshControl.addTarget(self, action: #selector(refreshData(_:)), for: .valueChanged)
+        
+        self.tableViewHandler?.onCharacterSelected = self.onCharacterSelected
     }
     
     @objc func refreshData(_ sender: Any) {
@@ -123,6 +125,10 @@ extension CharactersViewController {
         
         mainView.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .bottom, animated: true)
     }
+    
+    func onCharacterSelected(character: Character) {
+        self.coordinator?.launchDetailFlow(for: character)
+    }
 }
 
 //MARK: Search bar delegates
@@ -142,6 +148,7 @@ fileprivate final class CharacterViewTableViewHandler: NSObject, UITableViewDele
     let items: ArrayWrapper<Character>
     let paginationThreshold: Int
     let onLoadMore: (() -> Void)
+    var onCharacterSelected: ((_ selected: Character) -> Void)?
     
     init(items: ArrayWrapper<Character>, paginationThreshold: Int, onLoadMore: @escaping () -> Void) {
         self.items = items
@@ -179,6 +186,13 @@ fileprivate final class CharacterViewTableViewHandler: NSObject, UITableViewDele
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("Selected Row: \(indexPath.row)")
+        
+        guard let onCharacterSelected = self.onCharacterSelected else {
+            return
+        }
+        
+        let character = self.items.content[indexPath.row]
+        onCharacterSelected(character)
     }
 }
 
