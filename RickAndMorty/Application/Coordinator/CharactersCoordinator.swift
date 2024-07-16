@@ -41,6 +41,13 @@ class CharactersCoordinator: NSObject, Coordinator {
         self.navigationController.pushViewController(viewController, animated: false)
     }
     
+    func launchDetailFlow(for character: Character) {
+        let detailCoordinator = CharacterDetailCoordinator(navigationController: self.navigationController)
+        detailCoordinator.character = character
+        self.childCoordinators.append(detailCoordinator)
+        detailCoordinator.start()
+    }
+    
     func scrollToTopItem() {
         viewController?.scrollToTopItem()
     }
@@ -57,6 +64,10 @@ extension CharactersCoordinator: UINavigationControllerDelegate {
         }
 
         if let viewController = sourceViewController as? CharactersViewController {
+            childDidFinish(viewController.coordinator)
+        }
+        
+        if let viewController = sourceViewController as? CharacterDetailViewController {
             childDidFinish(viewController.coordinator)
         }
     }
