@@ -12,6 +12,11 @@ final class CharacterDetailViewController: UIViewController, Presentable {
     
     var viewModel: CharacterDetailViewModel?
     var coordinator: CharacterDetailCoordinator?
+    private lazy var mainView = CharacterDetailView(character: viewModel?.character)
+    
+    override func loadView() {
+        self.view = mainView
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,6 +32,7 @@ final class CharacterDetailViewController: UIViewController, Presentable {
     
     func setConstraints() {
         view.backgroundColor = .systemBackground
+        mainView.setConstraints()
     }
     
     func setCharacterData() {

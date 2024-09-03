@@ -18,6 +18,10 @@ class CharacterDetailCoordinator: Coordinator {
     }
     
     func start() {
+        
+//        #warning("Remove after testing....!!!!")
+//        self.character = Character.sample
+        
         guard let character = character else {
             fatalError("Character not initialised.......!")
         }
