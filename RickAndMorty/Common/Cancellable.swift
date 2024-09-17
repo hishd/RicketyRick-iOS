@@ -25,3 +25,15 @@ class CancellableTask: Cancellable {
         isCancelled = true
     }
 }
+
+class CancellableTaskCollection: Cancellable {
+    var isCancelled: Bool = false
+    var isSuccessful: Bool = true
+    var isNetworkTask: Bool = false
+    var networkTasks: CancellableHttpRequestCollection?
+    
+    func cancel() {
+        networkTasks?.cancelAll()
+        isCancelled = true
+    }
+}

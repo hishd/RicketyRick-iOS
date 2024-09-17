@@ -12,6 +12,10 @@ enum EpisodeEndpoints {
         return .init(path: .path("episode/\(id)"), method: .get)
     }
     
+    static func getEpisode(by url: URL) -> ApiEndpoint<EpisodeResponseDTO.ResultsDTO> {
+        return .init(path: .fullPath(url.absoluteString), method: .get)
+    }
+    
     static func allEpisodes(from page: Int?) -> ApiEndpoint<EpisodeResponseDTO> {
         var params: [String: Int] = [:]
         if let page = page {

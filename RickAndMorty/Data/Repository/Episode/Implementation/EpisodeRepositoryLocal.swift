@@ -19,4 +19,8 @@ class EpisodeRepositoryLocal: EpisodeRepository {
     func searchEpisodes(by name: String, from page: Int?, completion: @escaping CompletionHandlerPage) -> (any Cancellable)? {
         nil
     }
+    
+    func getEpisodeData(by urls: [URL], completion: @escaping (Result<[Episode], any Error>) -> Void) -> (any Cancellable)? {
+        nil
+    }
 }
