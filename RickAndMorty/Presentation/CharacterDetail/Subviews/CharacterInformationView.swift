@@ -98,7 +98,6 @@ final class CharacterInformationView: UIView {
         scrollView.anchor(
             top: title.bottomAnchor,
             left: self.safeAreaLayoutGuide.leftAnchor,
-            bottom: self.safeAreaLayoutGuide.bottomAnchor,
             right: self.safeAreaLayoutGuide.rightAnchor,
             height: 200
         )
@@ -150,7 +149,7 @@ final class CharacterInformationView: UIView {
             left: scrollView.safeAreaLayoutGuide.leftAnchor,
             bottom: scrollView.bottomAnchor,
             right: scrollView.safeAreaLayoutGuide.rightAnchor,
-            paddingTop: 10,
+            paddingTop: 16,
             height: 240
         )
     }

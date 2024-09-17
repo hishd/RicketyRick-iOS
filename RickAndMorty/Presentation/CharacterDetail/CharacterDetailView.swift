@@ -55,7 +55,8 @@ final class CharacterDetailView: UIView {
             right: self.safeAreaLayoutGuide.rightAnchor,
             paddingTop: 10,
             paddingLeft: 20,
-            paddingRight: 20
+            paddingRight: 20,
+            height: 220
         )
         
         
