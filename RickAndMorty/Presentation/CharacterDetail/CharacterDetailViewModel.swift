@@ -7,10 +7,15 @@
 
 import Foundation
 
-class CharacterDetailViewModel: ViewModel {
+final class CharacterDetailViewModel: ViewModel {
     let character: Character
+    let episodeData: [Episode] = .init()
     
     init(character: Character) {
         self.character = character
+    }
+    
+    func loadEpisodeData() {
+        
     }
 }
