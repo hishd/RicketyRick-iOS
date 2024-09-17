@@ -13,7 +13,7 @@ import SwiftUI
 
 final class EpisodeInformationViewController: UIViewController {
     
-    private let episodeData: [Episode]
+    private let episodeData: ArrayWrapper<Episode>
     private var episodeTableViewHandler: EpisodeTableViewHandler?
     
     private lazy var subTitle: UILabel = {
@@ -32,7 +32,7 @@ final class EpisodeInformationViewController: UIViewController {
         return tableView
     }()
     
-    init(episodeData: [Episode]) {
+    init(episodeData: ArrayWrapper<Episode>) {
         self.episodeData = episodeData
         super.init(nibName: nil, bundle: nil)
     }
@@ -67,17 +67,22 @@ final class EpisodeInformationViewController: UIViewController {
         episodeTableView.dataSource = self.episodeTableViewHandler
         episodeTableView.delegate = self.episodeTableViewHandler
     }
+    
+    func refreshTableView() {
+        printIfDebug("Reloading Episodes data. Count :\(self.episodeData.content.count)")
+        self.episodeTableView.reloadData()
+    }
 }
 
 fileprivate final class EpisodeTableViewHandler: NSObject, UITableViewDataSource, UITableViewDelegate {
-    private let episodeData: [Episode]
+    private let episodeData: ArrayWrapper<Episode>
     
-    init(episodeData: [Episode]) {
+    init(episodeData: ArrayWrapper<Episode>) {
         self.episodeData = episodeData
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return episodeData.count
+        return episodeData.content.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -120,7 +125,7 @@ fileprivate final class EpisodeInfoCell: UITableViewCell {
     private lazy var episodeTitle: UILabel = {
         let text = UILabel()
         text.text = "Placeholder"
-        text.font = .systemFont(ofSize: 14, weight: .semibold)
+        text.font = .systemFont(ofSize: 14, weight: .medium)
         text.textColor = .cellText
         return text
     }()
@@ -129,6 +134,7 @@ fileprivate final class EpisodeInfoCell: UITableViewCell {
         let container = DetailsContainerView()
         container.setIconImage(with: UIImage(systemName: "tv"))
         container.setText(with: "Season")
+        container.setTextSize(of: 12)
         return container
     }()
     
@@ -136,6 +142,7 @@ fileprivate final class EpisodeInfoCell: UITableViewCell {
         let container = DetailsContainerView()
         container.setIconImage(with: UIImage(systemName: "calendar"))
         container.setText(with: "Air Date")
+        container.setTextSize(of: 12)
         return container
     }()
     
@@ -197,11 +204,13 @@ extension EpisodeInfoCell {
     }
     
     func setData(with episode: Episode) {
-        
+        self.episodeTitle.text = episode.episodeName
+        self.seasonInfoContainer.setText(with: episode.fullCodeName)
+        self.airDateInfoContainer.setText(with: episode.airDate)
     }
 }
 
 @available(iOS 17.0, *)
 #Preview {
-    EpisodeInformationViewController(episodeData: .init())
+    EpisodeInformationViewController(episodeData: .init(wrappedArray: .init()))
 }

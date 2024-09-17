@@ -55,6 +55,10 @@ final class DetailsContainerView: UIView {
         self.icon.image = image
     }
     
+    func setTextSize(of size: CGFloat) {
+        self.textLabel.font = .systemFont(ofSize: size, weight: .regular)
+    }
+    
     func setText(with text: String?) {
         guard let text = text, !text.isEmpty else {
             self.textLabel.text = "Unknown"

@@ -78,4 +78,34 @@ class EpisodeRepositoryRemote: EpisodeRepository {
         
         return task
     }
+    
+    func getEpisodeData(by urls: [URL], completion: @escaping (Result<[Episode], any Error>) -> Void) -> (any Cancellable)? {
+        let task = CancellableTaskCollection()
+        task.isNetworkTask = true
+        
+        let endpoints: [ApiEndpoint] = urls.map { url in
+            return EpisodeEndpoints.getEpisode(by: url)
+        }
+        
+        task.networkTasks = networkDataTransferService.request(with: endpoints, completion: { result in
+            let handler: Result<[Episode], Error>
+            
+            defer {
+                completion(handler)
+            }
+            
+            switch result {
+            case .success(let result):
+                let episodes: [Episode] = result.results.map { episode in
+                    return episode.mapToDomain()
+                }
+                handler = .success(episodes)
+                task.isSuccessful = true
+            case .failure(let error):
+                handler = .failure(error)
+            }
+        })
+        
+        return task
+    }
 }

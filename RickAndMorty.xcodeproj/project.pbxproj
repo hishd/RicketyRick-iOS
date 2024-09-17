@@ -25,6 +25,7 @@
 		FD55CE9F2C48062200C2CE7F /* CharacterInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD55CE9E2C48062200C2CE7F /* CharacterInformationView.swift */; };
 		FD6AE51A2C8A6B31001960D0 /* EpisodeInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD6AE5192C8A6B31001960D0 /* EpisodeInformationViewController.swift */; };
 		FD6AE51C2C9919B6001960D0 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD6AE51B2C9919B6001960D0 /* UIViewController+Extensions.swift */; };
+		FD6AE51E2C9A010A001960D0 /* GetEpisodesByUrlsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD6AE51D2C9A010A001960D0 /* GetEpisodesByUrlsUseCase.swift */; };
 		FD81D1122C2E695800098C59 /* MockCharacterDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD81D1112C2E695800098C59 /* MockCharacterDataRepository.swift */; };
 		FD81D1142C2E697F00098C59 /* MockLocationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD81D1132C2E697F00098C59 /* MockLocationRepository.swift */; };
 		FD81D1162C2E69A900098C59 /* TestLocationUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD81D1152C2E69A900098C59 /* TestLocationUseCase.swift */; };
@@ -139,6 +140,7 @@
 		FD55CE9E2C48062200C2CE7F /* CharacterInformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterInformationView.swift; sourceTree = "<group>"; };
 		FD6AE5192C8A6B31001960D0 /* EpisodeInformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeInformationViewController.swift; sourceTree = "<group>"; };
 		FD6AE51B2C9919B6001960D0 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
+		FD6AE51D2C9A010A001960D0 /* GetEpisodesByUrlsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetEpisodesByUrlsUseCase.swift; sourceTree = "<group>"; };
 		FD81D1112C2E695800098C59 /* MockCharacterDataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockCharacterDataRepository.swift; sourceTree = "<group>"; };
 		FD81D1132C2E697F00098C59 /* MockLocationRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockLocationRepository.swift; sourceTree = "<group>"; };
 		FD81D1152C2E69A900098C59 /* TestLocationUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestLocationUseCase.swift; sourceTree = "<group>"; };
@@ -526,6 +528,7 @@
 				FDC057B32C17E28F00312DB4 /* FetchEpisodesUseCase.swift */,
 				FDC057B52C17E2D200312DB4 /* SearchEpisodesUseCase.swift */,
 				FDC057EF2C19423400312DB4 /* FetchEpisodeUseCase.swift */,
+				FD6AE51D2C9A010A001960D0 /* GetEpisodesByUrlsUseCase.swift */,
 			);
 			path = Episode;
 			sourceTree = "<group>";
@@ -885,6 +888,7 @@
 				FDD87CE02C3962DA0072E2A8 /* DependencyInjector.swift in Sources */,
 				FDC057B62C17E2D200312DB4 /* SearchEpisodesUseCase.swift in Sources */,
 				FDC057DB2C18B72F00312DB4 /* Cancellable.swift in Sources */,
+				FD6AE51E2C9A010A001960D0 /* GetEpisodesByUrlsUseCase.swift in Sources */,
 				FDD87CE32C3965EB0072E2A8 /* ApplicationConstants.swift in Sources */,
 				FDC057942C17D37A00312DB4 /* NetworkDataTransferService.swift in Sources */,
 				FDC057BC2C17F1A900312DB4 /* LocationResponseDTO+Mapping.swift in Sources */,

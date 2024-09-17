@@ -9,7 +9,6 @@ import Foundation
 import OSLog
 
 class EpisodeRepositoryPrimaryFallback: EpisodeRepository {
-    
     private let primary: EpisodeRepository
     private let fallback: EpisodeRepository
     
@@ -60,6 +59,22 @@ class EpisodeRepositoryPrimaryFallback: EpisodeRepository {
             case .failure(_):
                 Logger.viewCycle.info("Executing fallback strategy from \(String(describing: EpisodeRepositoryPrimaryFallback.self))")
                 task = self?.fallback.searchEpisodes(by: name, from: page, completion: completion)
+            }
+        })
+        
+        return task
+    }
+    
+    func getEpisodeData(by urls: [URL], completion: @escaping (Result<[Episode], any Error>) -> Void) -> (any Cancellable)? {
+        var task: Cancellable?
+        
+        task = primary.getEpisodeData(by: urls, completion: { [weak self] result in
+            switch result {
+            case .success(let result):
+                completion(.success(result))
+            case .failure(_):
+                Logger.viewCycle.info("Executing fallback strategy from \(String(describing: EpisodeRepositoryPrimaryFallback.self))")
+                task = self?.fallback.getEpisodeData(by: urls, completion: completion)
             }
         })
         

@@ -14,7 +14,7 @@ final class CharacterDetailViewController: UIViewController, Presentable {
     var coordinator: CharacterDetailCoordinator?
     private lazy var mainView = CharacterDetailView(character: viewModel?.character)
     private lazy var episodeInformationController = EpisodeInformationViewController(
-        episodeData: self.viewModel?.episodeData ?? .init()
+        episodeData: self.viewModel?.episodeData ?? .init(wrappedArray: .init())
     )
     
     override func loadView() {
@@ -27,12 +27,24 @@ final class CharacterDetailViewController: UIViewController, Presentable {
         self.setCharacterData()
     }
     
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        viewModel?.cancelAllOperations()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.loadData()
+    }
+    
     static func create(with viewModel: CharacterDetailViewModel?) -> CharacterDetailViewController {
         let viewController = CharacterDetailViewController()
         viewController.viewModel = viewModel
         return viewController
     }
-    
+}
+
+extension CharacterDetailViewController {
     func setConstraints() {
         view.backgroundColor = .systemBackground
         mainView.setConstraints()
@@ -54,5 +66,23 @@ final class CharacterDetailViewController: UIViewController, Presentable {
         }
         
         self.title = character.characterName
+    }
+    
+    func loadData() {
+        self.viewModel?.onError = { error in
+            DispatchQueue.main.async {
+                let errorAlert = UIAlertController(title: "Operation Error", message: error, preferredStyle: .alert)
+                errorAlert.addAction(.init(title: "Ok", style: .cancel))
+                self.present(errorAlert, animated: true)
+            }
+        }
+        
+        self.viewModel?.onSuccess = {
+            DispatchQueue.main.async { [weak self] in
+                self?.episodeInformationController.refreshTableView()
+            }
+        }
+        
+        self.viewModel?.loadEpisodeData()
     }
 }

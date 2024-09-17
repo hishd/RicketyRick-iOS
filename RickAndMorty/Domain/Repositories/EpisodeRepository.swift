@@ -13,4 +13,5 @@ protocol EpisodeRepository {
     func fetchEpisode(by id: Int, completion: @escaping CompletionHandler) -> Cancellable?
     func fetchEpisodes(from page: Int?, completion: @escaping CompletionHandlerPage) -> Cancellable?
     func searchEpisodes(by name: String, from page: Int?, completion: @escaping CompletionHandlerPage) -> Cancellable?
+    func getEpisodeData(by urls: [URL], completion: @escaping (Result<[Episode], Error>) -> Void) -> Cancellable?
 }

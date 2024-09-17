@@ -7,11 +7,14 @@
 
 import Foundation
 import UIKit
+import DependencyInjector
 
 class CharacterDetailCoordinator: Coordinator {
     var navigationController: UINavigationController
     var childCoordinators: [any Coordinator] = .init()
     var character: Character?
+    
+    @Injectable(\.episodeRepository) var episodeRepository: EpisodeRepository
     
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
@@ -26,7 +29,7 @@ class CharacterDetailCoordinator: Coordinator {
             fatalError("Character not initialised.......!")
         }
         
-        let viewModel = CharacterDetailViewModel(character: character)
+        let viewModel = CharacterDetailViewModel(character: character, episodeRepository: episodeRepository)
         let viewController = CharacterDetailViewController.create(with: viewModel)
         viewController.coordinator = self
         navigationController.pushViewController(viewController, animated: true)
