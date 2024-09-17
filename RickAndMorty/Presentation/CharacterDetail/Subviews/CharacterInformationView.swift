@@ -145,13 +145,15 @@ final class CharacterInformationView: UIView {
         scrollView.addSubview(scrollContainer)
         
         scrollContainer.anchor(
-            top: scrollView.topAnchor,
-            left: scrollView.safeAreaLayoutGuide.leftAnchor,
-            bottom: scrollView.bottomAnchor,
-            right: scrollView.safeAreaLayoutGuide.rightAnchor,
+            top: scrollView.contentLayoutGuide.topAnchor,
+            left: scrollView.contentLayoutGuide.leftAnchor,
+            bottom: scrollView.contentLayoutGuide.bottomAnchor,
+            right: scrollView.contentLayoutGuide.rightAnchor,
             paddingTop: 16,
             height: 240
         )
+        
+        scrollContainer.widthAnchor.constraint(equalTo: scrollView.frameLayoutGuide.widthAnchor).isActive = true
     }
 }
 

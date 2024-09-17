@@ -58,9 +58,10 @@ final class EpisodeInformationViewController: UIViewController {
             top: subTitle.bottomAnchor,
             left: view.safeAreaLayoutGuide.leftAnchor,
             bottom: view.safeAreaLayoutGuide.bottomAnchor,
-            right: view.safeAreaLayoutGuide.rightAnchor,
-            paddingTop: 10
+            right: view.safeAreaLayoutGuide.rightAnchor
         )
+        
+        episodeTableView.backgroundColor = .blue
         
         self.episodeTableViewHandler = .init(episodeData: self.episodeData)
         
