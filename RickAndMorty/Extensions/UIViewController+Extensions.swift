@@ -11,9 +11,9 @@ import UIKit
 extension UIViewController {
     func embed(_ viewController:UIViewController, with setConstraints: () -> Void){
         viewController.willMove(toParent: self)
-        setConstraints()
         view.addSubview(viewController.view)
         self.addChild(viewController)
+        setConstraints()
         viewController.didMove(toParent: self)
     }
 }

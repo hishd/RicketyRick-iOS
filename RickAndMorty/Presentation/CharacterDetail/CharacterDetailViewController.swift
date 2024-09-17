@@ -13,6 +13,9 @@ final class CharacterDetailViewController: UIViewController, Presentable {
     var viewModel: CharacterDetailViewModel?
     var coordinator: CharacterDetailCoordinator?
     private lazy var mainView = CharacterDetailView(character: viewModel?.character)
+    private lazy var episodeInformationController = EpisodeInformationViewController(
+        episodeData: self.viewModel?.episodeData ?? .init()
+    )
     
     override func loadView() {
         self.view = mainView
@@ -33,6 +36,18 @@ final class CharacterDetailViewController: UIViewController, Presentable {
     func setConstraints() {
         view.backgroundColor = .systemBackground
         mainView.setConstraints()
+        
+//        self.embed(episodeInformationController) {
+//            episodeInformationController.view.anchor(
+//                top: mainView.characterInformationView.bottomAnchor,
+//                left: mainView.safeAreaLayoutGuide.leftAnchor,
+//                bottom: mainView.safeAreaLayoutGuide.bottomAnchor,
+//                right: mainView.safeAreaLayoutGuide.rightAnchor,
+//                paddingTop: 10,
+//                paddingLeft: 20,
+//                paddingRight: 20
+//            )
+//        }
     }
     
     func setCharacterData() {

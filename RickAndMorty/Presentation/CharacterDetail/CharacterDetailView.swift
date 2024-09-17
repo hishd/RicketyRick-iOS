@@ -11,7 +11,7 @@ import UIKit
 final class CharacterDetailView: UIView {
     
     private let character: Character?
-    private let imageViewSize: CGFloat = 160
+    private let imageViewSize: CGFloat = 140
     private lazy var characterImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.layer.borderWidth = 1
@@ -23,7 +23,7 @@ final class CharacterDetailView: UIView {
         return imageView
     }()
     
-    private lazy var characterInformationView: CharacterInformationView = {
+    private(set) lazy var characterInformationView: CharacterInformationView = {
         let view = CharacterInformationView(character: self.character)
         view.setupView()
         return view
@@ -43,7 +43,7 @@ final class CharacterDetailView: UIView {
         characterImageView.centerX(
             inView: self,
             topAnchor: self.safeAreaLayoutGuide.topAnchor,
-            paddingTop: 26
+            paddingTop: 10
         )
         characterImageView.setDimensions(height: imageViewSize, width: imageViewSize)
         characterImageView.layer.cornerRadius = imageViewSize / 2
@@ -53,7 +53,7 @@ final class CharacterDetailView: UIView {
             top: self.characterImageView.bottomAnchor,
             left: self.safeAreaLayoutGuide.leftAnchor,
             right: self.safeAreaLayoutGuide.rightAnchor,
-            paddingTop: 20,
+            paddingTop: 10,
             paddingLeft: 20,
             paddingRight: 20
         )

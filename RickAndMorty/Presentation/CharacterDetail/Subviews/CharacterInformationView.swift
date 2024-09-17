@@ -20,6 +20,10 @@ final class CharacterInformationView: UIView {
         return text
     }()
     
+    private lazy var scrollView: UIScrollView = .init()
+    
+    private lazy var scrollContainer: UIView = .init()
+    
     private lazy var statusContainer: InformationContainerItem = {
         let container = InformationContainerItem()
         container.iconImage = UIImage(systemName: "heart.circle.fill")
@@ -83,49 +87,71 @@ final class CharacterInformationView: UIView {
     
     func setupView() {
         self.addSubview(title)
-        self.addSubview(statusContainer)
-        self.addSubview(speciesContainer)
-        self.addSubview(genderContainer)
-        self.addSubview(originContainer)
-        self.addSubview(locationContainer)
+        
         title.anchor(
             top: self.safeAreaLayoutGuide.topAnchor,
             left: self.safeAreaLayoutGuide.leftAnchor
         )
         
-        statusContainer.anchor(
+        self.addSubview(scrollView)
+
+        scrollView.anchor(
             top: title.bottomAnchor,
             left: self.safeAreaLayoutGuide.leftAnchor,
+            bottom: self.safeAreaLayoutGuide.bottomAnchor,
             right: self.safeAreaLayoutGuide.rightAnchor,
-            paddingTop: 10
+            height: 200
+        )
+
+        scrollContainer.addSubview(statusContainer)
+        scrollContainer.addSubview(speciesContainer)
+        scrollContainer.addSubview(genderContainer)
+        scrollContainer.addSubview(originContainer)
+        scrollContainer.addSubview(locationContainer)
+        
+        statusContainer.anchor(
+            top: scrollContainer.safeAreaLayoutGuide.topAnchor,
+            left: scrollContainer.safeAreaLayoutGuide.leftAnchor,
+            right: scrollContainer.safeAreaLayoutGuide.rightAnchor
         )
         
         speciesContainer.anchor(
             top: statusContainer.bottomAnchor,
-            left: self.safeAreaLayoutGuide.leftAnchor,
-            right: self.safeAreaLayoutGuide.rightAnchor,
+            left: scrollContainer.safeAreaLayoutGuide.leftAnchor,
+            right: scrollContainer.safeAreaLayoutGuide.rightAnchor,
             paddingTop: 6
         )
         
         genderContainer.anchor(
             top: speciesContainer.bottomAnchor,
-            left: self.safeAreaLayoutGuide.leftAnchor,
-            right: self.safeAreaLayoutGuide.rightAnchor,
+            left: scrollContainer.safeAreaLayoutGuide.leftAnchor,
+            right: scrollContainer.safeAreaLayoutGuide.rightAnchor,
             paddingTop: 6
         )
         
         originContainer.anchor(
             top: genderContainer.bottomAnchor,
-            left: self.safeAreaLayoutGuide.leftAnchor,
-            right: self.safeAreaLayoutGuide.rightAnchor,
+            left: scrollContainer.safeAreaLayoutGuide.leftAnchor,
+            right: scrollContainer.safeAreaLayoutGuide.rightAnchor,
             paddingTop: 6
         )
         
         locationContainer.anchor(
             top: originContainer.bottomAnchor,
-            left: self.safeAreaLayoutGuide.leftAnchor,
-            right: self.safeAreaLayoutGuide.rightAnchor,
+            left: scrollContainer.safeAreaLayoutGuide.leftAnchor,
+            right: scrollContainer.safeAreaLayoutGuide.rightAnchor,
             paddingTop: 6
+        )
+        
+        scrollView.addSubview(scrollContainer)
+        
+        scrollContainer.anchor(
+            top: scrollView.topAnchor,
+            left: scrollView.safeAreaLayoutGuide.leftAnchor,
+            bottom: scrollView.bottomAnchor,
+            right: scrollView.safeAreaLayoutGuide.rightAnchor,
+            paddingTop: 10,
+            height: 240
         )
     }
 }
