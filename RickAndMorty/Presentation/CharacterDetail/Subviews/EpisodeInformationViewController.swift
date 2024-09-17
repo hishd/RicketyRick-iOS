@@ -24,6 +24,8 @@ final class EpisodeInformationViewController: UIViewController {
         return text
     }()
     
+    lazy var progressIndicator: ProgressView = ProgressView()
+    
     private lazy var episodeTableView: UITableView = {
         let tableView = UITableView()
         tableView.register(EpisodeInfoCell.self, forCellReuseIdentifier: EpisodeCell.reuseIdentifier)
@@ -66,10 +68,13 @@ final class EpisodeInformationViewController: UIViewController {
         
         episodeTableView.dataSource = self.episodeTableViewHandler
         episodeTableView.delegate = self.episodeTableViewHandler
+        
+        view.addSubview(progressIndicator)
+        progressIndicator.attachedView = episodeTableView
+        progressIndicator.center(inView: episodeTableView)
     }
     
     func refreshTableView() {
-        printIfDebug("Reloading Episodes data. Count :\(self.episodeData.content.count)")
         self.episodeTableView.reloadData()
     }
 }

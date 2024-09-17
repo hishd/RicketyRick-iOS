@@ -66,19 +66,22 @@ extension CharacterDetailViewController {
         }
         
         self.title = character.characterName
+        self.episodeInformationController.progressIndicator.startAnimating()
     }
     
     func loadData() {
         self.viewModel?.onError = { error in
-            DispatchQueue.main.async {
+            DispatchQueue.main.async { [weak self] in
+                self?.episodeInformationController.progressIndicator.stopAnimating()
                 let errorAlert = UIAlertController(title: "Operation Error", message: error, preferredStyle: .alert)
                 errorAlert.addAction(.init(title: "Ok", style: .cancel))
-                self.present(errorAlert, animated: true)
+                self?.present(errorAlert, animated: true)
             }
         }
         
         self.viewModel?.onSuccess = {
             DispatchQueue.main.async { [weak self] in
+                self?.episodeInformationController.progressIndicator.stopAnimating()
                 self?.episodeInformationController.refreshTableView()
             }
         }
