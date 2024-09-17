@@ -119,7 +119,7 @@ extension LaunchViewController {
         titleImage.center.y = titleImage.center.y - (view.bounds.height/2)
         portalImage.transform = CGAffineTransform(scaleX: 0, y: 0)
         portalImage.alpha = 0
-        rickImage.center.x = rickImage.center.x - view.bounds.width/2
+        rickImage.center.x = rickImage.center.x - view.bounds.width/1.75
         mortyImage.center.x = mortyImage.center.x + view.bounds.width/2
         
         UIView.animate(withDuration: 1) { [weak self] in
@@ -150,6 +150,8 @@ extension LaunchViewController {
         UIView.animate(withDuration: 1.5) { [weak self] in
             guard let strongSelf = self else { return }
             strongSelf.portalImage.alpha = 0
+            strongSelf.rickImage.alpha = 0
+            strongSelf.mortyImage.alpha = 0
         }
         
         UIView.animate(withDuration: 1.5) { [weak self] in
