@@ -49,20 +49,19 @@ final class EpisodeInformationViewController: UIViewController {
     func setConstraints(){
         view.addSubview(self.subTitle)
         subTitle.anchor(
-            top: view.safeAreaLayoutGuide.topAnchor,
-            left: view.safeAreaLayoutGuide.leftAnchor
+            top: view.topAnchor,
+            left: view.leftAnchor
         )
         
         view.addSubview(self.episodeTableView)
         episodeTableView.anchor(
             top: subTitle.bottomAnchor,
-            left: view.safeAreaLayoutGuide.leftAnchor,
-            bottom: view.safeAreaLayoutGuide.bottomAnchor,
-            right: view.safeAreaLayoutGuide.rightAnchor
+            left: view.leftAnchor,
+            bottom: view.bottomAnchor,
+            right: view.rightAnchor,
+            paddingTop: 10
         )
-        
-        episodeTableView.backgroundColor = .blue
-        
+                
         self.episodeTableViewHandler = .init(episodeData: self.episodeData)
         
         episodeTableView.dataSource = self.episodeTableViewHandler
@@ -98,7 +97,7 @@ fileprivate final class EpisodeTableViewHandler: NSObject, UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 40
+        return 72
     }
 }
 
@@ -167,9 +166,7 @@ extension EpisodeInfoCell {
             bottom: contentView.bottomAnchor,
             right: contentView.rightAnchor,
             paddingTop: 5,
-            paddingLeft: 10,
-            paddingBottom: 5,
-            paddingRight: 10
+            paddingBottom: 5
         )
         
         view.addSubview(episodeTitle)
@@ -186,7 +183,7 @@ extension EpisodeInfoCell {
         seasonInfoContainer.anchor(
             top: episodeTitle.bottomAnchor,
             left: view.leftAnchor,
-            paddingTop: 6,
+            paddingTop: 10,
             paddingLeft: 10
         )
         
@@ -194,7 +191,7 @@ extension EpisodeInfoCell {
         airDateInfoContainer.anchor(
             top: episodeTitle.bottomAnchor,
             left: seasonInfoContainer.rightAnchor,
-            paddingTop: 6,
+            paddingTop: 10,
             paddingLeft: 10
         )
     }
@@ -206,5 +203,5 @@ extension EpisodeInfoCell {
 
 @available(iOS 17.0, *)
 #Preview {
-    EpisodeInfoCell()
+    EpisodeInformationViewController(episodeData: .init())
 }

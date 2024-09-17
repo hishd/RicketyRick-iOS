@@ -37,17 +37,12 @@ final class CharacterDetailViewController: UIViewController, Presentable {
         view.backgroundColor = .systemBackground
         mainView.setConstraints()
         
-        self.embed(episodeInformationController) {
-            episodeInformationController.view.anchor(
-                top: mainView.characterInformationView.bottomAnchor,
-                left: mainView.safeAreaLayoutGuide.leftAnchor,
-                bottom: mainView.safeAreaLayoutGuide.bottomAnchor,
-                right: mainView.safeAreaLayoutGuide.rightAnchor,
-                paddingTop: 10,
-                paddingLeft: 20,
-                paddingRight: 20
-            )
-        }
+        self.embed(episodeInformationController, activate: [
+            episodeInformationController.view.leadingAnchor.constraint(equalTo: mainView.safeAreaLayoutGuide.leadingAnchor, constant: 20),
+            episodeInformationController.view.trailingAnchor.constraint(equalTo: mainView.safeAreaLayoutGuide.trailingAnchor, constant: -20),
+            episodeInformationController.view.topAnchor.constraint(equalTo: mainView.characterInformationView.bottomAnchor, constant: 10),
+            episodeInformationController.view.bottomAnchor.constraint(equalTo: mainView.safeAreaLayoutGuide.bottomAnchor)
+        ])
     }
     
     func setCharacterData() {

@@ -9,11 +9,12 @@ import Foundation
 import UIKit
 
 extension UIViewController {
-    func embed(_ viewController:UIViewController, with setConstraints: () -> Void){
+    func embed(_ viewController:UIViewController, activate constraints: [NSLayoutConstraint]){
         viewController.willMove(toParent: self)
-        view.addSubview(viewController.view)
         self.addChild(viewController)
-        setConstraints()
+        view.addSubview(viewController.view)
+        viewController.view.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate(constraints)
         viewController.didMove(toParent: self)
     }
 }

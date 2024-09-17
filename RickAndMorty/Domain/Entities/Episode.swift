@@ -25,6 +25,19 @@ struct Episode {
     }
 }
 
+#if DEBUG
+extension Episode {
+    static var sample: Episode = .init(
+        episodeId: 0,
+        episodeName: "Episode",
+        airDate: "Date",
+        codeName: "Code Name",
+        characters: .init(),
+        createdData: Date()
+    )
+}
+#endif
+
 struct EpisodePage {
     let count: Int
     let pages: Int
