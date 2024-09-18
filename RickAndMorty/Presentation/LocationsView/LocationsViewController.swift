@@ -61,6 +61,8 @@ extension LocationsViewController {
             onLoadMore: viewModel.loadMoreLocations
         )
         
+        self.tableViewHandler?.onLocationSelected = self.onLocationSelected
+        
         mainView.tableView.dataSource = tableViewHandler
         mainView.tableView.delegate = tableViewHandler
         
@@ -117,7 +119,15 @@ extension LocationsViewController {
     }
     
     func scrollToTopItem() {
+        guard !(viewModel?.wrappedLocations.isEmpty ?? true) else {
+            return
+        }
         
+        mainView.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .bottom, animated: true)
+    }
+    
+    func onLocationSelected(location: Location) {
+        self.coordinator?.launchDetailFlow(for: location)
     }
 }
 
@@ -138,6 +148,7 @@ fileprivate final class LocationsViewTableViewHandler: NSObject, UITableViewDele
     let items: ArrayWrapper<Location>
     let paginationThreshold: Int
     let onLoadMore: (() -> Void)
+    var onLocationSelected: ((_ selected: Location) -> Void)?
     
     init(items: ArrayWrapper<Location>, paginationThreshold: Int, onLoadMore: @escaping () -> Void) {
         self.items = items
@@ -180,6 +191,13 @@ fileprivate final class LocationsViewTableViewHandler: NSObject, UITableViewDele
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("Selected Row: \(indexPath.row)")
+        
+        guard let onLocationSelected = self.onLocationSelected else {
+            return
+        }
+        
+        let location = self.items.content[indexPath.row]
+        onLocationSelected(location)
     }
 }
 

@@ -73,7 +73,7 @@ final class InformationContainerItem: UIView {
         separatorView.centerY(
             inView: self,
             leftAnchor: self.safeAreaLayoutGuide.leftAnchor,
-            paddingLeft: 110
+            paddingLeft: 120
         )
         
         self.addSubview(textLabel)
