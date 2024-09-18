@@ -88,6 +88,10 @@
 		FDD113982C9A72CE00D7A861 /* EpisodeDetailCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD113972C9A72CE00D7A861 /* EpisodeDetailCoordinator.swift */; };
 		FDD1139A2C9A779900D7A861 /* InformationContainerItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD113992C9A779900D7A861 /* InformationContainerItem.swift */; };
 		FDD1139C2C9A88D400D7A861 /* GetCharactersByUrlsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD1139B2C9A88D400D7A861 /* GetCharactersByUrlsUseCase.swift */; };
+		FDD1139F2C9A90DF00D7A861 /* LocationDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD1139E2C9A90DF00D7A861 /* LocationDetailView.swift */; };
+		FDD113A12C9A90F800D7A861 /* LocationDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD113A02C9A90F800D7A861 /* LocationDetailViewController.swift */; };
+		FDD113A32C9A911200D7A861 /* LocationDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD113A22C9A911200D7A861 /* LocationDetailViewModel.swift */; };
+		FDD113A52C9A912400D7A861 /* LocationDetailCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD113A42C9A912400D7A861 /* LocationDetailCoordinator.swift */; };
 		FDD87CE02C3962DA0072E2A8 /* DependencyInjector.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD87CDF2C3962DA0072E2A8 /* DependencyInjector.swift */; };
 		FDD87CE32C3965EB0072E2A8 /* ApplicationConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD87CE22C3965EB0072E2A8 /* ApplicationConstants.swift */; };
 		FDD87CE82C3A9BA60072E2A8 /* CharactersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD87CE72C3A9BA60072E2A8 /* CharactersView.swift */; };
@@ -207,6 +211,10 @@
 		FDD113972C9A72CE00D7A861 /* EpisodeDetailCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeDetailCoordinator.swift; sourceTree = "<group>"; };
 		FDD113992C9A779900D7A861 /* InformationContainerItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationContainerItem.swift; sourceTree = "<group>"; };
 		FDD1139B2C9A88D400D7A861 /* GetCharactersByUrlsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCharactersByUrlsUseCase.swift; sourceTree = "<group>"; };
+		FDD1139E2C9A90DF00D7A861 /* LocationDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationDetailView.swift; sourceTree = "<group>"; };
+		FDD113A02C9A90F800D7A861 /* LocationDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationDetailViewController.swift; sourceTree = "<group>"; };
+		FDD113A22C9A911200D7A861 /* LocationDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationDetailViewModel.swift; sourceTree = "<group>"; };
+		FDD113A42C9A912400D7A861 /* LocationDetailCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationDetailCoordinator.swift; sourceTree = "<group>"; };
 		FDD87CDF2C3962DA0072E2A8 /* DependencyInjector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyInjector.swift; sourceTree = "<group>"; };
 		FDD87CE22C3965EB0072E2A8 /* ApplicationConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationConstants.swift; sourceTree = "<group>"; };
 		FDD87CE72C3A9BA60072E2A8 /* CharactersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersView.swift; sourceTree = "<group>"; };
@@ -350,6 +358,7 @@
 		FD2D76DE2C151F8600BBDEF4 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				FDD1139D2C9A90D000D7A861 /* LocationDetail */,
 				FDD113902C9A718300D7A861 /* EpisodeDetail */,
 				FD55CE942C46E82600C2CE7F /* CharacterDetail */,
 				FDD87CF72C3BFEC50072E2A8 /* LocationsView */,
@@ -384,6 +393,7 @@
 				FD81D1312C3819F200098C59 /* LocationsCoordinator.swift */,
 				FD55CE992C46E99600C2CE7F /* CharacterDetailCoordinator.swift */,
 				FDD113972C9A72CE00D7A861 /* EpisodeDetailCoordinator.swift */,
+				FDD113A42C9A912400D7A861 /* LocationDetailCoordinator.swift */,
 			);
 			path = Coordinator;
 			sourceTree = "<group>";
@@ -663,6 +673,16 @@
 			path = EpisodeDetail;
 			sourceTree = "<group>";
 		};
+		FDD1139D2C9A90D000D7A861 /* LocationDetail */ = {
+			isa = PBXGroup;
+			children = (
+				FDD1139E2C9A90DF00D7A861 /* LocationDetailView.swift */,
+				FDD113A02C9A90F800D7A861 /* LocationDetailViewController.swift */,
+				FDD113A22C9A911200D7A861 /* LocationDetailViewModel.swift */,
+			);
+			path = LocationDetail;
+			sourceTree = "<group>";
+		};
 		FDD87CDE2C3962C80072E2A8 /* DIContainer */ = {
 			isa = PBXGroup;
 			children = (
@@ -917,6 +937,7 @@
 				FDC057DB2C18B72F00312DB4 /* Cancellable.swift in Sources */,
 				FD6AE51E2C9A010A001960D0 /* GetEpisodesByUrlsUseCase.swift in Sources */,
 				FDD87CE32C3965EB0072E2A8 /* ApplicationConstants.swift in Sources */,
+				FDD113A32C9A911200D7A861 /* LocationDetailViewModel.swift in Sources */,
 				FDC057942C17D37A00312DB4 /* NetworkDataTransferService.swift in Sources */,
 				FDC057BC2C17F1A900312DB4 /* LocationResponseDTO+Mapping.swift in Sources */,
 				FD2D76E52C15268800BBDEF4 /* Coordinator.swift in Sources */,
@@ -930,6 +951,7 @@
 				FDD87CF42C3B79F30072E2A8 /* EpisodesViewController.swift in Sources */,
 				FDD87D032C3C08F50072E2A8 /* LifeStatusContainerView.swift in Sources */,
 				FD81D1352C385A0100098C59 /* CharacterCell.swift in Sources */,
+				FDD113A52C9A912400D7A861 /* LocationDetailCoordinator.swift in Sources */,
 				FDD113962C9A71CE00D7A861 /* EpisodeDetailViewController.swift in Sources */,
 				FDD113982C9A72CE00D7A861 /* EpisodeDetailCoordinator.swift in Sources */,
 				FDC057D12C18ACB700312DB4 /* CharacterRepositoryRemote.swift in Sources */,
@@ -957,6 +979,7 @@
 				FDC057EA2C1933B800312DB4 /* EpisodeRepositoryLocal.swift in Sources */,
 				FDD1139A2C9A779900D7A861 /* InformationContainerItem.swift in Sources */,
 				FDC0579F2C17D86A00312DB4 /* EpisodeRepository.swift in Sources */,
+				FDD1139F2C9A90DF00D7A861 /* LocationDetailView.swift in Sources */,
 				FD2D76AB2C151E5E00BBDEF4 /* AppDelegate.swift in Sources */,
 				FDC0579B2C17D84800312DB4 /* CharacterRepository.swift in Sources */,
 				FDC057912C17D37A00312DB4 /* ApiNetworkConfig.swift in Sources */,
@@ -966,6 +989,7 @@
 				FD55CE982C46E87F00C2CE7F /* CharacterDetailViewController.swift in Sources */,
 				FDC057F02C19423400312DB4 /* FetchEpisodeUseCase.swift in Sources */,
 				FD81D11F2C369B4E00098C59 /* LaunchViewController.swift in Sources */,
+				FDD113A12C9A90F800D7A861 /* LocationDetailViewController.swift in Sources */,
 				FDC057A12C17D89700312DB4 /* Character.swift in Sources */,
 				FDC057D32C18ACCB00312DB4 /* CharacterRepositoryLocal.swift in Sources */,
 				FD2D76AD2C151E5E00BBDEF4 /* SceneDelegate.swift in Sources */,
