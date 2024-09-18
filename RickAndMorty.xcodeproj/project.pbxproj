@@ -82,6 +82,11 @@
 		FDC057EC2C19414000312DB4 /* FetchCharacterUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC057EB2C19414000312DB4 /* FetchCharacterUseCase.swift */; };
 		FDC057EE2C1941D500312DB4 /* FetchLocationUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC057ED2C1941D500312DB4 /* FetchLocationUseCase.swift */; };
 		FDC057F02C19423400312DB4 /* FetchEpisodeUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC057EF2C19423400312DB4 /* FetchEpisodeUseCase.swift */; };
+		FDD113922C9A719C00D7A861 /* EpisodeDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD113912C9A719C00D7A861 /* EpisodeDetailView.swift */; };
+		FDD113942C9A71B700D7A861 /* EpisodeDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD113932C9A71B700D7A861 /* EpisodeDetailViewModel.swift */; };
+		FDD113962C9A71CE00D7A861 /* EpisodeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD113952C9A71CE00D7A861 /* EpisodeDetailViewController.swift */; };
+		FDD113982C9A72CE00D7A861 /* EpisodeDetailCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD113972C9A72CE00D7A861 /* EpisodeDetailCoordinator.swift */; };
+		FDD1139A2C9A779900D7A861 /* InformationContainerItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD113992C9A779900D7A861 /* InformationContainerItem.swift */; };
 		FDD87CE02C3962DA0072E2A8 /* DependencyInjector.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD87CDF2C3962DA0072E2A8 /* DependencyInjector.swift */; };
 		FDD87CE32C3965EB0072E2A8 /* ApplicationConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD87CE22C3965EB0072E2A8 /* ApplicationConstants.swift */; };
 		FDD87CE82C3A9BA60072E2A8 /* CharactersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD87CE72C3A9BA60072E2A8 /* CharactersView.swift */; };
@@ -195,6 +200,11 @@
 		FDC057EB2C19414000312DB4 /* FetchCharacterUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchCharacterUseCase.swift; sourceTree = "<group>"; };
 		FDC057ED2C1941D500312DB4 /* FetchLocationUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchLocationUseCase.swift; sourceTree = "<group>"; };
 		FDC057EF2C19423400312DB4 /* FetchEpisodeUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchEpisodeUseCase.swift; sourceTree = "<group>"; };
+		FDD113912C9A719C00D7A861 /* EpisodeDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeDetailView.swift; sourceTree = "<group>"; };
+		FDD113932C9A71B700D7A861 /* EpisodeDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeDetailViewModel.swift; sourceTree = "<group>"; };
+		FDD113952C9A71CE00D7A861 /* EpisodeDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeDetailViewController.swift; sourceTree = "<group>"; };
+		FDD113972C9A72CE00D7A861 /* EpisodeDetailCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeDetailCoordinator.swift; sourceTree = "<group>"; };
+		FDD113992C9A779900D7A861 /* InformationContainerItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationContainerItem.swift; sourceTree = "<group>"; };
 		FDD87CDF2C3962DA0072E2A8 /* DependencyInjector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyInjector.swift; sourceTree = "<group>"; };
 		FDD87CE22C3965EB0072E2A8 /* ApplicationConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationConstants.swift; sourceTree = "<group>"; };
 		FDD87CE72C3A9BA60072E2A8 /* CharactersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersView.swift; sourceTree = "<group>"; };
@@ -338,6 +348,7 @@
 		FD2D76DE2C151F8600BBDEF4 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				FDD113902C9A718300D7A861 /* EpisodeDetail */,
 				FD55CE942C46E82600C2CE7F /* CharacterDetail */,
 				FDD87CF72C3BFEC50072E2A8 /* LocationsView */,
 				FDD87CEB2C3B74810072E2A8 /* EpisodesView */,
@@ -370,6 +381,7 @@
 				FD81D12F2C3819E300098C59 /* EpisodesCoordinator.swift */,
 				FD81D1312C3819F200098C59 /* LocationsCoordinator.swift */,
 				FD55CE992C46E99600C2CE7F /* CharacterDetailCoordinator.swift */,
+				FDD113972C9A72CE00D7A861 /* EpisodeDetailCoordinator.swift */,
 			);
 			path = Coordinator;
 			sourceTree = "<group>";
@@ -638,6 +650,16 @@
 			path = Implementation;
 			sourceTree = "<group>";
 		};
+		FDD113902C9A718300D7A861 /* EpisodeDetail */ = {
+			isa = PBXGroup;
+			children = (
+				FDD113912C9A719C00D7A861 /* EpisodeDetailView.swift */,
+				FDD113932C9A71B700D7A861 /* EpisodeDetailViewModel.swift */,
+				FDD113952C9A71CE00D7A861 /* EpisodeDetailViewController.swift */,
+			);
+			path = EpisodeDetail;
+			sourceTree = "<group>";
+		};
 		FDD87CDE2C3962C80072E2A8 /* DIContainer */ = {
 			isa = PBXGroup;
 			children = (
@@ -697,6 +719,7 @@
 			children = (
 				FDD87D022C3C08F50072E2A8 /* LifeStatusContainerView.swift */,
 				FDD87D042C3C09930072E2A8 /* DetailsContainerView.swift */,
+				FDD113992C9A779900D7A861 /* InformationContainerItem.swift */,
 			);
 			path = Subviews;
 			sourceTree = "<group>";
@@ -903,6 +926,8 @@
 				FDD87CF42C3B79F30072E2A8 /* EpisodesViewController.swift in Sources */,
 				FDD87D032C3C08F50072E2A8 /* LifeStatusContainerView.swift in Sources */,
 				FD81D1352C385A0100098C59 /* CharacterCell.swift in Sources */,
+				FDD113962C9A71CE00D7A861 /* EpisodeDetailViewController.swift in Sources */,
+				FDD113982C9A72CE00D7A861 /* EpisodeDetailCoordinator.swift in Sources */,
 				FDC057D12C18ACB700312DB4 /* CharacterRepositoryRemote.swift in Sources */,
 				FDC057E12C1931AD00312DB4 /* LocationRepositoryRemote.swift in Sources */,
 				FD55CE9F2C48062200C2CE7F /* CharacterInformationView.swift in Sources */,
@@ -918,6 +943,7 @@
 				FDC057AE2C17E15300312DB4 /* SearchCharactersUseCase.swift in Sources */,
 				FD81D1322C3819F200098C59 /* LocationsCoordinator.swift in Sources */,
 				FD2D76E72C1526F100BBDEF4 /* RootCoordinator.swift in Sources */,
+				FDD113922C9A719C00D7A861 /* EpisodeDetailView.swift in Sources */,
 				FDC057C82C17F7AC00312DB4 /* EpisodeEndpoints.swift in Sources */,
 				FDC057E32C1931C400312DB4 /* LocationRepositoryLocal.swift in Sources */,
 				FDC057C12C17F4F400312DB4 /* EpisodeResponseDTO+Mapping.swift in Sources */,
@@ -925,6 +951,7 @@
 				FDC057C42C17F79300312DB4 /* CharacterEndpoints.swift in Sources */,
 				FDC057E62C1932C600312DB4 /* EpisodeRepositoryPrimaryFallback.swift in Sources */,
 				FDC057EA2C1933B800312DB4 /* EpisodeRepositoryLocal.swift in Sources */,
+				FDD1139A2C9A779900D7A861 /* InformationContainerItem.swift in Sources */,
 				FDC0579F2C17D86A00312DB4 /* EpisodeRepository.swift in Sources */,
 				FD2D76AB2C151E5E00BBDEF4 /* AppDelegate.swift in Sources */,
 				FDC0579B2C17D84800312DB4 /* CharacterRepository.swift in Sources */,
@@ -941,6 +968,7 @@
 				FDC057EC2C19414000312DB4 /* FetchCharacterUseCase.swift in Sources */,
 				FDC057C62C17F7A000312DB4 /* LocationEndpoints.swift in Sources */,
 				FDD87CFE2C3C003B0072E2A8 /* LocationsViewModel.swift in Sources */,
+				FDD113942C9A71B700D7A861 /* EpisodeDetailViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

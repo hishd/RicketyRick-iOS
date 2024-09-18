@@ -44,6 +44,12 @@ class EpisodesCoordinator: NSObject, Coordinator {
     func scrollToTopItem() {
         viewController?.scrollToTopItem()
     }
+    
+    func launchDetailFlow(for episode: Episode) {
+        let detailCoordinator = EpisodeDetailCoordinator(navigationController: self.navigationController, episode: episode)
+        self.childCoordinators.append(detailCoordinator)
+        detailCoordinator.start()
+    }
 }
 
 extension EpisodesCoordinator: UINavigationControllerDelegate {
