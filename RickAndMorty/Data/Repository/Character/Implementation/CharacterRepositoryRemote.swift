@@ -34,6 +34,37 @@ class CharacterRepositoryRemote: CharacterRepository {
         return buildRequest(with: endpoint, completion: completion)
     }
     
+    func getCharacterData(by urls: [URL], completion: @escaping (Result<[Character], any Error>) -> Void) -> (any Cancellable)? {
+        let endpoints: [ApiEndpoint] = urls.map { url in
+            return CharacterEndpoints.getCharacter(by: url)
+        }
+        
+        let task = CancellableTaskCollection()
+        task.isNetworkTask = true
+        
+        task.networkTasks = networkDataTransferService.request(with: endpoints, completion: { result in
+            
+            let handler: Result<[Character], Error>
+            
+            defer {
+                completion(handler)
+            }
+            
+            switch result {
+            case .success(let response):
+                let characters: [Character] = response.results.map { character in
+                    return character.mapToDomain()
+                }
+                handler = .success(characters)
+                task.isSuccessful = true
+            case .failure(let error):
+                handler = .failure(error)
+            }
+        })
+        
+        return task
+    }
+    
     private func buildRequest(with endpoint: ApiEndpoint<CharacterResponseDTO>, completion: @escaping CompletionHandlerPage) -> (any Cancellable)? {
         let task = CancellableTask()
         task.isNetworkTask = true

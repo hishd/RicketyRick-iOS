@@ -65,4 +65,20 @@ class CharacterRepositoryPrimaryFallback: CharacterRepository {
         
         return task
     }
+    
+    func getCharacterData(by urls: [URL], completion: @escaping (Result<[Character], any Error>) -> Void) -> (any Cancellable)? {
+        var task: Cancellable?
+        
+        task = primary.getCharacterData(by: urls, completion: { [weak self] result in
+            switch result {
+            case .success(let response):
+                completion(.success(response))
+            case .failure(_):
+                Logger.viewCycle.info("Executing fallback strategy from \(String(describing: CharacterRepositoryPrimaryFallback.self))")
+                task = self?.fallback.getCharacterData(by: urls, completion: completion)
+            }
+        })
+        
+        return task
+    }
 }
