@@ -42,6 +42,8 @@ final class EpisodeDetailViewController: UIViewController, Presentable {
     
     func setConstraints() {
         view.backgroundColor = .systemBackground
+        
+        mainView.setupView()
     }
 }
 

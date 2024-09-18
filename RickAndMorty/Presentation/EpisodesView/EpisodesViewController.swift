@@ -61,6 +61,8 @@ extension EpisodesViewController {
             onLoadMore: viewModel.loadMoreEpisodes
         )
         
+        self.tableViewHandler?.onEpisodeSelected = self.onEpisodeSelected
+        
         mainView.tableView.dataSource = tableViewHandler
         mainView.tableView.delegate = tableViewHandler
         
@@ -117,7 +119,15 @@ extension EpisodesViewController {
     }
     
     func scrollToTopItem() {
+        guard !(viewModel?.wrappedEpisodes.isEmpty ?? true) else {
+            return
+        }
         
+        mainView.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .bottom, animated: true)
+    }
+    
+    func onEpisodeSelected(episode: Episode) {
+        self.coordinator?.launchDetailFlow(for: episode)
     }
 }
 
@@ -138,6 +148,7 @@ fileprivate final class EpisodesViewTableViewHandler: NSObject, UITableViewDeleg
     let items: ArrayWrapper<Episode>
     let paginationThreshold: Int
     let onLoadMore: (() -> Void)
+    var onEpisodeSelected: ((_ selected: Episode) -> Void)?
     
     init(items: ArrayWrapper<Episode>, paginationThreshold: Int, onLoadMore: @escaping () -> Void) {
         self.items = items
@@ -180,6 +191,13 @@ fileprivate final class EpisodesViewTableViewHandler: NSObject, UITableViewDeleg
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("Selected Row: \(indexPath.row)")
+        
+        guard let onEpisodeSelected = self.onEpisodeSelected else {
+            return
+        }
+        
+        let episode = self.items.content[indexPath.row]
+        onEpisodeSelected(episode)
     }
 }
 

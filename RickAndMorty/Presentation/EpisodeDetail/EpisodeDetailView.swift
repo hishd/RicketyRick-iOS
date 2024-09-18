@@ -67,7 +67,10 @@ extension EpisodeDetailView {
         addSubview(titleInformation)
         titleInformation.anchor(
             top: self.safeAreaLayoutGuide.topAnchor,
-            left: self.safeAreaLayoutGuide.leftAnchor
+            left: self.safeAreaLayoutGuide.leftAnchor,
+            paddingTop: 16,
+            paddingLeft: 20,
+            paddingRight: 20
         )
         
         addSubview(episodeCodeContainer)
@@ -75,7 +78,9 @@ extension EpisodeDetailView {
             top: titleInformation.bottomAnchor,
             left: self.safeAreaLayoutGuide.leftAnchor,
             right: self.safeAreaLayoutGuide.rightAnchor,
-            paddingTop: 16
+            paddingTop: 16,
+            paddingLeft: 20,
+            paddingRight: 20
         )
         
         addSubview(airDateContainer)
@@ -83,14 +88,18 @@ extension EpisodeDetailView {
             top: episodeCodeContainer.bottomAnchor,
             left: self.safeAreaLayoutGuide.leftAnchor,
             right: self.safeAreaLayoutGuide.rightAnchor,
-            paddingTop: 6
+            paddingTop: 6,
+            paddingLeft: 20,
+            paddingRight: 20
         )
         
         addSubview(titleCharacters)
         titleCharacters.anchor(
             top: airDateContainer.bottomAnchor,
             left: self.safeAreaLayoutGuide.leftAnchor,
-            paddingTop: 20
+            paddingTop: 20,
+            paddingLeft: 20,
+            paddingRight: 20
         )
         
         addSubview(charactersTableView)
@@ -99,11 +108,11 @@ extension EpisodeDetailView {
             left: self.safeAreaLayoutGuide.leftAnchor,
             bottom: self.safeAreaLayoutGuide.bottomAnchor,
             right: self.safeAreaLayoutGuide.rightAnchor,
-            paddingTop: 10
+            paddingTop: 10,
+            paddingLeft: 20,
+            paddingRight: 20
         )
-        
-        charactersTableView.backgroundColor = .green
-        
+                
         addSubview(progressIndicator)
         progressIndicator.attachedView = charactersTableView
         progressIndicator.center(inView: charactersTableView)
