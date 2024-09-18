@@ -45,8 +45,11 @@ final class EpisodeDetailView: UIView {
         return container
     }()
     
-    private lazy var charactersTableView: UITableView = {
+    lazy var charactersTableView: UITableView = {
         let tableView = UITableView()
+        tableView.register(CharacterCell.self, forCellReuseIdentifier: CharacterCell.reuseIdentifier)
+        tableView.showsVerticalScrollIndicator = false
+        tableView.separatorStyle = .none
         return tableView
     }()
     
@@ -109,8 +112,8 @@ extension EpisodeDetailView {
             bottom: self.safeAreaLayoutGuide.bottomAnchor,
             right: self.safeAreaLayoutGuide.rightAnchor,
             paddingTop: 10,
-            paddingLeft: 20,
-            paddingRight: 20
+            paddingLeft: 10,
+            paddingRight: 10
         )
                 
         addSubview(progressIndicator)

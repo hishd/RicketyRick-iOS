@@ -7,11 +7,14 @@
 
 import Foundation
 import UIKit
+import DependencyInjector
 
 final class EpisodeDetailCoordinator: Coordinator {
     var navigationController: UINavigationController
     let episode: Episode
     var childCoordinators: [any Coordinator] = .init()
+    
+    @Injectable(\.characterRepository) var characterRepository: CharacterRepository
     
     init(navigationController: UINavigationController, episode: Episode) {
         self.navigationController = navigationController
@@ -19,7 +22,7 @@ final class EpisodeDetailCoordinator: Coordinator {
     }
     
     func start() {
-        let viewModel = EpisodeDetailViewModel(with: episode)
+        let viewModel = EpisodeDetailViewModel(episode: episode, characterRepository: characterRepository)
         let viewController = EpisodeDetailViewController.create(with: viewModel)
         viewController.coordinator = self
         navigationController.pushViewController(viewController, animated: true)
