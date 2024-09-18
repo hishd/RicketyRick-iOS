@@ -87,6 +87,7 @@
 		FDD113962C9A71CE00D7A861 /* EpisodeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD113952C9A71CE00D7A861 /* EpisodeDetailViewController.swift */; };
 		FDD113982C9A72CE00D7A861 /* EpisodeDetailCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD113972C9A72CE00D7A861 /* EpisodeDetailCoordinator.swift */; };
 		FDD1139A2C9A779900D7A861 /* InformationContainerItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD113992C9A779900D7A861 /* InformationContainerItem.swift */; };
+		FDD1139C2C9A88D400D7A861 /* GetCharactersByUrlsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD1139B2C9A88D400D7A861 /* GetCharactersByUrlsUseCase.swift */; };
 		FDD87CE02C3962DA0072E2A8 /* DependencyInjector.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD87CDF2C3962DA0072E2A8 /* DependencyInjector.swift */; };
 		FDD87CE32C3965EB0072E2A8 /* ApplicationConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD87CE22C3965EB0072E2A8 /* ApplicationConstants.swift */; };
 		FDD87CE82C3A9BA60072E2A8 /* CharactersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD87CE72C3A9BA60072E2A8 /* CharactersView.swift */; };
@@ -205,6 +206,7 @@
 		FDD113952C9A71CE00D7A861 /* EpisodeDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeDetailViewController.swift; sourceTree = "<group>"; };
 		FDD113972C9A72CE00D7A861 /* EpisodeDetailCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeDetailCoordinator.swift; sourceTree = "<group>"; };
 		FDD113992C9A779900D7A861 /* InformationContainerItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationContainerItem.swift; sourceTree = "<group>"; };
+		FDD1139B2C9A88D400D7A861 /* GetCharactersByUrlsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCharactersByUrlsUseCase.swift; sourceTree = "<group>"; };
 		FDD87CDF2C3962DA0072E2A8 /* DependencyInjector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyInjector.swift; sourceTree = "<group>"; };
 		FDD87CE22C3965EB0072E2A8 /* ApplicationConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationConstants.swift; sourceTree = "<group>"; };
 		FDD87CE72C3A9BA60072E2A8 /* CharactersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersView.swift; sourceTree = "<group>"; };
@@ -520,6 +522,7 @@
 				FDC057AB2C17E00100312DB4 /* FetchCharactersUseCase.swift */,
 				FDC057AD2C17E15300312DB4 /* SearchCharactersUseCase.swift */,
 				FDC057EB2C19414000312DB4 /* FetchCharacterUseCase.swift */,
+				FDD1139B2C9A88D400D7A861 /* GetCharactersByUrlsUseCase.swift */,
 			);
 			path = Character;
 			sourceTree = "<group>";
@@ -896,6 +899,7 @@
 				FDD87CFC2C3BFF4E0072E2A8 /* LocationCell.swift in Sources */,
 				FDC057AC2C17E00100312DB4 /* FetchCharactersUseCase.swift in Sources */,
 				FDC057B22C17E23200312DB4 /* SearchLocationsUseCase.swift in Sources */,
+				FDD1139C2C9A88D400D7A861 /* GetCharactersByUrlsUseCase.swift in Sources */,
 				FDC057BA2C17E4C000312DB4 /* CharacterResponseDTO+Mapping.swift in Sources */,
 				FD81D1232C37BEB100098C59 /* ViewModel.swift in Sources */,
 				FDD87CEA2C3AAD890072E2A8 /* ArrayWrapper.swift in Sources */,
