@@ -12,6 +12,10 @@ enum CharacterEndpoints {
         return .init(path: .path("character/\(id)"), method: .get)
     }
     
+    static func getCharacter(by url: URL) -> ApiEndpoint<CharacterResponseDTO.ResultsDTO> {
+        return .init(path: .fullPath(url.absoluteString), method: .get)
+    }
+    
     static func allCharacters(from page: Int?) -> ApiEndpoint<CharacterResponseDTO> {
         var params: [String: Int] = [:]
         if let page = page {

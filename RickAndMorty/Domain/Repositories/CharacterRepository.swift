@@ -13,4 +13,5 @@ protocol CharacterRepository {
     func fetchCharacter(by id: Int, completion: @escaping CompletionHandler) -> Cancellable?
     func fetchCharacters(from page: Int?, completion: @escaping CompletionHandlerPage) -> Cancellable?
     func searchCharacters(by name: String, from page: Int?, completion: @escaping CompletionHandlerPage) -> Cancellable?
+    func getCharacterData(by urls: [URL], completion: @escaping (Result<[Character], Error>) -> Void) -> Cancellable?
 }

@@ -19,4 +19,9 @@ class CharacterRepositoryLocal: CharacterRepository {
     func searchCharacters(by name: String, from page: Int?, completion: @escaping CompletionHandlerPage) -> (any Cancellable)? {
         return nil
     }
+    
+    func getCharacterData(by urls: [URL], completion: @escaping (Result<[Character], any Error>) -> Void) -> (any Cancellable)? {
+        return nil
+    }
+    
 }
