@@ -44,6 +44,12 @@ class LocationsCoordinator: NSObject, Coordinator {
     func scrollToTopItem() {
         viewController?.scrollToTopItem()
     }
+    
+    func launchDetailFlow(for location: Location) {
+        let detailCoordinator = LocationDetailCoordinator(navigationController: self.navigationController, location: location)
+        self.childCoordinators.append(detailCoordinator)
+        detailCoordinator.start()
+    }
 }
 
 extension LocationsCoordinator: UINavigationControllerDelegate {
