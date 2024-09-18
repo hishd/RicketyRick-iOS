@@ -14,7 +14,7 @@ final class LocationDetailCoordinator: Coordinator {
     let location: Location
     var childCoordinators: [any Coordinator] = .init()
     
-    @Injectable(\.locationRepository) var locationRepository: LocationRepository
+    @Injectable(\.characterRepository) var characterRepository: CharacterRepository
     
     init(navigationController: UINavigationController, location: Location) {
         self.navigationController = navigationController
@@ -22,7 +22,7 @@ final class LocationDetailCoordinator: Coordinator {
     }
     
     func start() {
-        let viewModel = LocationDetailViewModel(location: location, locationRepository: locationRepository)
+        let viewModel = LocationDetailViewModel(location: location, characterRepository: characterRepository)
         let viewController = LocationDetailViewController.create(with: viewModel)
         viewController.coordinator = self
         navigationController.pushViewController(viewController, animated: true)
