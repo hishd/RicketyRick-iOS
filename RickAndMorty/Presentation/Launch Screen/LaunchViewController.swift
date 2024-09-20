@@ -147,24 +147,24 @@ extension LaunchViewController {
     }
     
     func navigateToMainScreen() {
-        UIView.animate(withDuration: 1.5) { [weak self] in
+        UIView.animate(withDuration: 1) { [weak self] in
             guard let strongSelf = self else { return }
             strongSelf.portalImage.alpha = 0
             strongSelf.rickImage.alpha = 0
             strongSelf.mortyImage.alpha = 0
         }
         
-        UIView.animate(withDuration: 1.5) { [weak self] in
+        UIView.animate(withDuration: 1) { [weak self] in
             guard let strongSelf = self else { return }
             strongSelf.rickImage.center.x = strongSelf.rickImage.center.x - strongSelf.view.bounds.width/2
         }
         
-        UIView.animate(withDuration: 1.5) { [weak self] in
+        UIView.animate(withDuration: 1) { [weak self] in
             guard let strongSelf = self else { return }
             strongSelf.mortyImage.center.x = strongSelf.mortyImage.center.x + strongSelf.view.bounds.width/2
         }
         
-        UIView.animate(withDuration: 2) { [weak self] in
+        UIView.animate(withDuration: 1) { [weak self] in
             guard let strongSelf = self else { return }
             strongSelf.titleImage.center.y = strongSelf.titleImage.center.y - (strongSelf.view.bounds.height/2)
         } completion: { [weak self] _ in
@@ -176,7 +176,6 @@ extension LaunchViewController {
         guard let onComplete = onComplete else {
             return
         }
-        
         onComplete(self)
     }
 }
