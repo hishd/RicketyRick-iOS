@@ -110,4 +110,8 @@ final class MockCharacterRepository: CharacterRepository {
         
         return nil
     }
+    
+    func getCharacterData(by urls: [URL], completion: @escaping (Result<[RickAndMorty.Character], any Error>) -> Void) -> (any RickAndMorty.Cancellable)? {
+        return nil
+    }
 }
