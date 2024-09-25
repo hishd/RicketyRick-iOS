@@ -13,50 +13,65 @@
 # Uncomment the line if you want fastlane to automatically update itself
 # update_fastlane
 
-APP_ID = "com.hishd.RickAndMorty"
-PROVISIONING_PROFILE_APPSTORE = "match AppStore com.hishd.RickAndMorty"
-TEAM_ID = "ZMV4XYT773"
+# APP_ID = "com.hishd.RickAndMorty"
+# PROVISIONING_PROFILE_APPSTORE = "match AppStore com.hishd.RickAndMorty"
+# TEAM_ID = "ZMV4XYT773"
 
-settings_to_override_release = { 
-  :BUNDLE_IDENTIFIER => APP_ID, 
-  :PROVISIONING_PROFILE_SPECIFIER => PROVISIONING_PROFILE_APPSTORE, 
-  :DEVELOPMENT_TEAM => TEAM_ID, 
-}
+# settings_to_override_release = { 
+#   :BUNDLE_IDENTIFIER => APP_ID, 
+#   :PROVISIONING_PROFILE_SPECIFIER => PROVISIONING_PROFILE_APPSTORE, 
+#   :DEVELOPMENT_TEAM => TEAM_ID, 
+# }
 
-desc "Export Release IPA & upload Release to App Store"
-lane :release_ipa do
-  api_key = app_store_connect_api_key( 
-    key_id: $APP_STORE_CONNECT_API_KEY_KEY_ID, 
-    issuer_id: $APP_STORE_CONNECT_API_KEY_ISSUER_ID, 
-    key_content: $APP_STORE_CONNECT_API_KEY_KEY 
-  )
-  increment_build_number(
-    build_number: app_store_build_number(
-      api_key: api_key,
-      initial_build_number: 0,
-      version: get_version_number(xcodeproj: "RickAndMorty.xcodeproj"),
-      live: false
-    ) + 1,
-  )
-  match(
-    app_identifier: APP_ID,
-    readonly: is_ci,
-    type:"appstore"
-  )
-  build_app(
-    scheme:"RickAndMorty", 
-    export_method:"app-store",
-    skip_profile_detection:true,
-    configuration: "Release",
-    workspace: "RickAndMorty.xcworkspace",
-    xcargs: settings_to_override_release,
-    export_options: {
-      provisioningProfiles: { 
-        APP_ID => PROVISIONING_PROFILE_APPSTORE
-      },
-      installerSigningCertificate: "your_installer_signing_certificate_name"
-    }
-  )
+# desc "Export Release IPA & upload Release to App Store"
+# lane :release_ipa do
+#   api_key = app_store_connect_api_key( 
+#     key_id: $APP_STORE_CONNECT_API_KEY_KEY_ID, 
+#     issuer_id: $APP_STORE_CONNECT_API_KEY_ISSUER_ID, 
+#     key_content: $APP_STORE_CONNECT_API_KEY_KEY 
+#   )
+#   increment_build_number(
+#     build_number: app_store_build_number(
+#       api_key: api_key,
+#       initial_build_number: 0,
+#       version: get_version_number(xcodeproj: "RickAndMorty.xcodeproj"),
+#       live: false
+#     ) + 1,
+#   )
+#   match(
+#     app_identifier: APP_ID,
+#     readonly: is_ci,
+#     type:"appstore"
+#   )
+#   build_app(
+#     scheme:"RickAndMorty", 
+#     export_method:"app-store",
+#     skip_profile_detection:true,
+#     configuration: "Release",
+#     workspace: "RickAndMorty.xcworkspace",
+#     xcargs: settings_to_override_release,
+#     export_options: {
+#       provisioningProfiles: { 
+#         APP_ID => PROVISIONING_PROFILE_APPSTORE
+#       },
+#       installerSigningCertificate: "your_installer_signing_certificate_name"
+#     }
+#   )
+# end
+
+# circle ci
+
+default_platform(:ios)
+
+platform :ios do
+  before_all do
+    setup_circle_ci
+  end
+
+  desc "Runs all the tests"
+  lane :tests do
+    run_tests(workspace: "RickAndMorty.xcworkspace", scheme: "RickAndMorty", devices: ["iPhone 11"])
+  end
 end
 
 # default_platform(:ios)
