@@ -26,3 +26,10 @@ workflows:
               only:
                 - main
                 - develop
+      - beta:
+          requires:
+            - build-and-test
+          filters:
+            branches:
+              only:
+                - develop-test

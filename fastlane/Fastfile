@@ -13,9 +13,9 @@
 # Uncomment the line if you want fastlane to automatically update itself
 # update_fastlane
 
-# APP_ID = "com.hishd.RickAndMorty"
-# PROVISIONING_PROFILE_APPSTORE = "match AppStore com.hishd.RickAndMorty"
-# TEAM_ID = "ZMV4XYT773"
+APP_ID = "com.hishd.RickAndMorty"
+PROVISIONING_PROFILE_APPSTORE = "match AppStore com.hishd.RickAndMorty"
+TEAM_ID = "ZMV4XYT773"
 
 # settings_to_override_release = { 
 #   :BUNDLE_IDENTIFIER => APP_ID, 
@@ -70,6 +70,52 @@ platform :ios do
   desc "Runs all the tests"
   lane :tests do
     run_tests(scheme: "RickAndMortyTests", devices: ["iPhone SE (3rd generation)"], include_simulator_logs: false)
+  end
+
+  desc "Submit a new Beta Build to Apple TestFlight"
+  lane :beta do
+    api_key = app_store_connect_api_key( 
+      key_id: $APP_STORE_CONNECT_API_KEY_KEY_ID, 
+      issuer_id: $APP_STORE_CONNECT_API_KEY_ISSUER_ID, 
+      key_content: $APP_STORE_CONNECT_API_KEY_KEY 
+    )
+    increment_build_number(
+      build_number: app_store_build_number(
+        api_key: api_key,
+        initial_build_number: 0,
+        version: get_version_number(xcodeproj: "RickAndMorty.xcodeproj"),
+        live: false
+      ) + 1,
+    )
+    match(
+      app_identifier: APP_ID,
+      readonly: is_ci,
+      type:"appstore"
+    )
+    build_app(
+      scheme:"RickAndMorty", 
+      export_method:"app-store",
+      skip_profile_detection:true,
+      configuration: "Release",
+      xcargs: settings_to_override_release,
+      export_options: {
+        provisioningProfiles: { 
+          APP_ID => PROVISIONING_PROFILE_APPSTORE
+        },
+      installer_cert_name: "Apple Development: Hishara Dilshan (3RD5M5UNYM)",
+      }
+    )
+    pilot(
+      api_key: api_key,
+      skip_waiting_for_build_processing: true,
+      distribute_external: false,
+      notify_external_testers: false,
+      app_identifier: APP_ID,
+      first_name: "Hishara",
+      last_name: "Dilshan",
+      email: "hisharadilshan3@gmail.com",
+      groups: ["Internal Testers"]
+    )
   end
 end
 
