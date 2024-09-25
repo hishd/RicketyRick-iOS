@@ -33,6 +33,7 @@ jobs:
 
 workflows:
   version: 2
+  # Build and test on every push to main or develop
   build-and-test:
     jobs:
       - build-and-test:
@@ -41,6 +42,14 @@ workflows:
               only:
                 - main
                 - develop
+  # Deploy to TestFlight on every push to develop-test after successful build and test
+  beta:
+    jobs:
+      - build-and-test:
+          filters:
+            branches:
+              only:
+                - develop-test
       - beta:
           requires:
             - build-and-test
