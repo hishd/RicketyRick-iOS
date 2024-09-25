@@ -69,7 +69,7 @@ platform :ios do
 
   desc "Runs all the tests"
   lane :tests do
-    run_tests(scheme: "RickAndMortyTests", devices: ["iPhone SE (3rd generation)"])
+    run_tests(scheme: "RickAndMortyTests", devices: ["iPhone SE (3rd generation)"], include_simulator_logs: false)
   end
 end
 
