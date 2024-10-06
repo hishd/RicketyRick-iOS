@@ -30,3 +30,10 @@ The application uses the [Rick and Morty API](https://rickandmortyapi.com/) API 
   <img src="https://github.com/hishd/RickAndMorty/blob/master/Images/4.png?raw=true" height="300">
   <img src="https://github.com/hishd/RickAndMorty/blob/master/Images/5.png?raw=true" height="300">
 </p>
+<p>
+  <img src="https://github.com/hishd/RickAndMorty/blob/master/Images/6.png?raw=true" height="300">
+  <img src="https://github.com/hishd/RickAndMorty/blob/master/Images/7.png?raw=true" height="300">
+  <img src="https://github.com/hishd/RickAndMorty/blob/master/Images/8.png?raw=true" height="300">
+  <img src="https://github.com/hishd/RickAndMorty/blob/master/Images/9.png?raw=true" height="300">
+  <img src="https://github.com/hishd/RickAndMorty/blob/master/Images/10.png?raw=true" height="300">
+</p>
